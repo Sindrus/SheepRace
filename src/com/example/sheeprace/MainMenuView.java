@@ -5,10 +5,10 @@ import android.graphics.Color;
 import sheep.game.State;
 import sheep.gui.TextButton;
 
-public class MainMenu extends State{
+public class MainMenuView extends State{
 	TextButton start;
 	
-	public MainMenu(MainActivity main){
+	public MainMenuView(MainActivity main){
 		start = new TextButton(50, 50, "Herro");
 	}
 

@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
 		
 		Game game = new Game(this, null);
 		
-		game.pushState(new MainMenu(this));
+		game.pushState(new MainMenuView(this));
 		setContentView(game);
 	}
 }
