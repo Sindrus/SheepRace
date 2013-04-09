@@ -8,7 +8,7 @@ import android.view.WindowManager;
 import sheep.game.Game;
 
 public class MainActivity extends Activity {
-
+//denne kommentaren skal fjærnes:::
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
