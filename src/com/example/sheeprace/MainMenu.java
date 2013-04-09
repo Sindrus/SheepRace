@@ -9,7 +9,7 @@ public class MainMenu extends State{
 	TextButton start;
 	
 	public MainMenu(MainActivity main){
-		start = new TextButton(50, 50, "Start Game!");
+		start = new TextButton(50, 50, "Herro");
 	}
 
 	public void draw(Canvas canvas){
