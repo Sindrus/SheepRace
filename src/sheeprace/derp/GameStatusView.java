@@ -1,4 +1,4 @@
-package com.example.sheeprace;
+package sheeprace.derp;
 
 public class GameStatusView {
 

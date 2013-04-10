@@ -1,4 +1,4 @@
-package com.example.sheeprace;
+package sheeprace.derp;
 
 import android.graphics.Canvas;
 import android.graphics.Color;

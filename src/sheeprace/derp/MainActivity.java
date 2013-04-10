@@ -1,4 +1,4 @@
-package com.example.sheeprace;
+package sheeprace.derp;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -8,7 +8,7 @@ import android.view.WindowManager;
 import sheep.game.Game;
 
 public class MainActivity extends Activity {
-//denne kommentaren skal fjærnes:::
+//denne kommentaren skal fjï¿½rnes:::
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
