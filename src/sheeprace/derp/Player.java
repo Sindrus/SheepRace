@@ -2,6 +2,11 @@ package sheeprace.derp;
 
 import sheep.game.Sprite;
 
+/**
+ * Holds the information about a player. 
+ *
+ */
+
 public class Player extends Sprite implements PlayerInterface{
 
 	@Override

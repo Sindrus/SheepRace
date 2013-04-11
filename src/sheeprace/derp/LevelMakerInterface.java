@@ -11,6 +11,7 @@ public interface LevelMakerInterface {
 	
 	/**
 	 * The returns a new level to the game
+	 * @return the level
 	 */
-	public Level makeLevel();
+	public Level createLevel();
 }

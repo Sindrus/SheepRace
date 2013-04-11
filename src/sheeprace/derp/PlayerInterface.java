@@ -1,5 +1,9 @@
 package sheeprace.derp;
 
+/**
+ * Interface for how the player should look like
+ *
+ */
 public interface PlayerInterface {
 	/**
 	 * Returns the current score of the player

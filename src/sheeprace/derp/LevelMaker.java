@@ -1,17 +1,15 @@
 package sheeprace.derp;
 
 /**
- * 
  * LevelMaker
- * 
- * This file should read from some file that defines the layout of the level.
- *
+ * Parse the level from some levelinputfile and return it to the levelobject
+ * @see Level
  */
 
 public class LevelMaker implements LevelMakerInterface{
 
 	@Override
-	public Level makeLevel() {
+	public Level createLevel() {
 		return null;
 	}
 
