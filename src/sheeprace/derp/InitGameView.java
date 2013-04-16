@@ -3,6 +3,7 @@ package sheeprace.derp;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.view.MotionEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 
 import sheep.game.State;
 import sheep.graphics.Image;
+import sheep.gui.TextButton;
 
 /**
  * This is the configview before the game starts. Each player should be able
@@ -24,7 +26,10 @@ public class InitGameView extends State{
 	private PlayerGfx[] Gfxs;
 	private List<Image> images;
 	
+	private TextButton backButton;
+	
 	public InitGameView(MainActivity main){
+		backButton = new TextButton(50, 50, "Back");
 		players = new Player[2];
 		Gfxs = new PlayerGfx[2];
 		images = new ArrayList<Image>();
@@ -42,6 +47,14 @@ public class InitGameView extends State{
 	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.CYAN);
+		backButton.draw(canvas);
 	}
-
+	
+	@Override
+	public boolean onTouchDown(MotionEvent event) {
+		if(backButton.onTouchDown(event)){
+			getGame().popState();
+		}
+		return true;
+	}
 }
