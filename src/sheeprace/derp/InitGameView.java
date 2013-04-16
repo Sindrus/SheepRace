@@ -19,17 +19,11 @@ import sheep.graphics.Image;
 
 public class InitGameView extends State{
 
-	
-	public InitGameView(MainActivity main){
-		
-	}
-	
-
 	private Player[] players;
 	private PlayerGfx[] Gfxs;
 	private List<Image> images;
 	
-	public InitGameView(){
+	public InitGameView(MainActivity main){
 		players = new Player[2];
 		Gfxs = new PlayerGfx[2];
 		images = new ArrayList<Image>();
@@ -38,11 +32,11 @@ public class InitGameView extends State{
 		//Get the sheep from the player and create a new PlayerGfx based on it.
 //		Gfxs[0] = new PlayerGfx(images.get(0)); //get() from the selected image obviously
 //		Gfxs[1] = new PlayerGfx(images.get(1));
-		Gfxs[0] = new PlayerGfx(null); //WILL NOT WORK ATM
-		Gfxs[1] = new PlayerGfx(null); //WILL NOT WORK ATM
-		
-		players[0] = new Player(Gfxs[0]);
-		players[1] = new Player(Gfxs[1]);
+//		Gfxs[0] = new PlayerGfx(null); //WILL NOT WORK ATM
+//		Gfxs[1] = new PlayerGfx(null); //WILL NOT WORK ATM
+//		
+//		players[0] = new Player(Gfxs[0]);
+//		players[1] = new Player(Gfxs[1]);
 	}
 
 }
