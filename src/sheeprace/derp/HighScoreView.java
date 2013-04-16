@@ -14,14 +14,23 @@ import sheep.gui.TextButton;
  */
 
 public class HighScoreView extends State {
+	private TextButton backButton;
 	
 	public HighScoreView(MainActivity main){
-		
+		backButton = new TextButton(50, 50, "Back");
 	}
 	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.BLUE);
+		backButton.draw(canvas);
 	}
 	
+	@Override
+	public boolean onTouchDown(MotionEvent event) {
+		if(backButton.onTouchDown(event)){
+			getGame().popState();
+		}
+		return true;
+	}
 
 }
