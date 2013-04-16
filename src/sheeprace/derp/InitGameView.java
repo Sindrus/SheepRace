@@ -1,5 +1,6 @@
 package sheeprace.derp;
 
+import android.graphics.Canvas;
 import sheep.game.State;
 
 /**
@@ -10,5 +11,9 @@ import sheep.game.State;
  */
 
 public class InitGameView extends State{
-
+	
+	public InitGameView(MainActivity main){
+		
+	}
+	
 }

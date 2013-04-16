@@ -2,12 +2,16 @@ package sheeprace.derp;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.Window;
 import android.view.WindowManager;
 
 import sheep.game.Game;
 
 public class MainActivity extends Activity {
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -22,5 +26,12 @@ public class MainActivity extends Activity {
 		
 		game.pushState(new MainMenuView(this));
 		setContentView(game);
+		
+
+		DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        Constants.WINDOW_HEIGHT = dm.heightPixels;
+        Constants.WINDOW_WIDTH = dm.widthPixels;
 	}
 }

@@ -9,5 +9,9 @@ import sheep.game.State;
  */
 
 public class AboutView extends State {
+	
+	public AboutView(MainActivity main){
+		
+	}
 
 }
