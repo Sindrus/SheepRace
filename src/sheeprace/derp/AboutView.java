@@ -51,7 +51,7 @@ public class AboutView extends State implements TouchListener{
 		canvas.drawText("If your powerbar goes empty before you are at the ", canvas.getWidth()/2, 300, font);
 		canvas.drawText("finish line you get a “Game Over”. ", canvas.getWidth()/2, 320, font);
 		canvas.drawText("When one player has reached the finish or a", canvas.getWidth()/2, 340, font);
-		canvas.drawText("“Game Over” it is the next players turn.  ", canvas.getWidth()/2, 360, font);
+		canvas.drawText("“Game Over,” it is the next players turn.  ", canvas.getWidth()/2, 360, font);
 
 	}
 	
