@@ -2,8 +2,12 @@ package sheeprace.derp;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.Paint.Align;
 import android.view.MotionEvent;
 import sheep.game.State;
+import sheep.graphics.Font;
+import sheep.graphics.Image;
 import sheep.gui.TextButton;
 import sheep.input.TouchListener;
 
@@ -16,14 +20,18 @@ import sheep.input.TouchListener;
 
 public class MainMenuView extends State implements TouchListener{
 	TextButton start, about, highScore, questionView;
+	Image sheep;
 	private MainActivity main;
-	
+	Font font;
 	
 	public MainMenuView(MainActivity main){
-		start = new TextButton(Constants.WINDOW_WIDTH/2, 50, "Start Game");
-		about = new TextButton(Constants.WINDOW_WIDTH/2, 100, "About");
-		highScore = new TextButton(Constants.WINDOW_WIDTH/2, 150, "High Score");
+		start = new TextButton(Constants.WINDOW_WIDTH/2, 100, "Start Game");
+		about = new TextButton(Constants.WINDOW_WIDTH/2, 150, "About");
+		highScore = new TextButton(Constants.WINDOW_WIDTH/2, 200, "High Score");
 		questionView = new TextButton(Constants.WINDOW_WIDTH/2, 250, "Questions");
+		sheep = new Image(R.drawable.frontsheep);
+		font = new Font(88, 88, 88, 16, Typeface.SERIF, Typeface.BOLD);
+		font.setTextAlign(Align.CENTER);
 		this.main = main;
 	}
 
@@ -33,6 +41,8 @@ public class MainMenuView extends State implements TouchListener{
 		about.draw(canvas);
 		highScore.draw(canvas);
 		questionView.draw(canvas);
+		sheep.draw(canvas, Constants.WINDOW_WIDTH/2, 50);
+		canvas.drawText("SheepRace", canvas.getWidth()/2, 100, font);
 	}
 	
 	public boolean onTouchDown(MotionEvent evt){
