@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
 import sheep.game.State;
+import sheep.graphics.Image;
 import sheep.gui.TextButton;
 import sheep.input.TouchListener;
 
@@ -16,6 +17,7 @@ import sheep.input.TouchListener;
 
 public class MainMenuView extends State implements TouchListener{
 	TextButton start, about, highScore, questionView;
+	Image sheep;
 	private MainActivity main;
 	
 	
@@ -23,7 +25,9 @@ public class MainMenuView extends State implements TouchListener{
 		start = new TextButton(Constants.WINDOW_WIDTH/2, 50, "Start Game");
 		about = new TextButton(Constants.WINDOW_WIDTH/2, 100, "About");
 		highScore = new TextButton(Constants.WINDOW_WIDTH/2, 150, "High Score");
-		questionView = new TextButton(Constants.WINDOW_WIDTH/2, 250, "Questions");
+		questionView = new TextButton(Constants.WINDOW_WIDTH/2, 200, "Questions");
+		sheep = new Image(R.drawable.frontsheep);
+		
 		this.main = main;
 	}
 
@@ -33,6 +37,7 @@ public class MainMenuView extends State implements TouchListener{
 		about.draw(canvas);
 		highScore.draw(canvas);
 		questionView.draw(canvas);
+		sheep.draw(canvas, Constants.WINDOW_WIDTH/2, 50);
 	}
 	
 	public boolean onTouchDown(MotionEvent evt){
