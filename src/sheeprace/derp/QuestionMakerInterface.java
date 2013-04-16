@@ -12,6 +12,6 @@ public interface QuestionMakerInterface {
 	 * Get the question from some inputfile and create a questionobject from it
 	 * @return a question
 	 */
-	public Question createQuestion();
+	public Question createQuestion(MainActivity main);
 
 }
