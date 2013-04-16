@@ -2,6 +2,7 @@ package sheeprace.derp;
 
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,10 @@ public class InitGameView extends State{
 //		
 //		players[0] = new Player(Gfxs[0]);
 //		players[1] = new Player(Gfxs[1]);
+	}
+	
+	public void draw(Canvas canvas){
+		canvas.drawColor(Color.CYAN);
 	}
 
 }

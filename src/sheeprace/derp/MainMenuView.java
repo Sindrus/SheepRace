@@ -20,10 +20,10 @@ public class MainMenuView extends State implements TouchListener{
 	
 	
 	public MainMenuView(MainActivity main){
-		start = new TextButton(50, 50, "Start Game");
-		about = new TextButton(50, 100, "About");
-		highScore = new TextButton(50, 150, "High Score");
-		questionView = new TextButton(50, 250, "Questions");
+		start = new TextButton(Constants.WINDOW_WIDTH/2, 50, "Start Game");
+		about = new TextButton(Constants.WINDOW_WIDTH/2, 100, "About");
+		highScore = new TextButton(Constants.WINDOW_WIDTH/2, 150, "High Score");
+		questionView = new TextButton(Constants.WINDOW_WIDTH/2, 250, "Questions");
 		this.main = main;
 	}
 
@@ -31,6 +31,7 @@ public class MainMenuView extends State implements TouchListener{
 		canvas.drawColor(Color.BLACK);
 		start.draw(canvas);
 		about.draw(canvas);
+		highScore.draw(canvas);
 	}
 	
 	public boolean onTouchDown(MotionEvent evt){
