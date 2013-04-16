@@ -7,5 +7,17 @@ import sheep.game.State;
  *
  */
 public class QuestionView extends State{
-
+	private String question;
+	
+	public String getQuestion(){
+		return this.question;
+	}
+	
+	public void viewQuestion(){
+		System.out.println(question);
+		//System.out.println(addOption("True", true));
+	}
+	
+	
+	
 }

@@ -8,6 +8,12 @@ import sheep.game.Sprite;
  */
 
 public class Player extends Sprite implements PlayerInterface{
+	
+	private PlayerGfx gfx;
+	
+	public Player(PlayerGfx gfx){
+		setPlayerGfx(gfx); //obviously not final
+	}
 
 	@Override
 	public int getScore() {
@@ -18,10 +24,11 @@ public class Player extends Sprite implements PlayerInterface{
 	public void updateScore(int time, int powerBar) {
 		
 	}
-
+	
+	//Pseudocode atm
 	@Override
 	public void setPlayerGfx(PlayerGfx p) {
-		
+		this.gfx = p;
 	}
 	
 }

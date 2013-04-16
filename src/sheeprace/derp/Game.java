@@ -1,5 +1,7 @@
 package sheeprace.derp;
 
+import sheep.game.State;
+
 /**
  * 
  * This class holds important data about the current game
@@ -9,6 +11,6 @@ package sheeprace.derp;
  * @see GameBoardView
  */
 
-public class Game {
+public class Game extends State{
 
 }
