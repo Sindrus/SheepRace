@@ -32,6 +32,7 @@ public class MainMenuView extends State implements TouchListener{
 		start.draw(canvas);
 		about.draw(canvas);
 		highScore.draw(canvas);
+		questionView.draw(canvas);
 	}
 	
 	public boolean onTouchDown(MotionEvent evt){
@@ -40,6 +41,9 @@ public class MainMenuView extends State implements TouchListener{
 		}
 		else if(about.onTouchDown(evt)){
 			getGame().pushState(new AboutView(main));
+		}
+		else if(highScore.onTouchDown(evt)){
+			getGame().pushState(new HighScoreView(main));
 		}
 		return true;
 	}

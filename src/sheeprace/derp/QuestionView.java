@@ -1,5 +1,7 @@
 package sheeprace.derp;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
 import sheep.game.State;
 
 /**
@@ -8,6 +10,14 @@ import sheep.game.State;
  */
 public class QuestionView extends State{
 	private String question;
+	
+	public QuestionView(MainActivity main){
+		
+	}
+	
+	public void draw(Canvas canvas){
+		canvas.drawColor(Color.RED);
+	}
 	
 	public String getQuestion(){
 		return this.question;

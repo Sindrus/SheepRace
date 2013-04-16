@@ -1,6 +1,10 @@
 package sheeprace.derp;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.view.MotionEvent;
 import sheep.game.State;
+import sheep.gui.TextButton;
 
 /**
  * Keep a list of the high score of previous games.
@@ -10,5 +14,14 @@ import sheep.game.State;
  */
 
 public class HighScoreView extends State {
+	
+	public HighScoreView(MainActivity main){
+		
+	}
+	
+	public void draw(Canvas canvas){
+		canvas.drawColor(Color.BLUE);
+	}
+	
 
 }
