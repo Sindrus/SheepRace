@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
 import sheep.game.State;
+import sheep.graphics.Image;
 import sheep.gui.TextButton;
 
 /**
