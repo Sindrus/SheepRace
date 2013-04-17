@@ -2,6 +2,7 @@ package sheeprace.derp;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.List;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -16,12 +17,13 @@ import android.util.Log;
 
 public class QuestionMaker implements QuestionMakerInterface{
 	private MainActivity main;
-	private String info;
+	private String title;	
+	private List<Boolean> correct;
+	private List<String> option;
 	private static final String TAG = "CompXML";
 	
 	
 	public QuestionMaker(MainActivity main) {
-		info="";
 		int qid=2;
 		try {
 			
@@ -31,10 +33,26 @@ public class QuestionMaker implements QuestionMakerInterface{
 				if(xrp.getEventType() == XmlResourceParser.START_TAG){
 					
 					String s = xrp.getName();
-					if(s.equals("id")){
+		//			System.out.println("At tag: "+s);
+					if(s.equals("question") && xrp.getAttributeIntValue(0, -1)==qid){
+						System.out.println("This is it!");
 						xrp.next();
-						System.out.println("ID er: "+xrp.getText());
+						title = xrp.nextText();
+						System.out.println("the title is: "+title);
+						xrp.next();
+						System.out.println("Now at: "+xrp.getName());
+						while (xrp.getName().equals("option")){
+							xrp.next();
+							System.out.println("svar: "+xrp.nextText());
+							xrp.next();
+							System.out.println("corr: "+xrp.nextText());
+							xrp.next();
+							xrp.next();
+						}
 					}
+					xrp.next();
+					
+/*					System.out.println("now at: "+s);
 					if(s.equals("id") && Integer.parseInt(xrp.getText())==qid){
 						xrp.next();
 						xrp.next();
@@ -54,53 +72,7 @@ public class QuestionMaker implements QuestionMakerInterface{
 								System.out.println("Feil :(");
 							}
 						}
-					}
-	/*				if(s.equals("mytag")){
-						// Get the resource id; this will be retrived
-						// as a resolved hex value
-						int resid = xrp.getAttributeResourceValue(null, "id", 0);
-						info+="Attribute id has value "
-								+Integer.toHexString(resid)
-								+" from tag " + s + "\n";
-						
-						// Get our custom string attribute.
-						
-						String sn = xrp.getAttributeValue(null, "mystr");
-						
-						info+="Attribute id has value" + sn
-								+" from tag " + s + "\n";
-						
-						// Get our custom int attribute
-						int i = xrp.getAttributeIntValue(null, "myint", 0);
-						
-						info+="Attribute myint has value " + i
-								+ " from tag " + s + "\n\n";
-
-					}else if(s.equals("artag")){
-						//Get the resource id; this will be retrived
-						//as a resolved hex value
-						
-						int resid = xrp.getAttributeResourceValue(null, "id", 0);
-						
-						info+="Attribute id has value"
-								+ Integer.toHexString(resid)
-								+ " from tag " + s + "\n";
-						
-						//Get our custom string attribute
-						String sn = xrp.getAttributeValue(null, "mystr");
-						
-						info+="Attribute mystr has value" + sn
-								+ " from tag " + s + "\n";
-						
-						// Get our custom float attribute
-						float f = xrp.getAttributeFloatValue(null, "myfloat", 0);
-						info += "Attribute myfloat has value " + f
-								+" from tag " + "\n\n";
-					}else if(s.equals("plaintag")){
-						//Get the element tag name here;
-						// the value is gotten on the next TEXT event
-						info+= "Tag " + s + " has value";
-					}*/
+					}else*/
 				}
 				xrp.next();
 			}
@@ -113,7 +85,6 @@ public class QuestionMaker implements QuestionMakerInterface{
 			Log.e(TAG, "Unable to read resource file");
 			ioe.printStackTrace();
 		}
-		System.out.println(info);
 	}
 
 	@Override
