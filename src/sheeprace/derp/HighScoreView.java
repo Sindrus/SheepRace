@@ -15,9 +15,10 @@ import sheep.gui.TextButton;
 
 public class HighScoreView extends State {
 	private TextButton backButton;
+	private Image background;
 	
 	public HighScoreView(MainActivity main){
-		backButton = new TextButton(50, 50, "Back");
+		backButton = new TextButton(50, 50, "Back");	
 	}
 	
 	public void draw(Canvas canvas){

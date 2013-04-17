@@ -42,8 +42,8 @@ public class QuestionView extends State{
 	 * method for testing
 	 */
 	public void magic(){
-		XmlResourceParser r = main.getResources().getXml(R.xml.question);
-		qString = r.getText();
+//		XmlResourceParser r = main.getResources().getXml(R.xml.question);
+//		qString = r.getText();
 	}
 	
 	

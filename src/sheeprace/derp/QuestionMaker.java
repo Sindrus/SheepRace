@@ -13,11 +13,11 @@ public class QuestionMaker implements QuestionMakerInterface{
 	private MainActivity main;
 	@Override
 	public Question createQuestion(MainActivity main) {
-		XmlResourceParser r = main.getResources().getXml(R.xml.question);
+//		XmlResourceParser r = main.getResources().getXml(R.xml.question);
 		
 		System.err.println("print, damit!");
 		System.out.println("lololololol");
-		System.out.println(r.getText());
+//		System.out.println(r.getText());
 	
 		return null;
 	}

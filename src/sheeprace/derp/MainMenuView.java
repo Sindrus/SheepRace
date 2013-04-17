@@ -19,29 +19,31 @@ import sheep.input.TouchListener;
  */
 
 public class MainMenuView extends State implements TouchListener{
-	TextButton start, about, highScore, questionView;
-	Image sheep;
+	private TextButton start, about, highScore, questionView;
+	private Image sheep, background;
 	private MainActivity main;
-	Font font;
+	private Font font;
 	
 	public MainMenuView(MainActivity main){
-		start = new TextButton(Constants.WINDOW_WIDTH/2, 100, "Start Game");
-		about = new TextButton(Constants.WINDOW_WIDTH/2, 150, "About");
-		highScore = new TextButton(Constants.WINDOW_WIDTH/2, 200, "High Score");
-		questionView = new TextButton(Constants.WINDOW_WIDTH/2, 250, "Questions");
+		start = new TextButton(Constants.WINDOW_WIDTH/3, 150, "Start Game");
+		about = new TextButton(Constants.WINDOW_WIDTH/3, 200, "About");
+		highScore = new TextButton(Constants.WINDOW_WIDTH/3, 250, "High Score");
+		questionView = new TextButton(Constants.WINDOW_WIDTH/3, 300, "Questions");
 		sheep = new Image(R.drawable.frontsheep);
-		font = new Font(88, 88, 88, 16, Typeface.SERIF, Typeface.BOLD);
+		background = new Image(R.drawable.background);
+		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
 		this.main = main;
 	}
 
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.BLACK);
+		background.draw(canvas, 0, 0);
 		start.draw(canvas);
 		about.draw(canvas);
 		highScore.draw(canvas);
 		questionView.draw(canvas);
-		sheep.draw(canvas, Constants.WINDOW_WIDTH/2, 50);
+		sheep.draw(canvas, Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT/5);
 		canvas.drawText("SheepRace", canvas.getWidth()/2, 100, font);
 	}
 	
