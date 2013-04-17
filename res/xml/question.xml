@@ -1,12 +1,27 @@
 <?xml version="1.0"?>
-<outertag>
-        <innertag sampleattribute="innertagAttribute">
-                <mytag>
-                        anddev.org rulez =)
-                </mytag>
-                <mytag>
-                    test123
-                </mytag>
-                <tagwithnumber thenumber="1337"/>
-        </innertag>
-</outertag>
+<q>
+    <question>
+        <id>1</id>
+        <title>What is 1+1</title>
+        <option>
+            <answer>2</answer>
+            <correct>true</correct>
+        </option>
+        <option>
+            <answer>4</answer>
+            <correct>false</correct>
+        </option>
+    </question>
+    <question>
+        <id>2</id>
+        <title>What is 2+2</title>
+        <option>
+            <answer>5</answer>
+            <correct>false</correct>
+        </option>
+        <option>
+            <answer>4</answer>
+            <correct>true</correct>
+        </option>
+    </question>
+</q>

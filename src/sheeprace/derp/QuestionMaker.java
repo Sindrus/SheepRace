@@ -1,11 +1,8 @@
 package sheeprace.derp;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-import org.xml.sax.XMLReader;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.res.XmlResourceParser;
@@ -25,24 +22,40 @@ public class QuestionMaker implements QuestionMakerInterface{
 	
 	public QuestionMaker(MainActivity main) {
 		info="";
+		int qid=2;
 		try {
-			/*
-			SAXParserFactory spf = SAXParserFactory.newInstance();
-			SAXParser sp = spf.newSAXParser();
-			
-			XMLReader xr = sp.getXMLReader();
-			
-			QuestionParser qp = new QuestionParser();
-			xr.setContentHandler(qp);
-			
-			xr.parse(new InputSou)*/
 			
 			XmlResourceParser xrp = main.getResources().getXml(R.xml.question);
 			
 			while(xrp.getEventType() != XmlResourceParser.END_DOCUMENT){
 				if(xrp.getEventType() == XmlResourceParser.START_TAG){
+					
 					String s = xrp.getName();
-					if(s.equals("pictag")){
+					if(s.equals("id")){
+						xrp.next();
+						System.out.println("ID er: "+xrp.getText());
+					}
+					if(s.equals("id") && Integer.parseInt(xrp.getText())==qid){
+						xrp.next();
+						xrp.next();
+						if(s.equals("title") && xrp.getEventType()==XmlResourceParser.TEXT){
+							System.out.println("Question is: "+xrp.getText());
+						}
+						else if(s.equals("option")){
+							try {
+								xrp.next();
+								System.out.println("Alt 1 is: "+xrp.getText());
+								xrp.next();
+								xrp.next();
+								xrp.next();
+								System.out.println("Det er "+xrp.getText());
+							} catch (Exception e) {
+								//Gotta catch 'em all
+								System.out.println("Feil :(");
+							}
+						}
+					}
+	/*				if(s.equals("mytag")){
 						// Get the resource id; this will be retrived
 						// as a resolved hex value
 						int resid = xrp.getAttributeResourceValue(null, "id", 0);
@@ -62,6 +75,7 @@ public class QuestionMaker implements QuestionMakerInterface{
 						
 						info+="Attribute myint has value " + i
 								+ " from tag " + s + "\n\n";
+
 					}else if(s.equals("artag")){
 						//Get the resource id; this will be retrived
 						//as a resolved hex value
@@ -86,16 +100,7 @@ public class QuestionMaker implements QuestionMakerInterface{
 						//Get the element tag name here;
 						// the value is gotten on the next TEXT event
 						info+= "Tag " + s + " has value";
-					}
-				}else if(xrp.getEventType() == XmlResourceParser.END_TAG){
-					;
-				}else if(xrp.getEventType() == XmlResourceParser.TEXT){
-					//Get our value from the plantag element
-					//Since this is a value and not an
-					//attribute, we retrive it with the
-					//generic .getText()
-					String s1 = xrp.getText();
-					info+=s1+"\n\n";
+					}*/
 				}
 				xrp.next();
 			}
@@ -110,7 +115,6 @@ public class QuestionMaker implements QuestionMakerInterface{
 		}
 		System.out.println(info);
 	}
-
 
 	@Override
 	public Question createQuestion(MainActivity main) {
