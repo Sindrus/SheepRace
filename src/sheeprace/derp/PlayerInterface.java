@@ -11,6 +11,7 @@ public interface PlayerInterface {
 	 */
 	public int getScore();
 	
+	public void setScore();
 	/**
 	 * Calculate the score the player got for the game using the time and 
 	 * powerBar parameter and update the current playerscore.
@@ -24,4 +25,8 @@ public interface PlayerInterface {
 	 * @param p the graphics of the player
 	 */
 	public void setPlayerGfx(PlayerGfx p);
+	
+	public String getName();
+	
+	public void setName(String name);
 }

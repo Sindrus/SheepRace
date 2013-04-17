@@ -27,7 +27,7 @@ public class MainMenuView extends State implements TouchListener{
 	public MainMenuView(MainActivity main){
 		start = new TextButton(Constants.WINDOW_WIDTH/3, 150, "Start Game");
 		about = new TextButton(Constants.WINDOW_WIDTH/3, 200, "About");
-		highScore = new TextButton(Constants.WINDOW_WIDTH/3, 250, "High Score");
+		highScore = new TextButton(Constants.WINDOW_WIDTH/3, 250, "Highscore");
 		questionView = new TextButton(Constants.WINDOW_WIDTH/3, 300, "Questions");
 		sheep = new Image(R.drawable.frontsheep);
 		background = new Image(R.drawable.background);

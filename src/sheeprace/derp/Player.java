@@ -10,6 +10,14 @@ import sheep.game.Sprite;
 public class Player extends Sprite implements PlayerInterface{
 	
 	private PlayerGfx gfx;
+	private int score;
+	private String name;
+	
+	public Player(String name, int score){
+		this.name = name;
+		this.score = score;
+		
+	}
 	
 	public Player(PlayerGfx gfx){
 		setPlayerGfx(gfx); //obviously not final
@@ -17,8 +25,9 @@ public class Player extends Sprite implements PlayerInterface{
 
 	@Override
 	public int getScore() {
-		return 0;
+		return score;
 	}
+	
 
 	@Override
 	public void updateScore(int time, int powerBar) {
@@ -29,6 +38,23 @@ public class Player extends Sprite implements PlayerInterface{
 	@Override
 	public void setPlayerGfx(PlayerGfx p) {
 		this.gfx = p;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return name;
+	}
+	
+	@Override
+	public void setName(String name) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void setScore() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
