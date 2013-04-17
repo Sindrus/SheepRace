@@ -1,7 +1,6 @@
 package sheeprace.derp;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.List;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -15,15 +14,14 @@ import android.util.Log;
  * Must implement QuestionMakerInterface.
  */
 
-public class QuestionMaker implements QuestionMakerInterface{
-	private MainActivity main;
+public class QuestionMaker{
+/*	private MainActivity main;
 	private String title;	
 	private List<Boolean> correct;
-	private List<String> option;
+	private List<String> option;*/
 	private static final String TAG = "CompXML";
 	
-	
-	public QuestionMaker(MainActivity main) {
+	public static Question createQuestion(MainActivity main) {
 		int qid=2;
 		try {
 			
@@ -33,46 +31,27 @@ public class QuestionMaker implements QuestionMakerInterface{
 				if(xrp.getEventType() == XmlResourceParser.START_TAG){
 					
 					String s = xrp.getName();
-		//			System.out.println("At tag: "+s);
 					if(s.equals("question") && xrp.getAttributeIntValue(0, -1)==qid){
-						System.out.println("This is it!");
+						System.out.println("Parsing question");
+						Question q = new Question();
 						xrp.next();
-						title = xrp.nextText();
+						String title = xrp.nextText();
 						System.out.println("the title is: "+title);
+						q.setQuestion(title);
 						xrp.next();
 						System.out.println("Now at: "+xrp.getName());
 						while (xrp.getName().equals("option")){
 							xrp.next();
-							System.out.println("svar: "+xrp.nextText());
+							String answer = xrp.nextText();
 							xrp.next();
-							System.out.println("corr: "+xrp.nextText());
+							String corr = xrp.nextText();
+							boolean tf = corr.equals("true");
 							xrp.next();
 							xrp.next();
+							q.addOption(answer, tf);
 						}
 					}
 					xrp.next();
-					
-/*					System.out.println("now at: "+s);
-					if(s.equals("id") && Integer.parseInt(xrp.getText())==qid){
-						xrp.next();
-						xrp.next();
-						if(s.equals("title") && xrp.getEventType()==XmlResourceParser.TEXT){
-							System.out.println("Question is: "+xrp.getText());
-						}
-						else if(s.equals("option")){
-							try {
-								xrp.next();
-								System.out.println("Alt 1 is: "+xrp.getText());
-								xrp.next();
-								xrp.next();
-								xrp.next();
-								System.out.println("Det er "+xrp.getText());
-							} catch (Exception e) {
-								//Gotta catch 'em all
-								System.out.println("Feil :(");
-							}
-						}
-					}else*/
 				}
 				xrp.next();
 			}
@@ -85,14 +64,8 @@ public class QuestionMaker implements QuestionMakerInterface{
 			Log.e(TAG, "Unable to read resource file");
 			ioe.printStackTrace();
 		}
-	}
-
-	@Override
-	public Question createQuestion(MainActivity main) {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
 
 
