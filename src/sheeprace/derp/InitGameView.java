@@ -27,12 +27,14 @@ public class InitGameView extends State{
 	private List<Image> images;
 	
 	private TextButton backButton;
+	private Image sheep;
 	
 	public InitGameView(MainActivity main){
 		backButton = new TextButton(50, 50, "Back");
 		players = new Player[2];
 		Gfxs = new PlayerGfx[2];
 		images = new ArrayList<Image>();
+		sheep = new Image(R.drawable.sau_1);
 		
 		//Need to add images in the arraylist, create a view that lets you select from these and then send this to the Gfxs for each player
 		//Get the sheep from the player and create a new PlayerGfx based on it.
@@ -48,6 +50,7 @@ public class InitGameView extends State{
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.CYAN);
 		backButton.draw(canvas);
+		sheep.draw(canvas, canvas.getWidth()/2, 100);
 	}
 	
 	@Override
