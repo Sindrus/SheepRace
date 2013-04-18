@@ -101,6 +101,40 @@ public class QuestionMaker{
 		// The question we were looking for does not exist. What to do?!
 		return null;
 	}
+	
+	/**
+	 * Call this method once, to get all the categories that are available
+	 * @param main Need the mainactivity to access the xml-sheet.
+	 */
+	public static void getCategories(MainActivity main){
+		try {
+			XmlResourceParser xrp = main.getResources().getXml(R.xml.question);
+			System.out.println("Getting categories");
+			while(xrp.getEventType() != XmlResourceParser.END_DOCUMENT){
+		//		System.out.println("Check, check");
+				if(xrp.getEventType() == XmlResourceParser.START_TAG){
+					
+					
+					String s="";
+					s = xrp.getName();
+					// Apparently it is impossible to compare a 
+					// string with value null to another string
+					if(s==null)
+						s="";
+					// Have we found a questiontag?
+					if(s.equals("q")){
+						System.out.println("Category: "+xrp.getAttributeValue(0));
+						System.out.println("qs: " + xrp.getAttributeIntValue(1, -1));
+					}
+				}
+				xrp.next();
+			}
+			
+		} catch (Exception e) {
+			// Catch ALL the exceptions!
+			System.err.println("Ops, something went wrong, lol!");
+		}
+	}
 }
 
 
