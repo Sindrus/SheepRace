@@ -26,6 +26,7 @@ public class InitGameView extends State{
 	private PlayerGfx[] Gfxs;
 	private List<Image> images;
 	
+	private int index1, index2;
 	private TextButton backButton, startGame;
 //	private Image sheep,background;
 	private MainActivity main;
@@ -42,12 +43,17 @@ public class InitGameView extends State{
 		//Need to add images in the arraylist, create a view that lets you select from these and then send this to the Gfxs for each player
 		//Get the sheep from the player and create a new PlayerGfx based on it.
 		Gfxs[0] = new PlayerGfx(images.get(0)); //get() from the selected image obviously
-//		Gfxs[1] = new PlayerGfx(images.get(1));
+		Gfxs[1] = new PlayerGfx(images.get(0));
 		
-		players[0] = new Player(Gfxs[0],"P1",0);
-//		players[1] = new Player(Gfxs[1]);
+		players[0] = new Player(Gfxs[0],"P1",1);
+		players[1] = new Player(Gfxs[1],"P2",0);
 		Game.getGameObject().addPlayers(players[0]);
+		Game.getGameObject().addPlayers(players[1]);
 		this.main = main;
+		
+		this.index1 = Game.getGameObject().getPlayers().indexOf(players[0]);
+		this.index2 = Game.getGameObject().getPlayers().indexOf(players[1]);
+//		System.out.println("1: "+index1+", 2:" +index2);
 	}
 	
 	public void draw(Canvas canvas){
@@ -64,7 +70,7 @@ public class InitGameView extends State{
 			getGame().popState();
 		}
 		else if(startGame.onTouchDown(event)){
-			getGame().pushState(new GameBoardView(main));
+			getGame().pushState(new GameBoardView(main,index1,index2));
 			
 		}
 		return true;
