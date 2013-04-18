@@ -1,10 +1,8 @@
 package sheeprace.derp;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.xmlpull.v1.XmlPullParserException;
-
 import android.content.res.XmlResourceParser;
 import android.util.Log;
 
@@ -35,11 +33,9 @@ public class QuestionMaker{
 					
 					// Check if the next questions are in the correct category
 					if(xrp.getName().equals("q") && xrp.getAttributeValue(0).equals(category)){
-						System.out.println("I riktig kategori");
 						
 						// Get the number of questions in the category
 						int qs = xrp.getAttributeIntValue(1, -1);
-						System.out.println("qs: "+ qs);
 						while(xrp.getEventType() != XmlResourceParser.END_DOCUMENT){
 							
 							// FIXME: do this in a nicer way
@@ -55,15 +51,12 @@ public class QuestionMaker{
 									// Indeed we have, is it the correct question?
 									if(xrp.getAttributeIntValue(0, -1)==qid){
 										
-										System.out.println("Parsing question");
 										// Create the new question
 										Question q = new Question();
 										xrp.next();
 										
-										String title = xrp.nextText();
-										System.out.println("the title is: "+title);
 										// Set the question
-										q.setQuestion(title);
+										q.setQuestion(xrp.nextText());
 										xrp.next();
 										// Look for answeroptions to the question 
 										while (xrp.getName().equals("option")){
@@ -71,8 +64,7 @@ public class QuestionMaker{
 											String answer = xrp.nextText();
 											xrp.next();
 											
-											String corr = xrp.nextText();
-											boolean tf = corr.equals("true");
+											boolean tf = xrp.nextText().equals("true");
 											
 											xrp.next();
 											xrp.next();
