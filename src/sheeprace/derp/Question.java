@@ -19,7 +19,7 @@ public class Question implements QuestionInterface{
 	
 	@Override
 	public void setQuestion(String question) {
-		this.question = "Er Trondheim verdens beste studentby?";
+		this.question = question;
 		
 	}
 
@@ -31,6 +31,13 @@ public class Question implements QuestionInterface{
 	public void addOption(String option, boolean correct) {
 		options.add(option);
 		correctA.add(correct);
+	}
+	@Override
+	public String toString(){
+		String s="Question is: "+question+'\n';
+		for(int i=0;i<options.size();i++)
+			s+="Alternative "+i+" is: "+options.get(i) + " is " + correctA.get(i) + '\n';
+		return s;
 	}
 
 }
