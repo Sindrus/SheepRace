@@ -17,8 +17,7 @@ import android.util.Log;
 public class QuestionMaker{
 	private static final String TAG = "CompXML";
 	
-	public static Question createQuestion(MainActivity main) {
-		int qid=2;
+	public static Question createQuestion(MainActivity main, int qid) {
 		try {
 			
 			XmlResourceParser xrp = main.getResources().getXml(R.xml.question);

@@ -15,7 +15,7 @@ public class QuestionView extends State{
 	
 	public QuestionView(MainActivity main){
 		this.main = main;
-		Question q = QuestionMaker.createQuestion(main);
+		Question q = QuestionMaker.createQuestion(main,2);
 	}
 	
 	public void draw(Canvas canvas){
