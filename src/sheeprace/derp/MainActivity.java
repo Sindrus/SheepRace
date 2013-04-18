@@ -3,6 +3,8 @@ package sheeprace.derp;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.Window;
@@ -33,5 +35,7 @@ public class MainActivity extends Activity {
 
         Constants.WINDOW_HEIGHT = dm.heightPixels;
         Constants.WINDOW_WIDTH = dm.widthPixels;
+        
+        Constants.background_new = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.background), Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT, true);
 	}
 }
