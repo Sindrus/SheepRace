@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<q category="test">
+<q category="test" qs=2>
     <question id="1">
         <title>What is 1+1</title>
         <option>
