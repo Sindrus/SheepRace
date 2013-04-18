@@ -69,7 +69,7 @@ public class HighScoreView extends State {
 		}
 		for(int j = 0; j < size; j++){
 			score = 0;
-			for (int i = 1; i < stuff.size(); i++) {
+			for (int i = 0; i < stuff.size(); i++) {
 				if(stuff.get(i).getScore() >= score){
 					score = stuff.get(i).getScore();
 					player = i;

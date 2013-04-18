@@ -19,8 +19,10 @@ public class Player extends Sprite implements PlayerInterface{
 		
 	}
 	
-	public Player(PlayerGfx gfx){
+	public Player(PlayerGfx gfx,String name, int score){
 		setPlayerGfx(gfx); //obviously not final
+		this.name = name;
+		this.score = score;
 	}
 	
 	
