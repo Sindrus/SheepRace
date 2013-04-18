@@ -15,7 +15,7 @@ import sheep.gui.TextButton;
 
 public class GameBoardView extends State {
 	private MainActivity main;
-	private Player dude = Game.getGameObject().getPlayers().get(0);
+	private Player dude = Game.getGameObject().getPlayers().get(0); //TODO, fix for the correct player based on whos turn it is
 	private PlayerGfx duden = dude.getGfx();
 	
 	private TextButton backButton;
@@ -29,6 +29,7 @@ public class GameBoardView extends State {
 	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.YELLOW);
+		Constants.background.draw(canvas,0,0);
 		backButton.draw(canvas);
 		duden.draw(canvas);
 	}
