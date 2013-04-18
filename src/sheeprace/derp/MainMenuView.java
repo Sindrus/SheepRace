@@ -38,7 +38,7 @@ public class MainMenuView extends State implements TouchListener{
 
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.BLACK);
-		Constants.background.draw(canvas, 0, 0);
+		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		start.draw(canvas);
 		about.draw(canvas);
 		highScore.draw(canvas);

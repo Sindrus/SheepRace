@@ -1,6 +1,8 @@
 package sheeprace.derp;
 
 
+import android.graphics.Bitmap;
+import android.view.WindowManager;
 import sheep.graphics.Image;
 
 /**
@@ -14,6 +16,8 @@ public class Constants {
 	/*
      * WINDOW SIZE
      */
+	
+	// Set in MainActivity
     public static int WINDOW_WIDTH = 0;
     public static int WINDOW_HEIGHT = 0;
     
@@ -22,7 +26,9 @@ public class Constants {
      */
     
     public static Image background = new Image(R.drawable.background);
+    public static Bitmap background_new = null;
     public static Image frontSheep = new Image(R.drawable.frontsheep); 
     public static Image sheep1 = new Image(R.drawable.sau_big_1); 
+      
     //TODO, add a working list, and populate from the mainActivity or something
 }

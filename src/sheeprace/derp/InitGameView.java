@@ -49,9 +49,7 @@ public class InitGameView extends State{
 		
 		players[0] = new Player(Gfxs[0],"P1",1);
 		players[1] = new Player(Gfxs[1],"P2",0);
-		Game.getGameObject().addPlayers(players[0]);
-
-		
+		Game.getGameObject().addPlayers(players[0]);		
 		Game.getGameObject().addPlayers(players[1]);
 
 		this.main = main;
@@ -63,7 +61,7 @@ public class InitGameView extends State{
 	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.CYAN);
-		Constants.background.draw(canvas, 0,0);
+		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		backButton.draw(canvas);
 		startGame.draw(canvas);
 		images.get(0).draw(canvas, canvas.getWidth()/2, 100); //Sheep
