@@ -1,5 +1,7 @@
 package sheeprace.derp;
 
+import java.util.List;
+
 /**
  * Interface for controlling the questionobject
  *
@@ -18,4 +20,8 @@ public interface QuestionInterface {
 	 * @param correct is this option a correct answer.
 	 */
 	public void addOption(String opiton, boolean correct);
+	
+	public List<String> getOptions();
+	
+	public List<Boolean> getCorrectA();
 }

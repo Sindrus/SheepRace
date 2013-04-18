@@ -1,11 +1,16 @@
 package sheeprace.derp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.Paint.Align;
+import android.view.MotionEvent;
 import sheep.game.State;
 import sheep.graphics.Font;
+import sheep.gui.TextButton;
 
 /**
  * A view that displays the question and what answers are available.
@@ -16,18 +21,32 @@ public class QuestionView extends State{
 	private String question;
 	private MainActivity main;
 	private Font font;
+	Question q;
+	List<TextButton> jo;
 	
 	public QuestionView(MainActivity main){
-		this.main = main;
-		Question q = QuestionMaker.createQuestion(main,2, "test1");
+		q = QuestionMaker.createQuestion(main,2, "test1");
 		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
+		this.main = main;
+		int fontInt = 150;
+		jo = new ArrayList<TextButton>();
+		for (int i = 0; i < q.getOptions().size(); i++) {
+			TextButton t = new TextButton(Constants.WINDOW_WIDTH/2, fontInt, q.getOptions().get(i));
+			jo.add(t);
+			fontInt += 50;
+		}
 		
 	}
 	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.RED);
-		canvas.drawText("" + question.length(), 100, 100, font);
+		canvas.drawBitmap(Constants.background_new, 0, 0, null);
+		canvas.drawText("" + q.getQuestion() , Constants.WINDOW_WIDTH/2, 100, font);
+		for (int i = 0; i < jo.size(); i++) {
+			jo.get(i).draw(canvas);
+		}
+		
 	}
 	
 	public String getQuestion(){
@@ -37,5 +56,21 @@ public class QuestionView extends State{
 	public void viewQuestion(){
 		System.out.println(question);
 		//System.out.println(addOption("True", true));
+	}
+	
+	public boolean onTouchDown(MotionEvent evt){
+		for (int i = 0; i < jo.size(); i++) {
+			if(jo.get(i).onTouchDown(evt) && q.getCorrectA().get(i)){
+			//	getGame().pushState(new MainMenuView(main));
+				getGame().popState();
+				i = jo.size();
+			}
+			else{
+			//	getGame().pushState(new MainMenuView(main));
+				getGame().popState();
+				i = jo.size();
+			}
+		}
+		return true;
 	}
 }

@@ -40,4 +40,14 @@ public class Question implements QuestionInterface{
 		return s;
 	}
 
+	@Override
+	public List<String> getOptions() {
+		return options;
+	}
+
+	@Override
+	public List<Boolean> getCorrectA() {
+		return correctA;
+	}
+
 }
