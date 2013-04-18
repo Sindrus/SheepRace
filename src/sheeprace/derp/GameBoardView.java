@@ -41,7 +41,7 @@ public class GameBoardView extends State {
 	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.YELLOW);
-		Constants.background.draw(canvas,0,0);
+		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		backButton.draw(canvas);
 		gfx1.draw(canvas);
 		gfx2.draw(canvas);

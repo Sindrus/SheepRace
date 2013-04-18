@@ -61,7 +61,7 @@ public class InitGameView extends State{
 	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.CYAN);
-		Constants.background.draw(canvas, 0,0);
+		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		backButton.draw(canvas);
 		startGame.draw(canvas);
 		images.get(0).draw(canvas, canvas.getWidth()/2, 100); //Sheep
