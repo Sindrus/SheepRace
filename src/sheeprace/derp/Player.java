@@ -22,7 +22,8 @@ public class Player extends Sprite implements PlayerInterface{
 	public Player(PlayerGfx gfx){
 		setPlayerGfx(gfx); //obviously not final
 	}
-
+	
+	
 	@Override
 	public int getScore() {
 		return score;
@@ -39,7 +40,11 @@ public class Player extends Sprite implements PlayerInterface{
 	public void setPlayerGfx(PlayerGfx p) {
 		this.gfx = p;
 	}
-
+	
+	public PlayerGfx getGfx(){
+		return this.gfx;
+	}
+	
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
