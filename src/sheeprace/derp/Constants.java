@@ -34,5 +34,8 @@ public class Constants {
       
     //TODO, add a working list, and populate from the mainActivity or something
     
+    /*
+     * All available categories
+     */
     public static List<Category> categories = new ArrayList<Category>();
 }

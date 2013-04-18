@@ -106,7 +106,7 @@ public class QuestionMaker{
 				if(xrp.getEventType() == XmlResourceParser.START_TAG){
 					
 					
-					
+			// FIXME: do this in a nicer way	
 					String s="";
 					s = xrp.getName();
 					// Apparently it is impossible to compare a 
