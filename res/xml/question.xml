@@ -40,11 +40,15 @@
 	        <title>What is best</title>
 	        <option>
 	            <answer>Hamburger</answer>
-	            <correct>false</correct>
+	            <correct>true</correct>
 	        </option>
 	        <option>
 	            <answer>Pizza</answer>
 	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>Squid</answer>
+	            <correct>false</correct>
 	        </option>
 	    </question>
 	</q>
