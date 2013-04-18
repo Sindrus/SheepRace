@@ -37,9 +37,6 @@ public class InitGameView extends State{
 		players = new Player[2];
 		Gfxs = new PlayerGfx[2];
 		images = new ArrayList<Image>();
-		sheep = new Image(R.drawable.sau_big_1);
-		background = new Image(R.drawable.background);
-		images.add(sheep);
 
 		
 //		sheep = new Image(R.drawable.sau_big_1);
@@ -78,7 +75,6 @@ public class InitGameView extends State{
 			getGame().popState();
 		}
 		else if(startGame.onTouchDown(event)){
-			getGame().pushState(new GameBoardView(main));
 
 			getGame().pushState(new GameBoardView(main,index1,index2));
 			
