@@ -22,7 +22,7 @@ import sheep.gui.TextButton;
 
 public class HighScoreView extends State {
 	private TextButton backButton;
-	private Image background, sheep;
+//	private Image sheep, background;
 	private Font font, headLine;
 	private ArrayList<Player> bestFivePlayers;
 	
@@ -32,18 +32,18 @@ public class HighScoreView extends State {
 		font.setTextAlign(Align.CENTER);
 		headLine = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		headLine.setTextAlign(Align.CENTER);
-		background = new Image(R.drawable.background);
-		sheep = new Image(R.drawable.frontsheep);
-		generatePlayers();
+//		background = new Image(R.drawable.background);
+//		sheep = new Image(R.drawable.frontsheep);
+//		generatePlayers(); //Polutes the players created in the game itself
 		bestFivePlayers = new ArrayList<Player>();
 		getBestFivePlayers(Game.getGameObject().getPlayers());
 		}
 	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.BLACK);
-		background.draw(canvas, 0, 0);
+		Constants.background.draw(canvas, 0, 0);
 		backButton.draw(canvas);
-		sheep.draw(canvas, 0, 100);
+		Constants.frontSheep.draw(canvas, 0, 100);
 		int screenCord = 150;
 		canvas.drawText("Highscore", canvas.getWidth()/2, 100, headLine);
 		for (int i = 0; i < bestFivePlayers.size(); i++) {
