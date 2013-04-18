@@ -32,11 +32,11 @@ public class InitGameView extends State{
 	
 	public InitGameView(MainActivity main){
 		backButton = new TextButton(50, 50, "Back");
-		startGame = new TextButton(100, 50, "Start Game");
+		startGame = new TextButton(50, 100, "Start Game");
 		players = new Player[2];
 		Gfxs = new PlayerGfx[2];
 		images = new ArrayList<Image>();
-		sheep = new Image(R.drawable.sau_1);
+		sheep = new Image(R.drawable.sau_big_1);
 		background = new Image(R.drawable.background);
 		images.add(sheep);
 		//Need to add images in the arraylist, create a view that lets you select from these and then send this to the Gfxs for each player
