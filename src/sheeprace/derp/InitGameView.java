@@ -49,9 +49,7 @@ public class InitGameView extends State{
 		
 		players[0] = new Player(Gfxs[0],"P1",1);
 		players[1] = new Player(Gfxs[1],"P2",0);
-		Game.getGameObject().addPlayers(players[0]);
-
-		
+		Game.getGameObject().addPlayers(players[0]);		
 		Game.getGameObject().addPlayers(players[1]);
 
 		this.main = main;
