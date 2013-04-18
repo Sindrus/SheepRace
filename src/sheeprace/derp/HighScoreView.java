@@ -41,7 +41,7 @@ public class HighScoreView extends State {
 	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.BLACK);
-		Constants.background.draw(canvas, 0, 0);
+		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		backButton.draw(canvas);
 		Constants.frontSheep.draw(canvas, 0, 100);
 		int screenCord = 150;
