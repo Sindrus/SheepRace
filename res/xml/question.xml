@@ -1,25 +1,51 @@
 <?xml version="1.0"?>
-<q category="test" qs="2">
-    <question id="1">
-        <title>What is 1+1</title>
-        <option>
-            <answer>2</answer>
-            <correct>true</correct>
-        </option>
-        <option>
-            <answer>4</answer>
-            <correct>false</correct>
-        </option>
-    </question>
-    <question id="2">
-        <title>What is 2+2</title>
-        <option>
-            <answer>5</answer>
-            <correct>false</correct>
-        </option>
-        <option>
-            <answer>4</answer>
-            <correct>true</correct>
-        </option>
-    </question>
-</q>
+<qs>
+	<q category="test" qs="2">
+	    <question id="1">
+	        <title>What is 1+1</title>
+	        <option>
+	            <answer>2</answer>
+	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>4</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="2">
+	        <title>What is 2+2</title>
+	        <option>
+	            <answer>5</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>4</answer>
+	            <correct>true</correct>
+	        </option>
+	    </question>
+	</q>
+	<q category="test1" qs="2">
+	    <question id="1">
+	        <title>What is 1+1</title>
+	        <option>
+	            <answer>2</answer>
+	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>4</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="2">
+	        <title>What is best</title>
+	        <option>
+	            <answer>Hamburger</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Pizza</answer>
+	            <correct>true</correct>
+	        </option>
+	    </question>
+	</q>
+</qs>
