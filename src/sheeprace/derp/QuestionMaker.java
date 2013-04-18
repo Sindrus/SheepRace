@@ -111,8 +111,8 @@ public class QuestionMaker{
 			XmlResourceParser xrp = main.getResources().getXml(R.xml.question);
 			System.out.println("Getting categories");
 			while(xrp.getEventType() != XmlResourceParser.END_DOCUMENT){
-		//		System.out.println("Check, check");
 				if(xrp.getEventType() == XmlResourceParser.START_TAG){
+					
 					
 					
 					String s="";
