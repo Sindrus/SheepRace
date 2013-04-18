@@ -1,5 +1,7 @@
 package sheeprace.derp;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
 import sheep.game.State;
 
 /**
@@ -10,5 +12,13 @@ import sheep.game.State;
  */
 
 public class GameBoardView extends State {
-
+	private MainActivity main;
+	
+	public GameBoardView(MainActivity main){
+		this.main = main;
+	}
+	
+	public void draw(Canvas canvas){
+		canvas.drawColor(Color.YELLOW);
+	}
 }
