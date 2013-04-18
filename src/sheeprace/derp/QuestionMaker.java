@@ -115,13 +115,13 @@ public class QuestionMaker{
 						s="";
 					// Have we found a questiontag?
 					if(s.equals("q")){
-						System.out.println("Category: "+xrp.getAttributeValue(0));
-						System.out.println("qs: " + xrp.getAttributeIntValue(1, -1));
+						// Creating a category-object and adding it to the 
+						Category c = new Category(xrp.getAttributeValue(0), xrp.getAttributeIntValue(1, -1));
+						Constants.categories.add(c);
 					}
 				}
 				xrp.next();
 			}
-			
 		} catch (Exception e) {
 			// Catch ALL the exceptions!
 			System.err.println("Ops, something went wrong, lol!");

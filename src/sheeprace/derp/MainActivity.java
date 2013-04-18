@@ -29,6 +29,10 @@ public class MainActivity extends Activity {
 	// Need to get the q-categories	
 		QuestionMaker.getCategories(this);
 		
+		for(Category s : Constants.categories)
+			System.out.println(s.toString());
+		
+		
 		game.pushState(new MainMenuView(this));
 		setContentView(game);
 		
