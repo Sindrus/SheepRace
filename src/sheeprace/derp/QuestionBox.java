@@ -9,5 +9,13 @@ package sheeprace.derp;
  *
  */
 public class QuestionBox extends Box{
+	public QuestionBox(float x, float y){
+		setPosition(x, y);
+	}
+	
+	@Override
+	public String toString(){
+		return "QuestionBox";
+	}
 
 }

@@ -35,6 +35,7 @@ public class InitGameView extends State{
 	private Font font;
 	private String test = "";
 	private Image red, white, blue;
+
 	
 	public InitGameView(MainActivity main){
 		backButton = new TextButton(50, 50, "Back");
@@ -48,15 +49,23 @@ public class InitGameView extends State{
 		images = new ArrayList<Image>();
 		
 //		Creating levelobject
+
 		Level l = LevelMaker.createLevel(main, 1);
+
+		Level l = LevelMaker.createLevel(main,"normal", 1);
+
+		
+//		sheep = new Image(R.drawable.sau_big_1);
+//		background = new Image(R.drawable.background);
+
 		images.add(Constants.sheep1);
 		//Need to add images in the arraylist, create a view that lets you select from these and then send this to the Gfxs for each player
 		//Get the sheep from the player and create a new PlayerGfx based on it.
 		Gfxs[0] = new PlayerGfx(images.get(0)); //get() from the selected image obviously
 		Gfxs[1] = new PlayerGfx(images.get(0));
 		
-		players[0] = new Player(Gfxs[0],"P1",1);
-		players[1] = new Player(Gfxs[1],"P2",0);
+		players[0] = new Player(Gfxs[0],"P1",0);
+		players[1] = new Player(Gfxs[1],"P2",1);
 		Game.getGameObject().addPlayers(players[0]);		
 		Game.getGameObject().addPlayers(players[1]);
 
