@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<l>
+    <levels theme="normal">
+        <level num="1">
+	        <qbox cox="1" coy="1" />
+	        <bbox cox="1" coy="1" />
+	        <end />
+        </level>
+    </levels>
+</l>

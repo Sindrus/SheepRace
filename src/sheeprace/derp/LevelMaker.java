@@ -6,10 +6,10 @@ package sheeprace.derp;
  * @see Level
  */
 
-public class LevelMaker implements LevelMakerInterface{
+public class LevelMaker{
 
-	@Override
-	public Level createLevel() {
+	public static Level createLevel(MainActivity main, int levelnum) {
+		
 		return null;
 	}
 

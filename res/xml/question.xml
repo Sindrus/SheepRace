@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <qs>
 	<q category="test" qs="2">
 	    <question id="1">
@@ -48,6 +48,682 @@
 	        </option>
 	        <option>
 	            <answer>Squid</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	</q>
+//her kommer våre spm
+	<q category="Film" qs="7">
+	    <question id="1">
+	        <title>Hvilken film er den mest innbringende?</title>
+	        <option>
+	            <answer>Avatar</answer>
+	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>Titanic</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Ringenes Herre</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Hobbiten</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="2">
+	         <title>Hvor mange James Bond filmer er det i dag?</title>
+	        <option>
+	            <answer>20</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>23</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>26</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>30</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	      <question id="3">
+	         <title>Hvilken Disney film var den første som ikke var basert på en eksisterende fortelling?</title>
+	        <option>
+	            <answer>Snøhvit</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Mulan</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Skjønnheten og udyret</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Løvenes konge</answer>
+	            <correct>true</correct>
+	        </option>
+	    </question>
+	    <question id="4">
+	         <title>Hvor mange personer spilte Professor Humlesnurr i Harry Potter filmene?</title>
+	        <option>
+	            <answer>1</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>2</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>3</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>4</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="5">
+	         <title>Hvilken katastrofe var filmen “The Impossible” fra 2012/2013 basert på?</title>
+	        <option>
+	            <answer>Fukushima-ulykken</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Orkanen Katrina</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Tsunamien i Indiahavet</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>World Trade Center</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="6">
+	         <title>Hvem spilte rollen som Mr. Bean i filmene med samme navn?</title>
+	        <option>
+	            <answer>Rowan Atkinson</answer>
+	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>John Cleese</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Dudley Moore</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Benny Hill</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="7">
+	         <title>Hvilken norsk film har ikke vært nominert til Oscar?</title>
+	        <option>
+	            <answer>Elling</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Hodejegerne</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>Kon-Tiki</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Veiviseren</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	</q>
+	<q category="TV" qs="7">
+	    <question id="1">
+	        <title>Hvor mange sesonger hadde tv-serien Friends?</title>
+	        <option>
+	            <answer>9</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>10</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>11</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>12</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="2">
+	         <title>Hvem spiller Ted i How I Met Your Mother?</title>
+	        <option>
+	            <answer>Josh Radnor</answer>
+	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>Jason Segel</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Neil Patrick Harris</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Craig Thomas</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	      <question id="3">
+	         <title>Hvem har ikke en doktorgrad i Big Bang Theory?</title>
+	        <option>
+	            <answer>Leonard</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Sheldon</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Howard</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>Raj</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="4">
+	         <title>Hvilken kanal går Game of Thrones på i USA?</title>
+	        <option>
+	            <answer>ABC</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>The CW</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>HBO</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>FOX</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="5">
+	         <title>Hvilken såpeserie er skandinavias lengstlevende?</title>
+	        <option>
+	            <answer>Hotel Cæsar</answer>
+	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>Venner og fiender</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Offshore</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Familiesagaen De syv søstre</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="6">
+	         <title>Hvilken svensk skuespiller har en av hovedrollene i True Blood?</title>
+	        <option>
+	            <answer>Stellan Skarsgård</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Alexander Skarsgård</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>Malin Akerman</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Noomi Rapace</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="7">
+	         <title>Hvilken av disse har ikke en spin-off serie?</title>
+	        <option>
+	            <answer>NCIS</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Criminal Minds</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Melrose Place</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Breaking bad</answer>
+	            <correct>true</correct>
+	        </option>
+	    </question>
+	</q>
+	<q category="Musikk" qs="7">
+	    <question id="1">
+	        <title>Hvem er vokalist i A-ha?</title>
+	        <option>
+	            <answer>Morten Harket</answer>
+	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>Magne Furuholmen</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Christian Ingebrigtsen</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Lene Nystrøm</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="2">
+	         <title>Hvem vant World Idol</title>
+	        <option>
+	            <answer>Kelly Clarkson</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Kurt Nilsen</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>Will Young</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Diana Karazon</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	      <question id="3">
+	         <title>Hvilken sang er ikke en Bruno Mars sang?</title>
+	        <option>
+	            <answer>Grenade</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>When I was your man</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Locked out of heaven</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>I could be the one</answer>
+	            <correct>true</correct>
+	        </option>
+	    </question>
+	    <question id="4">
+	         <title>Hvem av disse har norske Stargate IKKE skrevet en låt til?</title>
+	        <option>
+	            <answer>Justin Timberlake</answer>
+	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>Beyonce</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Ne-yo</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Rihanna</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="5">
+	         <title>Hva er mellomnavnet til Elvis Presley?</title>
+	        <option>
+	            <answer>Aaron</answer>
+	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>Peter</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Joe</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Joseph</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="6">
+	         <title>Hvor er bandet In Flames fra?</title>
+	        <option>
+	            <answer>Norge</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>England</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Sverige</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Tyskland</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="7">
+	         <title>Hvem har ikke vunnet Eurovision Song Contest?</title>
+	        <option>
+	            <answer>Jahn Teigen</answer>
+	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>Aleksander Rybak</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Abba</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Celine Dion</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	</q>
+	<q category="Sport" qs="7">
+	    <question id="1">
+	        <title>Hvilken norsk syklist vant bronsje i London-OL 2012?</title>
+	        <option>
+	            <answer>Thor Hushovd</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Edvald Boasson Hagen</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Alexander Kristoff</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>Lars Petter Nordhaug</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="2">
+	         <title>Hvor mange ganger har Petter Northug vunnet Tour de Ski?</title>
+	        <option>
+	            <answer>0</answer>
+	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>1</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>2</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>3</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	      <question id="3">
+	         <title>Hvem kom på 2.plass i fotball-EM 2012?</title>
+	        <option>
+	            <answer>Spania</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Italia</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>Tyskland</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Frankrike</answer>
+	            <correct>true</correct>
+	        </option>
+	    </question>
+	    <question id="4">
+	         <title>Hvilken sport er Canadas nasjonalsport?</title>
+	        <option>
+	            <answer>Fotball</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Skihopp</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Svømming</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Ishockey</answer>
+	            <correct>true</correct>
+	        </option>
+	    </question>
+	    <question id="5">
+	         <title>Hvilken sport drev Björn Borg med?</title>
+	        <option>
+	            <answer>Svømming</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Tennis</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>Løping</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Tikamp</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="6">
+	         <title>Hvilket land fant opp volleyball?</title>
+	        <option>
+	            <answer>USA</answer>
+	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>England</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Brasil</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Italia</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="7">
+	         <title>I hvilken sport er det ikke lov med skjegg?</title>
+	        <option>
+	            <answer>Løping</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Svømming</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Boksing</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>Turn</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	</q>
+	<q category="Trondheim" qs="7">
+	    <question id="1">
+	        <title>Hvor gammelt er Studentersamfundet?</title>
+	        <option>
+	            <answer>97</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>100</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>103</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>105</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="2">
+	         <title>Hvor mange tårn har Nidarosdome?</title>
+	        <option>
+	            <answer>1</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>2</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>3</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>4</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	      <question id="3">
+	         <title>Hvor mange fakulteter er det på NTNU?</title>
+	        <option>
+	            <answer>5</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>7</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>9</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>11</answer>
+	            <correct>true</correct>
+	        </option>
+	    </question>
+	    <question id="4">
+	         <title>Hvilken linjeforening er den eldste?</title>
+	        <option>
+	            <answer>Online</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Abakus</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>HM Aarhønen</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>Mannhullet</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="5">
+	         <title>Hvilket annet navn kan brukes om Trondheim?</title>
+	        <option>
+	            <answer>Trehusbyen</answer>
+	            <correct>true</correct>
+	        </option>
+	        <option>
+	            <answer>Drømmebyen</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Universitetsbyen</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Sommerbyen</answer>
+	            <correct>false</correct>
+	        </option>
+	    </question>
+	    <question id="6">
+	         <title>Hva hører ikke til i midtbyen?</title>
+	        <option>
+	            <answer>Tyholt</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Ila</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Byåsen</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Møllenberg</answer>
+	            <correct>true</correct>
+	        </option>
+	    </question>
+	    <question id="7">
+	         <title>Hvem er ikke fra Trondheim?</title>
+	        <option>
+	            <answer>Åge Aleksandersen</answer>
+	            <correct>false</correct>
+	        </option>
+	        <option>
+	            <answer>Petter Northug</answer>
+	            <correct>true</correct>
+	        </option>
+	         <option>
+	            <answer>Arve Tellefsen</answer>
+	            <correct>false</correct>
+	        </option>
+	         <option>
+	            <answer>Steffen Iversen</answer>
 	            <correct>false</correct>
 	        </option>
 	    </question>

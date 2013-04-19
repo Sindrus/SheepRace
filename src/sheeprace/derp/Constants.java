@@ -1,8 +1,10 @@
 package sheeprace.derp;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.graphics.Bitmap;
-import android.view.WindowManager;
 import sheep.graphics.Image;
 
 /**
@@ -31,4 +33,9 @@ public class Constants {
     public static Image sheep1 = new Image(R.drawable.sau_big_1); 
       
     //TODO, add a working list, and populate from the mainActivity or something
+    
+    /*
+     * All available categories
+     */
+    public static List<Category> categories = new ArrayList<Category>();
 }
