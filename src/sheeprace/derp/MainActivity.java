@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -45,4 +46,5 @@ public class MainActivity extends Activity {
         
         Constants.background_new = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.background), Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT, true);
 	}
+	
 }
