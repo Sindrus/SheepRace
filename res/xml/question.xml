@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" ?>
 <qs>
 	<q category="test" qs="2">
 	    <question id="1">
@@ -52,7 +52,6 @@
 	        </option>
 	    </question>
 	</q>
-//her kommer våre spm
 	<q category="Film" qs="7">
 	    <question id="1">
 	        <title>Hvilken film er den mest innbringende?</title>

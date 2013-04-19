@@ -91,6 +91,7 @@ public class QuestionMaker{
 			ioe.printStackTrace();
 		}
 		// The question we were looking for does not exist. What to do?!
+		System.err.println("No question made");
 		return null;
 	}
 	
