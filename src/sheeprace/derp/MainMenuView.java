@@ -20,7 +20,6 @@ import sheep.input.TouchListener;
 
 public class MainMenuView extends State implements TouchListener{
 	private TextButton start, about, highScore, questionView;
-//	private Image sheep, background;
 	private MainActivity main;
 	private Font font;
 	
@@ -29,8 +28,6 @@ public class MainMenuView extends State implements TouchListener{
 		about = new TextButton(Constants.WINDOW_WIDTH/3, 200, "About");
 		highScore = new TextButton(Constants.WINDOW_WIDTH/3, 250, "Highscore");
 		questionView = new TextButton(Constants.WINDOW_WIDTH/3, 300, "Questions");
-//		sheep = new Image(R.drawable.frontsheep);
-//		background = new Image(R.drawable.background);
 		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
 		this.main = main;
@@ -49,7 +46,6 @@ public class MainMenuView extends State implements TouchListener{
 	
 	public boolean onTouchDown(MotionEvent evt){
 		if(start.onTouchDown(evt)){
-			//getGame().pushState(new InitGameView(main));
 			getGame().pushState(new InitGameView(main));
 		}
 		else if(about.onTouchDown(evt)){
