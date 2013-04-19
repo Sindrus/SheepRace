@@ -49,8 +49,8 @@ public class InitGameView extends State{
 		Gfxs[0] = new PlayerGfx(images.get(0)); //get() from the selected image obviously
 		Gfxs[1] = new PlayerGfx(images.get(0));
 		
-		players[0] = new Player(Gfxs[0],"P1",1);
-		players[1] = new Player(Gfxs[1],"P2",0);
+		players[0] = new Player(Gfxs[0],"P1",0);
+		players[1] = new Player(Gfxs[1],"P2",1);
 		Game.getGameObject().addPlayers(players[0]);		
 		Game.getGameObject().addPlayers(players[1]);
 

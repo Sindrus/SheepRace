@@ -29,6 +29,7 @@ public class Constants {
     
     public static Image background = new Image(R.drawable.background);
     public static Bitmap background_new = null;
+    public static Bitmap frontSheep_bitmap = null;
     public static Image frontSheep = new Image(R.drawable.frontsheep); 
     public static Image sheep1 = new Image(R.drawable.sau_big_1); 
       
