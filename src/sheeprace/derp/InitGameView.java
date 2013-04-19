@@ -29,7 +29,6 @@ public class InitGameView extends State{
 	private TextButton backButton, startGame;
 //	private Image sheep,background;
 	private MainActivity main;
-
 	
 	public InitGameView(MainActivity main){
 		backButton = new TextButton(50, 50, "Back");

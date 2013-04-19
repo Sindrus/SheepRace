@@ -20,7 +20,7 @@ public class GameBoardView extends State {
 //	private Player dude = Game.getGameObject().getPlayers().get(0); //TODO, fix for the correct player based on whos turn it is
 //	private PlayerGfx duden = dude.getGfx();
 	
-	private TextButton backButton;
+	private TextButton backButton, testStatus, finalStatus;
 	
 	public GameBoardView(MainActivity main, int index1, int index2){
 		this.player1 = Game.getGameObject().getPlayers().get(index1);
@@ -29,6 +29,8 @@ public class GameBoardView extends State {
 		this.gfx2 = player2.getGfx();
 		
 		backButton = new TextButton(50, 50, "Back");
+		testStatus = new TextButton(50,150,"testme");
+		finalStatus = new TextButton(50,200,"final testview");
 		this.main = main;
 		
 		gfx1.setPosition(50,100);
@@ -42,6 +44,8 @@ public class GameBoardView extends State {
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.YELLOW);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
+		testStatus.draw(canvas);
+		finalStatus.draw(canvas);
 		backButton.draw(canvas);
 		gfx1.draw(canvas);
 		gfx2.draw(canvas);
@@ -51,6 +55,12 @@ public class GameBoardView extends State {
 	public boolean onTouchDown(MotionEvent event){
 		if(backButton.onTouchDown(event)){
 			getGame().popState();
+		}
+		else if(testStatus.onTouchDown(event)){
+			getGame().pushState(new GameStatusView(main,player1));
+		}
+		else if(finalStatus.onTouchDown(event)){
+			getGame().pushState(new GameStatusView(main,player1,player2));
 		}
 		return true;
 	}
