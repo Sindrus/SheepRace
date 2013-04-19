@@ -49,6 +49,7 @@ public class MainMenuView extends State implements TouchListener{
 	
 	public boolean onTouchDown(MotionEvent evt){
 		if(start.onTouchDown(evt)){
+			//getGame().pushState(new InitGameView(main));
 			getGame().pushState(new InitGameView(main));
 		}
 		else if(about.onTouchDown(evt)){
