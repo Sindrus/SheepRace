@@ -50,7 +50,6 @@ public class InitGameView extends State{
 		
 //		Creating levelobject
 
-		Level l = LevelMaker.createLevel(main, 1);
 
 		Level l = LevelMaker.createLevel(main,"normal", 1);
 
