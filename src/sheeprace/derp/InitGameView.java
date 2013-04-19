@@ -39,7 +39,7 @@ public class InitGameView extends State{
 		images = new ArrayList<Image>();
 		
 //		Creating levelobject
-		Level l = LevelMaker.createLevel(main, 1);
+		Level l = LevelMaker.createLevel(main,"normal", 1);
 
 		
 //		sheep = new Image(R.drawable.sau_big_1);
