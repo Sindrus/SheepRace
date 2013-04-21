@@ -7,5 +7,12 @@ package sheeprace.derp;
  */
 
 public class BlockBox extends Box{
-
+	public BlockBox(float x, float y){
+		setPosition(x, y);
+	}
+	
+	@Override
+	public String toString(){
+		return "BlockBox";
+	}
 }

@@ -2,9 +2,14 @@ package sheeprace.derp;
 
 import sheep.game.State;
 import sheep.graphics.Font;
+import sheep.graphics.Image;
 import sheep.gui.TextButton;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.Paint.Align;
 import android.view.MotionEvent;
@@ -23,9 +28,11 @@ public class GameStatusView extends State{
 	private Player player,player1,player2;
 	private TextButton backButton;
 	
-	private Font font, headLine; 
+	private Font font, headLine, winFont; 
 	
 	private boolean finalScreen;
+	
+	private Matrix matrix, matrix2;
 	
 	public GameStatusView(MainActivity main, Player player){
 		this.main = main;
@@ -37,6 +44,8 @@ public class GameStatusView extends State{
 		headLine.setTextAlign(Align.CENTER);
 		
 		backButton = new TextButton(50, 50, "Back");
+		
+		MatrixOps();
 		
 		this.finalScreen= false; 
 	}
@@ -51,31 +60,57 @@ public class GameStatusView extends State{
 		headLine = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		headLine.setTextAlign(Align.CENTER);
 		
+		winFont = new Font(20,190,30,40,Typeface.SERIF, Typeface.BOLD);
+		winFont.setTextAlign(Align.CENTER);
+		
 		backButton = new TextButton(50, 50, "Back");
+		
+		
+		MatrixOps();
 		
 		this.finalScreen= true;
 	}
 	
+	public void MatrixOps(){
+		matrix = new Matrix();
+		matrix.reset();
+//		RectF drawableRect = new RectF(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
+//		RectF viewRect = new RectF(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
+//		matrix.setRectToRect(drawableRect, viewRect, Matrix.ScaleToFit.CENTER);
+		matrix.postRotate(45);
+		matrix.postTranslate(Constants.WINDOW_WIDTH/28, 20);
+		
+		
+		matrix2 = new Matrix();
+		matrix2.reset();
+		
+		matrix2.postRotate(-45);
+		matrix2.postTranslate((Constants.WINDOW_WIDTH/7)*6, 165);
+		
+	}
+	
 	public void draw(Canvas canvas){
-		canvas.drawColor(Color.CYAN);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
-		Constants.frontSheep.draw(canvas,0,100);
+//		Constants.frontSheep.draw(canvas,0,100);
+		
+		canvas.drawBitmap(Constants.frontSheep_bitmap, matrix ,null);
+		canvas.drawBitmap(Constants.frontSheep_bitmap, matrix2 ,null);
 		
 		if(!finalScreen){
 			canvas.drawText("Your score", canvas.getWidth()/2, 100, headLine);
 			canvas.drawText(player.getName() + "  " +player.getScore(), canvas.getWidth()/2, 150, font);
 			backButton.draw(canvas); // TODO for now, change to "continue" later on
 		}
-		if(finalScreen){
+		else if(finalScreen){
 			canvas.drawText("Your scores", canvas.getWidth()/2, 100, headLine);
 			canvas.drawText(player1.getName() + "  " +player1.getScore(), canvas.getWidth()/2, 150, font);
 			canvas.drawText(player2.getName() + "  " +player2.getScore(), canvas.getWidth()/2, 200, font);
 			if(player1.getScore()>player2.getScore())
-				canvas.drawText(player1.getName() + " wins!",canvas.getWidth()/2,300,headLine);
+				canvas.drawText(player1.getName() + " wins!",canvas.getWidth()/2,canvas.getHeight()/2,winFont);
 			else if(player1.getScore()<player2.getScore())
-				canvas.drawText(player2.getName() + " wins!",canvas.getWidth()/2,300,headLine);
+				canvas.drawText(player2.getName() + " wins!",canvas.getWidth()/2,canvas.getHeight()/2,winFont);
 			else
-				canvas.drawText("Draw! Looks like you need to play again!",canvas.getWidth()/2,300,headLine);
+				canvas.drawText("Draw! Looks like you need to play again!",canvas.getWidth()/2,canvas.getHeight()/2,winFont);
 			backButton.draw(canvas);
 		}
 	}
