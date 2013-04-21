@@ -35,6 +35,7 @@ public class InitGameView extends State{
 	private Font font;
 	private String test = "";
 	private Image red, white, blue;
+	private Level l;
 
 	
 	public InitGameView(MainActivity main){
@@ -42,6 +43,7 @@ public class InitGameView extends State{
 		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Start Game");
 		savePlayer1 = new TextButton(Constants.WINDOW_WIDTH/4, 5*Constants.WINDOW_HEIGHT/6, "Save Player");
 		savePlayer2 = new TextButton(3 * Constants.WINDOW_WIDTH/4, 5*Constants.WINDOW_HEIGHT/6, "Save Player");
+	//	Denne linjen krasjer fordi ingen har lagt til bildet 'red'
 		red = new Image(R.drawable.red);
 		
 		players = new Player[2];
@@ -51,7 +53,7 @@ public class InitGameView extends State{
 //		Creating levelobject
 
 
-		Level l = LevelMaker.createLevel(main,"normal", 1);
+		this.l = LevelMaker.createLevel(main,"normal", 1);
 
 		
 //		sheep = new Image(R.drawable.sau_big_1);
@@ -124,7 +126,7 @@ public class InitGameView extends State{
 		}
 		else if(startGame.onTouchDown(event)){
 
-			getGame().pushState(new GameBoardView(main,index1,index2));
+			getGame().pushState(new GameBoardView(main,index1,index2, l));
 			
 		}
 		else if(event.getX()>Constants.WINDOW_WIDTH/2 &&event.getX()<Constants.WINDOW_WIDTH/2+red.getWidth() 

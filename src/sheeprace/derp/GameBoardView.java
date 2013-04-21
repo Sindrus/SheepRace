@@ -1,5 +1,7 @@
 package sheeprace.derp;
 
+import java.util.ArrayList;
+
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
@@ -19,14 +21,16 @@ public class GameBoardView extends State {
 	private PlayerGfx gfx1,gfx2;
 //	private Player dude = Game.getGameObject().getPlayers().get(0); //TODO, fix for the correct player based on whos turn it is
 //	private PlayerGfx duden = dude.getGfx();
+	private Level level;
 	
 	private TextButton backButton, testStatus, finalStatus;
 	
-	public GameBoardView(MainActivity main, int index1, int index2){
+	public GameBoardView(MainActivity main, int index1, int index2, Level level){
 		this.player1 = Game.getGameObject().getPlayers().get(index1);
 		this.gfx1 = player1.getGfx();
 		this.player2 = Game.getGameObject().getPlayers().get(index2);
 		this.gfx2 = player2.getGfx();
+		this.level = level;
 		
 		backButton = new TextButton(50, 50, "Back");
 		testStatus = new TextButton(50,150,"testme");
@@ -47,6 +51,10 @@ public class GameBoardView extends State {
 		testStatus.draw(canvas);
 		finalStatus.draw(canvas);
 		backButton.draw(canvas);
+		ArrayList<BlockBox> bb = level.getBoxes();
+//		for (BlockBox b : bb)
+//			b.draw(canvas);
+		
 		gfx1.draw(canvas);
 		gfx2.draw(canvas);
 //		duden.draw(canvas);
