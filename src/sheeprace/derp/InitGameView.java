@@ -44,7 +44,7 @@ public class InitGameView extends State{
 		savePlayer1 = new TextButton(Constants.WINDOW_WIDTH/4, 5*Constants.WINDOW_HEIGHT/6, "Save Player");
 		savePlayer2 = new TextButton(3 * Constants.WINDOW_WIDTH/4, 5*Constants.WINDOW_HEIGHT/6, "Save Player");
 	//	Denne linjen krasjer fordi ingen har lagt til bildet 'red'
-		red = new Image(R.drawable.red);
+		red = new Image(R.drawable.sau_red);
 		
 		players = new Player[2];
 		Gfxs = new PlayerGfx[2];
