@@ -15,7 +15,7 @@ public class QuestionBox extends Box{
 	
 	@Override
 	public String toString(){
-		return "QuestionBox";
+		return "QuestionBox @ "+getPosition().toString();
 	}
 
 }

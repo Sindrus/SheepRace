@@ -13,6 +13,6 @@ public class BlockBox extends Box{
 	
 	@Override
 	public String toString(){
-		return "BlockBox";
+		return "BlockBox @ "+getPosition().toString();
 	}
 }
