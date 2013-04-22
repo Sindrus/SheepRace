@@ -2,19 +2,18 @@ package sheeprace.derp;
 
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.Paint.Align;
+import android.hardware.input.InputManager;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import android.view.WindowManager;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
-import java.util.ArrayList;
-import java.util.List;
 import sheep.game.State;
 import sheep.graphics.Font;
 import sheep.gui.TextButton;
@@ -27,78 +26,69 @@ import sheep.input.KeyboardListener;
  *
  */
 
+@SuppressLint("NewApi")
 public class InitGameView extends State implements KeyboardListener{
 
 	private int index1, index2;
 	private MainActivity main;
 	private TextButton backButton, startGame, savePlayer1, savePlayer2;
-	private List<TextButton> letters;
-	private List<Character> alph;
 	private Font font;
 	private String player1Name = "";
 	private String player2Name = "";
 	private Level l;
 	private Player sheepPlayer1, sheepPlayer2;
 	private boolean player1Ready, player2Ready;
+	private InputMethodManager imm;
+	private EditText et;
 	
 	
+	@SuppressLint("NewApi")
 	public InitGameView(MainActivity main){
 		
-	//	main.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-		
-		InputMethodManager imm = (InputMethodManager) main.getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm = (InputMethodManager) main.getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
 		
+		et = new EditText(main);
+		et.setHeight(30);
+		et.setX(0);
+		et.setY(0);
 		
 		backButton = new TextButton(50, 50, "Back");
 		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Start Game");
-		savePlayer1 = new TextButton(Constants.WINDOW_WIDTH/4, 5*Constants.WINDOW_HEIGHT/6, "Save Player");
+		savePlayer1 = new TextButton(Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/2, "Save Player");
 		player1Ready = false;
-		savePlayer2 = new TextButton(3 * Constants.WINDOW_WIDTH/4, 5*Constants.WINDOW_HEIGHT/6, "Save Player");
+		savePlayer2 = new TextButton(3 * Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/2, "Save Player");
 		player2Ready = false;
 	
 		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
 		
 		sheepPlayer1 = new Player(new PlayerGfx(Constants.sheep1), player1Name, 0);
-		sheepPlayer1.getGfx().setPosition(Constants.WINDOW_WIDTH/3, 4*Constants.WINDOW_HEIGHT/6);
+		sheepPlayer1.getGfx().setPosition(Constants.WINDOW_WIDTH/3, Constants.WINDOW_HEIGHT/3);
 		sheepPlayer2 = new Player(new PlayerGfx(Constants.sheep1), player2Name, 0);
-		sheepPlayer2.getGfx().setPosition(5*Constants.WINDOW_WIDTH/6, 4*Constants.WINDOW_HEIGHT/6);
+		sheepPlayer2.getGfx().setPosition(5*Constants.WINDOW_WIDTH/6, Constants.WINDOW_HEIGHT/3);
 
 		this.main = main;
 //		this.index1 = Game.getGameObject().getPlayers().indexOf(players[0]);
-//		this.index2 = Game.getGameObject().getPlayers().indexOf(players[1]);		
-		letters = new ArrayList<TextButton>();
-		makeAlphabet();
-		int fX= -45;
-		int fY= 2;
-		for (int i = 0; i < alph.size(); i++) {
-			if(i == 0 || i == 4 || i == 8 || i == 12 || i == 16 || i == 20){
-				fY +=1;
-				fX = -45;
-				TextButton tb = new TextButton(Constants.WINDOW_WIDTH/2 + fX, fY*Constants.WINDOW_HEIGHT/11, "" + alph.get(i));
-				letters.add(tb);
-			}
-			else{
-				fX += 30;
-				TextButton tb = new TextButton(Constants.WINDOW_WIDTH/2 + fX, fY*Constants.WINDOW_HEIGHT/11, "" + alph.get(i));
-				letters.add(tb);
-			}
-		}
-		
-		
+//		this.index2 = Game.getGameObject().getPlayers().indexOf(players[1]);
 		
 	}
 	
 	@Override
 	public boolean onKeyDown(KeyEvent e){
-		System.out.println("knapp trykket "+e.getKeyCode());
+		System.out.println("knapp trykket "+(char)e.getUnicodeChar());
+		if(!player1Ready)
+			player1Name+=Character.toString((char)e.getUnicodeChar());
+		else
+			player2Name+=Character.toString((char)e.getUnicodeChar());
+		
 		return true;
 	}
 	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.BLACK);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
+		et.draw(canvas);
 		backButton.draw(canvas);
 		startGame.draw(canvas);
 		sheepPlayer1.getGfx().draw(canvas);
@@ -111,26 +101,19 @@ public class InitGameView extends State implements KeyboardListener{
 
 		savePlayer1.draw(canvas);
 		savePlayer2.draw(canvas);
-		for (int i = 0; i < letters.size(); i++) {
-			letters.get(i).draw(canvas);
-		}
+
 		canvas.drawText("Player Name:", 3*Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/6, font);
 		canvas.drawText("Player Name:", Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/6, font);
 		canvas.drawText(player2Name, 3*Constants.WINDOW_WIDTH/4, 2*Constants.WINDOW_HEIGHT/6, font);
 		canvas.drawText(player1Name, Constants.WINDOW_WIDTH/4, 2*Constants.WINDOW_HEIGHT/6, font);
 	}
 	
-	public void makeAlphabet(){
-		alph = new ArrayList<Character>();
-		for(char alphabet = 'A'; alphabet <= 'Z';alphabet++){
-			 alph.add(alphabet);
-			 }
-	}
-	
 	@SuppressLint("NewApi")
 	@Override
 	public boolean onTouchDown(MotionEvent event) {
 		if(backButton.onTouchDown(event)){
+			
+			imm.hideSoftInputFromWindow(main.getCurrentFocus().getWindowToken(), 0);
 			getGame().popState();
 			}
 		else if(startGame.onTouchDown(event) && player1Ready && player2Ready ){
@@ -138,15 +121,15 @@ public class InitGameView extends State implements KeyboardListener{
 				if(!player1Name.isEmpty() || !player2Name.isEmpty()){
 					Game.getGameObject().getPlayers().add(sheepPlayer1);
 					Game.getGameObject().getPlayers().add(sheepPlayer2);
-					getGame().pushState(new GameBoardView(main,index1,index2, l));
 					}
 				else{
 					player1Name = "P1";
 					player2Name = "P2";
 					Game.getGameObject().getPlayers().add(sheepPlayer1);
 					Game.getGameObject().getPlayers().add(sheepPlayer2);
-					getGame().pushState(new GameBoardView(main,index1,index2, l));
 					}
+				imm.hideSoftInputFromWindow(main.getCurrentFocus().getWindowToken(), 0);
+				getGame().pushState(new GameBoardView(main,index1,index2, l));
 				}
 			}
 		else if(event.getX()>Constants.WINDOW_WIDTH/2-15 && event.getX()<Constants.WINDOW_WIDTH/2+Constants.redBox.getWidth()-15 
@@ -192,16 +175,6 @@ public class InitGameView extends State implements KeyboardListener{
 		if(savePlayer2.onTouchDown(event) && player1Ready){
 			player2Ready = true;
 			savePlayer2.setLabel("Player ready!");
-		}
-		for (int i = 0; i < letters.size(); i++) {
-			if(letters.get(i).onTouchDown(event)){
-				if(player1Ready){
-					player2Name += alph.get(i);
-				}
-				else{
-					player1Name += alph.get(i);
-				}
-			}
 		}
 		return true;
 	}
