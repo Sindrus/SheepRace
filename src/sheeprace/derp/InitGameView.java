@@ -34,7 +34,7 @@ public class InitGameView extends State{
 	private Font font;
 	private String test = "";
 	private Image red, white, blue, green;
-
+	private Level l;
 	
 	public InitGameView(MainActivity main){
 		backButton = new TextButton(50, 50, "Back");
@@ -45,6 +45,8 @@ public class InitGameView extends State{
 		white = new Image(R.drawable.white);
 		blue = new Image(R.drawable.blue);
 		green = new Image(R.drawable.green);
+	//	Denne linjen krasjer fordi ingen har lagt til bildet 'red'
+		red = new Image(R.drawable.sau_red);
 		
 		players = new Player[2];
 		Gfxs = new PlayerGfx[2];
@@ -52,6 +54,7 @@ public class InitGameView extends State{
 		
 //		Creating levelobject
 		Level l = LevelMaker.createLevel(main,"normal", 1);
+		this.l = LevelMaker.createLevel(main,"normal", 1);
 
 		images.add(Constants.sheep1);
 		//Need to add images in the arraylist, create a view that lets you select from these and then send this to the Gfxs for each player
@@ -124,7 +127,7 @@ public class InitGameView extends State{
 			getGame().popState();
 			}
 		else if(startGame.onTouchDown(event)){
-			getGame().pushState(new GameBoardView(main,index1,index2));
+			getGame().pushState(new GameBoardView(main,index1,index2, l));
 			}
 		else if(event.getX()>Constants.WINDOW_WIDTH/2-15 && event.getX()<Constants.WINDOW_WIDTH/2+red.getWidth() 
 				&& event.getY()>Constants.WINDOW_HEIGHT/5 && event.getY()<Constants.WINDOW_HEIGHT/5+red.getHeight()){
@@ -132,6 +135,8 @@ public class InitGameView extends State{
 			}
 		else if(event.getX()>Constants.WINDOW_WIDTH/2-45 && event.getX()<Constants.WINDOW_WIDTH/2+white.getWidth()
 				&& event.getY()>Constants.WINDOW_HEIGHT/5 && event.getY()<Constants.WINDOW_HEIGHT/5+white.getHeight()){
+
+			getGame().pushState(new GameBoardView(main,index1,index2, l));
 			
 			}
 		else if(event.getX()>Constants.WINDOW_WIDTH/2+15 && event.getX()<Constants.WINDOW_WIDTH/2+blue.getWidth()

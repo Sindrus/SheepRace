@@ -37,4 +37,8 @@ public class Level {
 			s+=b.toString()+'\n';
 		return s;
 	}
+	
+	public ArrayList<BlockBox> getBoxes(){
+		return (ArrayList<BlockBox>) this.bBox;
+	}
 }
