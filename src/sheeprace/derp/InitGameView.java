@@ -8,7 +8,6 @@ import android.view.MotionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import sheep.game.Sprite;
 import sheep.game.State;
 import sheep.graphics.Font;
 import sheep.graphics.Image;
@@ -34,7 +33,7 @@ public class InitGameView extends State{
 	private List<Character> alph;
 	private Font font;
 	private String test = "";
-	private Image red, white, blue;
+	private Image red, white, blue, green;
 
 	
 	public InitGameView(MainActivity main){
@@ -43,19 +42,16 @@ public class InitGameView extends State{
 		savePlayer1 = new TextButton(Constants.WINDOW_WIDTH/4, 5*Constants.WINDOW_HEIGHT/6, "Save Player");
 		savePlayer2 = new TextButton(3 * Constants.WINDOW_WIDTH/4, 5*Constants.WINDOW_HEIGHT/6, "Save Player");
 		red = new Image(R.drawable.red);
+		white = new Image(R.drawable.white);
+		blue = new Image(R.drawable.blue);
+		green = new Image(R.drawable.green);
 		
 		players = new Player[2];
 		Gfxs = new PlayerGfx[2];
 		images = new ArrayList<Image>();
 		
 //		Creating levelobject
-
-
 		Level l = LevelMaker.createLevel(main,"normal", 1);
-
-		
-//		sheep = new Image(R.drawable.sau_big_1);
-//		background = new Image(R.drawable.background);
 
 		images.add(Constants.sheep1);
 		//Need to add images in the arraylist, create a view that lets you select from these and then send this to the Gfxs for each player
@@ -75,23 +71,23 @@ public class InitGameView extends State{
 		
 	
 //		System.out.println("1: "+index1+", 2:" +index2);
-//		letters = new ArrayList<TextButton>();
-//		makeAlphabet();
-//		int fX= 2 *(Constants.WINDOW_WIDTH/3);
-//		int fY= 100;
-//		for (int i = 0; i < alph.size(); i++) {
-//			if(i%4 ==0){
-//				TextButton tb = new TextButton(fX, fY, "" + alph.get(i));
-//				letters.add(tb);
-//				fX = 2 *(Constants.WINDOW_WIDTH/3);
-//				fY += 50;
-//			}
-//			else{
-//				TextButton tb = new TextButton(fX, fY, "" + alph.get(i));
-//				letters.add(tb);
-//				fX += 50;
-//			}
-//		}
+		letters = new ArrayList<TextButton>();
+		makeAlphabet();
+		int fX= -45;
+		int fY= 2;
+		for (int i = 0; i < alph.size(); i++) {
+			if(i == 0 || i == 4 || i == 8 || i == 12 || i == 16 || i == 20){
+				fY +=1;
+				fX = -45;
+				TextButton tb = new TextButton(Constants.WINDOW_WIDTH/2 + fX, fY*Constants.WINDOW_HEIGHT/11, "" + alph.get(i));
+				letters.add(tb);
+			}
+			else{
+				fX += 30;
+				TextButton tb = new TextButton(Constants.WINDOW_WIDTH/2 + fX, fY*Constants.WINDOW_HEIGHT/11, "" + alph.get(i));
+				letters.add(tb);
+			}
+		}
 	}
 	
 	public void draw(Canvas canvas){
@@ -99,15 +95,20 @@ public class InitGameView extends State{
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		backButton.draw(canvas);
 		startGame.draw(canvas);
-		red.draw(canvas, Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT/2);
+		
+		red.draw(canvas, Constants.WINDOW_WIDTH/2 - 15, Constants.WINDOW_HEIGHT/6);
+		white.draw(canvas, Constants.WINDOW_WIDTH/2 - 45, Constants.WINDOW_HEIGHT/6);
+		green.draw(canvas, Constants.WINDOW_WIDTH/2 + 15, Constants.WINDOW_HEIGHT/6);
+		blue.draw(canvas, Constants.WINDOW_WIDTH/2 + 45, Constants.WINDOW_HEIGHT/6);
+		
 		images.get(0).draw(canvas, canvas.getWidth()/4, 3*Constants.WINDOW_HEIGHT/5); //Sheep
 		images.get(0).draw(canvas, 3*(canvas.getWidth()/4), 3*Constants.WINDOW_HEIGHT/5);
 		savePlayer1.draw(canvas);
 		savePlayer2.draw(canvas);
 		
-//		for (int i = 0; i < letters.size(); i++) {
-//			letters.get(i).draw(canvas);
-//		}
+		for (int i = 0; i < letters.size(); i++) {
+			letters.get(i).draw(canvas);
+		}
 	}
 	
 	public void makeAlphabet(){
@@ -121,17 +122,30 @@ public class InitGameView extends State{
 	public boolean onTouchDown(MotionEvent event) {
 		if(backButton.onTouchDown(event)){
 			getGame().popState();
-		}
-		else if(startGame.onTouchDown(event)){
-
-			getGame().pushState(new GameBoardView(main,index1,index2));
-			
-		}
-		else if(event.getX()>Constants.WINDOW_WIDTH/2 &&event.getX()<Constants.WINDOW_WIDTH/2+red.getWidth() 
-				&& event.getY()>Constants.WINDOW_HEIGHT/2 && event.getY()<Constants.WINDOW_HEIGHT/2+red.getHeight()){
-			getGame().popState();
 			}
-
+		else if(startGame.onTouchDown(event)){
+			getGame().pushState(new GameBoardView(main,index1,index2));
+			}
+		else if(event.getX()>Constants.WINDOW_WIDTH/2-15 && event.getX()<Constants.WINDOW_WIDTH/2+red.getWidth() 
+				&& event.getY()>Constants.WINDOW_HEIGHT/5 && event.getY()<Constants.WINDOW_HEIGHT/5+red.getHeight()){
+				getGame().popState();
+			}
+		else if(event.getX()>Constants.WINDOW_WIDTH/2-45 && event.getX()<Constants.WINDOW_WIDTH/2+white.getWidth()
+				&& event.getY()>Constants.WINDOW_HEIGHT/5 && event.getY()<Constants.WINDOW_HEIGHT/5+white.getHeight()){
+			
+			}
+		else if(event.getX()>Constants.WINDOW_WIDTH/2+15 && event.getX()<Constants.WINDOW_WIDTH/2+blue.getWidth()
+				&& event.getY()>Constants.WINDOW_HEIGHT/5 && event.getY()<Constants.WINDOW_HEIGHT/5+blue.getHeight()){
+			}
+		else if(event.getX()>Constants.WINDOW_WIDTH/2+45 && event.getX()<Constants.WINDOW_WIDTH/2+blue.getWidth()
+				&& event.getY()>Constants.WINDOW_HEIGHT/5 && event.getY()<Constants.WINDOW_HEIGHT/5+blue.getHeight()){
+			}
+		for (int i = 0; i < letters.size(); i++) {
+			if(letters.get(i).onTouchDown(event)){
+				test += alph.get(i);
+				
+			}
+		}
 		return true;
 	}
 }
