@@ -31,7 +31,13 @@ public class Constants {
     public static Bitmap frontSheep_bitmap = null;
     public static Image frontSheep = new Image(R.drawable.frontsheep); 
     public static Image sheep1 = new Image(R.drawable.sau_big_1); 
-      
+    public static Image redSheep = new Image(R.drawable.sau_red);
+    public static Image blueSheep = new Image(R.drawable.sau_blue);
+    public static Image greenSheep = new Image(R.drawable.sau_green);
+    public static Image redBox = new Image(R.drawable.red);
+    public static Image blueBox = new Image(R.drawable.blue);
+    public static Image greenBox = new Image(R.drawable.green);
+    public static Image whiteBox = new Image(R.drawable.white);
     //TODO, add a working list, and populate from the mainActivity or something
     
     /*
