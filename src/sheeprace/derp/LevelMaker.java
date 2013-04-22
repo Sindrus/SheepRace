@@ -48,7 +48,6 @@ public class LevelMaker{
 											break;
 										xrp.next();
 									}
-									System.out.println(l.toString());
 									return l;
 								}
 							}
