@@ -51,15 +51,22 @@ public class Game extends State implements GameInterface{
 		this.levelNum++;
 	}
 	
+	public Level getNextLevel(MainActivity main){
+		nextLevel(main);
+		return getLevel();
+	}
+	
+	public Level getLevel(){
+		return this.level;
+	}
+	
 	@Override
 	public ArrayList<Player> getPlayers() {
-		// TODO Auto-generated method stub
 		return players;
 	}
 
 	@Override
 	public void addPlayers(Player p) {
-		// TODO Auto-generated method stub
 		players.add(p);
 		
 	}

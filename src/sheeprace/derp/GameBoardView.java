@@ -30,7 +30,7 @@ public class GameBoardView extends State {
 		this.gfx1 = player1.getGfx();
 		this.player2 = Game.getGameObject().getPlayers().get(index2);
 		this.gfx2 = player2.getGfx();
-		this.level = level;
+		this.level = Game.getGameObject().getNextLevel(main);
 		
 		backButton = new TextButton(50, 50, "Back");
 		testStatus = new TextButton(50,150,"testme");
