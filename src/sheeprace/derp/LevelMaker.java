@@ -32,7 +32,7 @@ public class LevelMaker{
 									// Get all the elements on that level
 									while(!xrp.getName().equals("end") || 
 											xrp.getEventType() != xrp.END_DOCUMENT){
-										System.out.println("getName(): "+xrp.getName());
+										// Differentiate between questionbox and blockbox
 										if(xrp.getName().equals("qbox")){
 											float x = Float.parseFloat(xrp.getAttributeValue(0));
 											float y = Float.parseFloat(xrp.getAttributeValue(1));
@@ -42,7 +42,10 @@ public class LevelMaker{
 											float y = Float.parseFloat(xrp.getAttributeValue(1));
 											l.addBBox(new BlockBox(x, y));
 										}
+										// For some reason it is necessary to call next() twice
 										xrp.next();
+										if(xrp.getName().equals("end"))
+											break;
 										xrp.next();
 									}
 									System.out.println(l.toString());
