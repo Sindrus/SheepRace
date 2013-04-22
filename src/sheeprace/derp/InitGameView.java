@@ -3,11 +3,14 @@ package sheeprace.derp;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.Paint.Align;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import sheep.game.Sprite;
 import sheep.game.State;
 import sheep.graphics.Font;
 import sheep.graphics.Image;
@@ -33,8 +36,9 @@ public class InitGameView extends State{
 	private List<Character> alph;
 	private Font font;
 	private String test = "";
-	private Image red, white, blue, green;
+	private Image red, white, blue, green, redSheep, whiteSheep, blueSheep, greenSheep;
 	private Level l;
+	private Sprite sheep;
 	
 	public InitGameView(MainActivity main){
 		backButton = new TextButton(50, 50, "Back");
@@ -45,15 +49,22 @@ public class InitGameView extends State{
 		white = new Image(R.drawable.white);
 		blue = new Image(R.drawable.blue);
 		green = new Image(R.drawable.green);
-	//	Denne linjen krasjer fordi ingen har lagt til bildet 'red'
-		red = new Image(R.drawable.sau_red);
+		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
+		font.setTextAlign(Align.CENTER);
+		
+
+		redSheep = new Image(R.drawable.sau_red);
+		whiteSheep = new Image(R.drawable.sau_big_1);
+		greenSheep = new Image(R.drawable.sau_green);
+		blueSheep = new Image(R.drawable.sau_blue);
+		
+		sheep = new Sprite(redSheep);
 		
 		players = new Player[2];
 		Gfxs = new PlayerGfx[2];
 		images = new ArrayList<Image>();
 		
 //		Creating levelobject
-		Level l = LevelMaker.createLevel(main,"normal", 1);
 		this.l = LevelMaker.createLevel(main,"normal", 1);
 
 		images.add(Constants.sheep1);
@@ -103,12 +114,14 @@ public class InitGameView extends State{
 		white.draw(canvas, Constants.WINDOW_WIDTH/2 - 45, Constants.WINDOW_HEIGHT/6);
 		green.draw(canvas, Constants.WINDOW_WIDTH/2 + 15, Constants.WINDOW_HEIGHT/6);
 		blue.draw(canvas, Constants.WINDOW_WIDTH/2 + 45, Constants.WINDOW_HEIGHT/6);
+
+		sheep.draw(canvas);
+		canvas.drawText("" + sheep.getX() + " " +sheep.getY(), Constants.WINDOW_WIDTH/2, 100, font);
 		
-		images.get(0).draw(canvas, canvas.getWidth()/4, 3*Constants.WINDOW_HEIGHT/5); //Sheep
+		//images.get(0).draw(canvas, canvas.getWidth()/4, 3*Constants.WINDOW_HEIGHT/5); //Sheep
 		images.get(0).draw(canvas, 3*(canvas.getWidth()/4), 3*Constants.WINDOW_HEIGHT/5);
 		savePlayer1.draw(canvas);
 		savePlayer2.draw(canvas);
-		
 		for (int i = 0; i < letters.size(); i++) {
 			letters.get(i).draw(canvas);
 		}
@@ -129,26 +142,26 @@ public class InitGameView extends State{
 		else if(startGame.onTouchDown(event)){
 			getGame().pushState(new GameBoardView(main,index1,index2, l));
 			}
-		else if(event.getX()>Constants.WINDOW_WIDTH/2-15 && event.getX()<Constants.WINDOW_WIDTH/2+red.getWidth() 
-				&& event.getY()>Constants.WINDOW_HEIGHT/5 && event.getY()<Constants.WINDOW_HEIGHT/5+red.getHeight()){
-				getGame().popState();
+		else if(event.getX()>Constants.WINDOW_WIDTH/2-15 && event.getX()<Constants.WINDOW_WIDTH/2+red.getWidth()-15 
+				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/5+red.getHeight()){
+				sheep.setView(redSheep);
 			}
-		else if(event.getX()>Constants.WINDOW_WIDTH/2-45 && event.getX()<Constants.WINDOW_WIDTH/2+white.getWidth()
-				&& event.getY()>Constants.WINDOW_HEIGHT/5 && event.getY()<Constants.WINDOW_HEIGHT/5+white.getHeight()){
-
-			getGame().pushState(new GameBoardView(main,index1,index2, l));
+		else if(event.getX()>Constants.WINDOW_WIDTH/2-45 && event.getX()<Constants.WINDOW_WIDTH/2+white.getWidth()-45
+				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/6+white.getHeight()){
+				sheep.setView(whiteSheep);
 			
 			}
-		else if(event.getX()>Constants.WINDOW_WIDTH/2+15 && event.getX()<Constants.WINDOW_WIDTH/2+blue.getWidth()
-				&& event.getY()>Constants.WINDOW_HEIGHT/5 && event.getY()<Constants.WINDOW_HEIGHT/5+blue.getHeight()){
+		else if(event.getX()>Constants.WINDOW_WIDTH/2+15 && event.getX()<Constants.WINDOW_WIDTH/2+green.getWidth()+15
+				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/6+green.getHeight()){
+				sheep.setView(greenSheep);
 			}
-		else if(event.getX()>Constants.WINDOW_WIDTH/2+45 && event.getX()<Constants.WINDOW_WIDTH/2+blue.getWidth()
-				&& event.getY()>Constants.WINDOW_HEIGHT/5 && event.getY()<Constants.WINDOW_HEIGHT/5+blue.getHeight()){
+		else if(event.getX()>Constants.WINDOW_WIDTH/2+45 && event.getX()<Constants.WINDOW_WIDTH/2+blue.getWidth()+45
+				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/6+blue.getHeight()){
+				sheep.setView(blueSheep);
 			}
 		for (int i = 0; i < letters.size(); i++) {
 			if(letters.get(i).onTouchDown(event)){
 				test += alph.get(i);
-				
 			}
 		}
 		return true;
