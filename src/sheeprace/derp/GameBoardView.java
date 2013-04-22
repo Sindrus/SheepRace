@@ -5,11 +5,7 @@ import java.util.ArrayList;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
-import sheep.collision.CollisionListener;
-import sheep.collision.Rectangle;
-import sheep.game.Sprite;
 import sheep.game.State;
-import sheep.graphics.Image;
 import sheep.gui.TextButton;
 
 /**
