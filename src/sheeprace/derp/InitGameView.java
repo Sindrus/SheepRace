@@ -2,16 +2,23 @@ package sheeprace.derp;
 
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.Paint.Align;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+
 import java.util.ArrayList;
 import java.util.List;
 import sheep.game.State;
 import sheep.graphics.Font;
 import sheep.gui.TextButton;
+import sheep.input.KeyboardListener;
 
 /**
  * This is the configview before the game starts. Each player should be able
@@ -20,7 +27,7 @@ import sheep.gui.TextButton;
  *
  */
 
-public class InitGameView extends State{
+public class InitGameView extends State implements KeyboardListener{
 
 	private int index1, index2;
 	private MainActivity main;
@@ -34,7 +41,15 @@ public class InitGameView extends State{
 	private Player sheepPlayer1, sheepPlayer2;
 	private boolean player1Ready, player2Ready;
 	
+	
 	public InitGameView(MainActivity main){
+		
+	//	main.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+		
+		InputMethodManager imm = (InputMethodManager) main.getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+		
+		
 		backButton = new TextButton(50, 50, "Back");
 		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Start Game");
 		savePlayer1 = new TextButton(Constants.WINDOW_WIDTH/4, 5*Constants.WINDOW_HEIGHT/6, "Save Player");
@@ -70,6 +85,15 @@ public class InitGameView extends State{
 				letters.add(tb);
 			}
 		}
+		
+		
+		
+	}
+	
+	@Override
+	public boolean onKeyDown(KeyEvent e){
+		System.out.println("knapp trykket "+e.getKeyCode());
+		return true;
 	}
 	
 	public void draw(Canvas canvas){
