@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
+import sheep.collision.CollisionListener;
+import sheep.collision.Rectangle;
+import sheep.game.Sprite;
 import sheep.game.State;
+import sheep.graphics.Image;
 import sheep.gui.TextButton;
 
 /**
@@ -37,12 +41,12 @@ public class GameBoardView extends State {
 		finalStatus = new TextButton(50,200,"final testview");
 		this.main = main;
 		
-		gfx1.setPosition(50,100);
+		gfx1.setPosition(Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT*3/4);
 		gfx1.update(0);
 		gfx2.setPosition(100,100);
 		gfx2.update(0);
 //		duden.setPosition(100, 100);
-//		duden.update(0);
+//		duden.update(0);	
 	}
 	
 	public void draw(Canvas canvas){
@@ -54,9 +58,8 @@ public class GameBoardView extends State {
 		ArrayList<BlockBox> bb = level.getBoxes();
 //		for (BlockBox b : bb)
 //			b.draw(canvas);
-		
 		gfx1.draw(canvas);
-		gfx2.draw(canvas);
+		//gfx2.draw(canvas);
 //		duden.draw(canvas);
 	}
 	
@@ -70,6 +73,15 @@ public class GameBoardView extends State {
 		else if(finalStatus.onTouchDown(event)){
 			getGame().pushState(new GameStatusView(main,player1,player2));
 		}
+		else {
+			gfx1.jump();
+			System.out.println("jump test");
+		}
 		return true;
+	}
+	
+	public void update(float dt) {
+		gfx1.update(dt);
+		super.update(dt);
 	}
 }

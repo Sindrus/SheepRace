@@ -1,5 +1,7 @@
 package sheeprace.derp;
 
+import sheep.collision.CollisionListener;
+import sheep.collision.Rectangle;
 import sheep.game.Sprite;
 import sheep.graphics.Image;
 
@@ -12,5 +14,31 @@ import sheep.graphics.Image;
 public class PlayerGfx extends Sprite{
 	public PlayerGfx(Image imageName){
 		super(imageName);
+		this.setShape(new Rectangle(60, 60));
+	}
+	
+	public void jump() {
+		if (true) {
+			this.setSpeed(0, -Constants.SPEED);
+			this.setAcceleration(0, Constants.ACCELERATION);
+		}
+
+		System.out.println("Pos Y: "+ this.getY());
+		System.out.println("Pos X:" + this.getX());
+		
+		System.out.println("Speed Y: "+ this.getSpeed().getY());
+		System.out.println("Speed X:" + this.getSpeed().getX());
+		
+		System.out.println("Acc Y: "+ this.getAcceleration().getY());
+		System.out.println("Acc X:" + this.getAcceleration().getX());
+	}
+	
+	public void update(float dt) {
+		
+		if (this.getY() <= 0) 
+			this.setSpeed(0, Constants.SPEED);
+		
+		
+		super.update(dt);
 	}
 }

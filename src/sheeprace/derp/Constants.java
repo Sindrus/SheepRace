@@ -23,6 +23,15 @@ public class Constants {
     public static int WINDOW_WIDTH = 0;
     public static int WINDOW_HEIGHT = 0;
     
+    
+    /* 
+     * Speed, acceleration and shit
+     */
+    
+    public static int SPEED = 200;
+    public static int ACCELERATION = 150;
+    
+    
     /*
      * Images
      */
