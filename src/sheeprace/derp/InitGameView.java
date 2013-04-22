@@ -63,9 +63,6 @@ public class InitGameView extends State{
 		players = new Player[2];
 		Gfxs = new PlayerGfx[2];
 		images = new ArrayList<Image>();
-		
-//		Creating levelobject
-		this.l = LevelMaker.createLevel(main,"normal", 1);
 
 		images.add(Constants.sheep1);
 		//Need to add images in the arraylist, create a view that lets you select from these and then send this to the Gfxs for each player
