@@ -18,11 +18,13 @@ public class PlayerGfx extends Sprite{
 	}
 	
 	public void jump() {
-		if (true) {
+		
+		if (getSpeed().getY() == 0 && getAcceleration().getY() == 0) {
 			this.setSpeed(0, -Constants.SPEED);
 			this.setAcceleration(0, Constants.ACCELERATION);
 		}
-
+		
+		
 		System.out.println("Pos Y: "+ this.getY());
 		System.out.println("Pos X:" + this.getX());
 		
@@ -37,7 +39,6 @@ public class PlayerGfx extends Sprite{
 		
 		if (this.getY() <= 0) 
 			this.setSpeed(0, Constants.SPEED);
-		
 		
 		super.update(dt);
 	}

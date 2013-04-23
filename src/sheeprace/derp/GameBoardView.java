@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
+import sheep.game.Sprite;
 import sheep.game.State;
 import sheep.gui.TextButton;
 
@@ -22,6 +23,8 @@ public class GameBoardView extends State {
 //	private Player dude = Game.getGameObject().getPlayers().get(0); //TODO, fix for the correct player based on whos turn it is
 //	private PlayerGfx duden = dude.getGfx();
 	private Level level;
+	
+	private Sprite ground;
 	
 	private TextButton backButton, testStatus, finalStatus, questionView;
 	
@@ -42,7 +45,12 @@ public class GameBoardView extends State {
 		gfx2.setPosition(100,100);
 		gfx2.update(0);
 //		duden.setPosition(100, 100);
-//		duden.update(0);	
+//		duden.update(0);
+		ground = new Sprite();
+		ground.setShape(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT/4);
+		ground.setPosition(0, Constants.WINDOW_HEIGHT*3/4);
+		
+		ground.update(0);
 	}
 	
 	public void draw(Canvas canvas){
@@ -76,13 +84,20 @@ public class GameBoardView extends State {
 		}
 		else {
 			gfx1.jump();
-			System.out.println("jump test");
 		}
+		
 		return true;
 	}
 	
 	public void update(float dt) {
+		if (gfx1.collides(ground)) {
+			System.out.println("hva faen");
+			gfx1.setSpeed(0, 0);
+			gfx1.setAcceleration(0, 0);
+		}
+		
 		gfx1.update(dt);
+		ground.update(dt);
 		super.update(dt);
 	}
 }
