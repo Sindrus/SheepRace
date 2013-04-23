@@ -25,13 +25,11 @@ public class Player extends Sprite implements PlayerInterface{
 		this.score = score;
 	}
 	
-	
 	@Override
 	public int getScore() {
 		return score;
 	}
 	
-
 	@Override
 	public void updateScore(int time, int powerBar) {
 		
@@ -59,9 +57,12 @@ public class Player extends Sprite implements PlayerInterface{
 	}
 
 	@Override
-	public void setScore() {
-		// TODO Auto-generated method stub
-		
+	public void setScore(int score) {
+		this.score+=score;
+	}
+	@Override
+	public String toString(){
+		return ("Spillernavn: "+this.name+" with score: "+this.score);
 	}
 	
 }

@@ -34,6 +34,11 @@ public class GameStatusView extends State{
 	
 	private Matrix matrix, matrix2;
 	
+	/** 
+	 * I think this should be deprecated since we don't have singleplayer mode
+	 * -Sindre
+	 * @deprecated
+	 */
 	public GameStatusView(MainActivity main, Player player){
 		this.main = main;
 		this.player = player; //Don't know if this is the right way to do it just now
@@ -64,6 +69,9 @@ public class GameStatusView extends State{
 		winFont.setTextAlign(Align.CENTER);
 		
 		backButton = new TextButton(50, 50, "Back");
+
+		player1.setScore(MyGame.getGameObject().getp1sCorrect());
+		player2.setScore(MyGame.getGameObject().getp2sCorrect());
 		
 		
 		MatrixOps();
@@ -103,6 +111,8 @@ public class GameStatusView extends State{
 		}
 		else if(finalScreen){
 			canvas.drawText("Your scores", canvas.getWidth()/2, 100, headLine);
+			System.out.println(player1.toString());
+			System.out.println(player2.toString());
 			canvas.drawText(player1.getName() + "  " +player1.getScore(), canvas.getWidth()/2, 150, font);
 			canvas.drawText(player2.getName() + "  " +player2.getScore(), canvas.getWidth()/2, 200, font);
 			if(player1.getScore()>player2.getScore())

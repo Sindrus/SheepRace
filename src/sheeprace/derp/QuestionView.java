@@ -25,7 +25,9 @@ public class QuestionView extends State{
 	private List<TextButton> jo;
 	
 	public QuestionView(MainActivity main){
-		q = QuestionMaker.createQuestion(main,2, "film");
+	//	q = QuestionMaker.createQuestion(main,2, "film");
+		q = MyGame.getGameObject().getNextQuestion();
+		
 		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
 		this.main = main;

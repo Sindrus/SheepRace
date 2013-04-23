@@ -43,6 +43,10 @@ public class MainActivity extends Activity {
         
         Constants.background_new = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.background), Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT, true);
         Constants.frontSheep_bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.frontsheep),200,200,true);
+        
+    // Creating the gameobject and tell it about this game
+        MyGame mg = MyGame.getGameObject();
+        mg.setMain(this);
 	}
 	
 }
