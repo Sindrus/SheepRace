@@ -7,10 +7,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.Paint.Align;
-import android.hardware.input.InputManager;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
@@ -26,7 +24,6 @@ import sheep.input.KeyboardListener;
  *
  */
 
-@SuppressLint("NewApi")
 public class InitGameView extends State implements KeyboardListener{
 
 	private int index1, index2;
@@ -39,30 +36,12 @@ public class InitGameView extends State implements KeyboardListener{
 	private Player sheepPlayer1, sheepPlayer2;
 	private boolean player1Ready, player2Ready;
 	private InputMethodManager imm;
-	private EditText et;
 	
-	
-	
-	
-	@SuppressLint("NewApi")
 	public InitGameView(MainActivity main){
 		
+		// Show the keyboard
 		imm = (InputMethodManager) main.getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
-		imm.showSoftInput(MyGame.getGameObject().getAndroidGame(), InputMethodManager.RESULT_SHOWN);
-		
-		
-		
-/*		et = new EditText(main);
-		et.setHeight(30);
-		et.setText("lol");
-		et.setX(0);
-		et.setY(0);*/
-		
-//		et = (EditText)MyGame.getGameObject().getAndroidGame().findViewById(R.id.editText1);
-		
-		
-		
 		
 		backButton = new TextButton(50, 50, "Back");
 		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Start Game");
@@ -75,9 +54,9 @@ public class InitGameView extends State implements KeyboardListener{
 		font.setTextAlign(Align.CENTER);
 		
 		sheepPlayer1 = new Player(new PlayerGfx(Constants.sheep1), player1Name, 0);
-		sheepPlayer1.getGfx().setPosition(Constants.WINDOW_WIDTH/3, Constants.WINDOW_HEIGHT/3);
+		sheepPlayer1.getGfx().setPosition(Constants.WINDOW_WIDTH/8, 4*Constants.WINDOW_HEIGHT/10);
 		sheepPlayer2 = new Player(new PlayerGfx(Constants.sheep1), player2Name, 0);
-		sheepPlayer2.getGfx().setPosition(5*Constants.WINDOW_WIDTH/6, Constants.WINDOW_HEIGHT/3);
+		sheepPlayer2.getGfx().setPosition(5*Constants.WINDOW_WIDTH/8, 4*Constants.WINDOW_HEIGHT/10);
 
 		this.main = main;
 //		this.index1 = Game.getGameObject().getPlayers().indexOf(players[0]);
@@ -92,14 +71,12 @@ public class InitGameView extends State implements KeyboardListener{
 			player1Name+=Character.toString((char)e.getUnicodeChar());
 		else
 			player2Name+=Character.toString((char)e.getUnicodeChar());
-		
 		return true;
 	}
 	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.BLACK);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
-//		et.draw(canvas);
 		backButton.draw(canvas);
 		startGame.draw(canvas);
 		sheepPlayer1.getGfx().draw(canvas);
@@ -123,11 +100,9 @@ public class InitGameView extends State implements KeyboardListener{
 	@Override
 	public boolean onTouchDown(MotionEvent event) {
 		if(backButton.onTouchDown(event)){
-
-			imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,0);
-//			imm.showSoftInput(MyGame.getGameObject().getAndroidGame(), InputMethodManager.RESULT_HIDDEN);
 			
-//			imm.hideSoftInputFromWindow(main.getCurrentFocus().getWindowToken(), 0);
+			// Hide the keyboard when going to another state
+			imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,0);
 			getGame().popState();
 			}
 		else if(startGame.onTouchDown(event) && player1Ready && player2Ready ){
@@ -142,9 +117,9 @@ public class InitGameView extends State implements KeyboardListener{
 					MyGame.getGameObject().getPlayers().add(sheepPlayer1);
 					MyGame.getGameObject().getPlayers().add(sheepPlayer2);
 					}
-
+				
+				// Hide the keyboard when going to another state
 				imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,0);
-//				imm.showSoftInput(MyGame.getGameObject().getAndroidGame(), InputMethodManager.RESULT_HIDDEN);
 				getGame().pushState(new GameBoardView(main,index1,index2, l));
 				}
 			}
