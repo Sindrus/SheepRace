@@ -52,7 +52,7 @@
 	        </option>
 	    </question>
 	</q>
-	<q category="Film" qs="7">
+	<q category="film" qs="7">
 	    <question id="1">
 	        <title>Hvilken film er den mest innbringende?</title>
 	        <option>
@@ -187,7 +187,7 @@
 	        </option>
 	    </question>
 	</q>
-	<q category="TV" qs="7">
+	<q category="tv" qs="7">
 	    <question id="1">
 	        <title>Hvor mange sesonger hadde tv-serien Friends?</title>
 	        <option>
@@ -322,7 +322,7 @@
 	        </option>
 	    </question>
 	</q>
-	<q category="Musikk" qs="7">
+	<q category="musikk" qs="7">
 	    <question id="1">
 	        <title>Hvem er vokalist i A-ha?</title>
 	        <option>
@@ -457,7 +457,7 @@
 	        </option>
 	    </question>
 	</q>
-	<q category="Sport" qs="7">
+	<q category="sport" qs="7">
 	    <question id="1">
 	        <title>Hvilken norsk syklist vant bronsje i London-OL 2012?</title>
 	        <option>
@@ -592,7 +592,7 @@
 	        </option>
 	    </question>
 	</q>
-	<q category="Trondheim" qs="7">
+	<q category="trondheim" qs="7">
 	    <question id="1">
 	        <title>Hvor gammelt er Studentersamfundet?</title>
 	        <option>
