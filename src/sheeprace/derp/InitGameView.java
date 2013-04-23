@@ -1,19 +1,16 @@
 package sheeprace.derp;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.Paint.Align;
 import android.view.MotionEvent;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import sheep.game.Sprite;
 import sheep.game.State;
 import sheep.graphics.Font;
-import sheep.graphics.Image;
 import sheep.gui.TextButton;
 
 /**
@@ -25,22 +22,17 @@ import sheep.gui.TextButton;
 
 public class InitGameView extends State{
 
-	private Player[] players;
-	private PlayerGfx[] Gfxs;
-	private List<Image> images;
-	
 	private int index1, index2;
-	private TextButton backButton, startGame, savePlayer1, savePlayer2;
 	private MainActivity main;
+	private TextButton backButton, startGame, savePlayer1, savePlayer2;
 	private List<TextButton> letters;
 	private List<Character> alph;
 	private Font font;
 	private String player1Name = "";
 	private String player2Name = "";
-	private Image red, white, blue, green, redSheep, whiteSheep, blueSheep, greenSheep;
 	private Level l;
-	private Sprite sheepPlayer1, sheepPlayer2;
-	private boolean player1Ready;
+	private Player sheepPlayer1, sheepPlayer2;
+	private boolean player1Ready, player2Ready;
 	
 	public InitGameView(MainActivity main){
 		backButton = new TextButton(50, 50, "Back");
@@ -48,44 +40,19 @@ public class InitGameView extends State{
 		savePlayer1 = new TextButton(Constants.WINDOW_WIDTH/4, 5*Constants.WINDOW_HEIGHT/6, "Save Player");
 		player1Ready = false;
 		savePlayer2 = new TextButton(3 * Constants.WINDOW_WIDTH/4, 5*Constants.WINDOW_HEIGHT/6, "Save Player");
+		player2Ready = false;
 	
 		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
 		
-		red = new Image(R.drawable.red);
-		white = new Image(R.drawable.white);
-		blue = new Image(R.drawable.blue);
-		green = new Image(R.drawable.green);
-		redSheep = new Image(R.drawable.sau_red);
-		whiteSheep = new Image(R.drawable.sau_big_1);
-		greenSheep = new Image(R.drawable.sau_green);
-		blueSheep = new Image(R.drawable.sau_blue);
-		
-		sheepPlayer1 = new Sprite(whiteSheep);
-		sheepPlayer1.setPosition(Constants.WINDOW_WIDTH/3, 4*Constants.WINDOW_HEIGHT/6);
-		sheepPlayer2 = new Sprite(whiteSheep);
-		sheepPlayer2.setPosition(5*Constants.WINDOW_WIDTH/6, 4*Constants.WINDOW_HEIGHT/6);
-		
-		
-		players = new Player[2];
-		Gfxs = new PlayerGfx[2];
-		images = new ArrayList<Image>();
-
-		images.add(Constants.sheep1);
-		//Need to add images in the arraylist, create a view that lets you select from these and then send this to the Gfxs for each player
-		//Get the sheep from the player and create a new PlayerGfx based on it.
-		Gfxs[0] = new PlayerGfx(images.get(0)); //get() from the selected image obviously
-		Gfxs[1] = new PlayerGfx(images.get(0));
-		
-		players[0] = new Player(Gfxs[0],"P1",0);
-		players[1] = new Player(Gfxs[1],"P2",1);
-		Game.getGameObject().addPlayers(players[0]);		
-		Game.getGameObject().addPlayers(players[1]);
+		sheepPlayer1 = new Player(new PlayerGfx(Constants.sheep1), player1Name, 0);
+		sheepPlayer1.getGfx().setPosition(Constants.WINDOW_WIDTH/3, 4*Constants.WINDOW_HEIGHT/6);
+		sheepPlayer2 = new Player(new PlayerGfx(Constants.sheep1), player2Name, 0);
+		sheepPlayer2.getGfx().setPosition(5*Constants.WINDOW_WIDTH/6, 4*Constants.WINDOW_HEIGHT/6);
 
 		this.main = main;
-		this.index1 = Game.getGameObject().getPlayers().indexOf(players[0]);
-		this.index2 = Game.getGameObject().getPlayers().indexOf(players[1]);
-		
+//		this.index1 = Game.getGameObject().getPlayers().indexOf(players[0]);
+//		this.index2 = Game.getGameObject().getPlayers().indexOf(players[1]);		
 		letters = new ArrayList<TextButton>();
 		makeAlphabet();
 		int fX= -45;
@@ -110,16 +77,14 @@ public class InitGameView extends State{
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		backButton.draw(canvas);
 		startGame.draw(canvas);
-		sheepPlayer1.draw(canvas);
-		sheepPlayer2.draw(canvas);
+		sheepPlayer1.getGfx().draw(canvas);
+		sheepPlayer2.getGfx().draw(canvas);
 		
-		red.draw(canvas, Constants.WINDOW_WIDTH/2 - 15, Constants.WINDOW_HEIGHT/6);
-		white.draw(canvas, Constants.WINDOW_WIDTH/2 - 45, Constants.WINDOW_HEIGHT/6);
-		green.draw(canvas, Constants.WINDOW_WIDTH/2 + 15, Constants.WINDOW_HEIGHT/6);
-		blue.draw(canvas, Constants.WINDOW_WIDTH/2 + 45, Constants.WINDOW_HEIGHT/6);
-		
-//		images.get(0).draw(canvas, canvas.getWidth()/4, 3*Constants.WINDOW_HEIGHT/5); //Sheep
-//		images.get(0).draw(canvas, 3*(canvas.getWidth()/4), 3*Constants.WINDOW_HEIGHT/5);
+		Constants.redBox.draw(canvas, Constants.WINDOW_WIDTH/2 - 15, Constants.WINDOW_HEIGHT/6);
+		Constants.whiteBox.draw(canvas, Constants.WINDOW_WIDTH/2 - 45, Constants.WINDOW_HEIGHT/6);
+		Constants.greenBox.draw(canvas, Constants.WINDOW_WIDTH/2 + 15, Constants.WINDOW_HEIGHT/6);
+		Constants.blueBox.draw(canvas, Constants.WINDOW_WIDTH/2 + 45, Constants.WINDOW_HEIGHT/6);
+
 		savePlayer1.draw(canvas);
 		savePlayer2.draw(canvas);
 		for (int i = 0; i < letters.size(); i++) {
@@ -138,55 +103,70 @@ public class InitGameView extends State{
 			 }
 	}
 	
+	@SuppressLint("NewApi")
 	@Override
 	public boolean onTouchDown(MotionEvent event) {
 		if(backButton.onTouchDown(event)){
 			getGame().popState();
 			}
-		else if(startGame.onTouchDown(event)){
-			getGame().pushState(new GameBoardView(main,index1,index2, l));
-			}
-		else if(event.getX()>Constants.WINDOW_WIDTH/2-15 && event.getX()<Constants.WINDOW_WIDTH/2+red.getWidth()-15 
-				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/5+red.getHeight()){
-				if(player1Ready){
-					sheepPlayer2.setView(redSheep);
+		else if(startGame.onTouchDown(event) && player1Ready && player2Ready ){
+			if(player1Ready && player2Ready){
+				if(!player1Name.isEmpty() || !player2Name.isEmpty()){
+					Game.getGameObject().getPlayers().add(sheepPlayer1);
+					Game.getGameObject().getPlayers().add(sheepPlayer2);
+					getGame().pushState(new GameBoardView(main,index1,index2, l));
 					}
 				else{
-					sheepPlayer1.setView(redSheep);
+					player1Name = "P1";
+					player2Name = "P2";
+					Game.getGameObject().getPlayers().add(sheepPlayer1);
+					Game.getGameObject().getPlayers().add(sheepPlayer2);
+					getGame().pushState(new GameBoardView(main,index1,index2, l));
 					}
+				}
 			}
-		else if(event.getX()>Constants.WINDOW_WIDTH/2-45 && event.getX()<Constants.WINDOW_WIDTH/2+white.getWidth()-45
-				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/6+white.getHeight()){
+		else if(event.getX()>Constants.WINDOW_WIDTH/2-15 && event.getX()<Constants.WINDOW_WIDTH/2+Constants.redBox.getWidth()-15 
+				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/5+Constants.redBox.getHeight()){
 				if(player1Ready){
-					sheepPlayer2.setView(whiteSheep);
+					sheepPlayer2.getGfx().setView(Constants.redSheep);
 					}
 				else{
-					sheepPlayer1.setView(whiteSheep);
+					sheepPlayer1.getGfx().setView(Constants.redSheep);
 					}
 			}
-		else if(event.getX()>Constants.WINDOW_WIDTH/2+15 && event.getX()<Constants.WINDOW_WIDTH/2+green.getWidth()+15
-				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/6+green.getHeight()){
+		else if(event.getX()>Constants.WINDOW_WIDTH/2-45 && event.getX()<Constants.WINDOW_WIDTH/2+Constants.whiteBox.getWidth()-45
+				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/6+Constants.whiteBox.getHeight()){
 				if(player1Ready){
-					sheepPlayer2.setView(greenSheep);
+					sheepPlayer2.getGfx().setView(Constants.sheep1);
 					}
 				else{
-					sheepPlayer1.setView(greenSheep);
+					sheepPlayer1.getGfx().setView(Constants.sheep1);
 					}
 			}
-		else if(event.getX()>Constants.WINDOW_WIDTH/2+45 && event.getX()<Constants.WINDOW_WIDTH/2+blue.getWidth()+45
-				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/6+blue.getHeight()){
+		else if(event.getX()>Constants.WINDOW_WIDTH/2+15 && event.getX()<Constants.WINDOW_WIDTH/2+Constants.greenBox.getWidth()+15
+				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/6+Constants.greenBox.getHeight()){
 				if(player1Ready){
-					sheepPlayer2.setView(blueSheep);
+					sheepPlayer2.getGfx().setView(Constants.greenSheep);
 					}
 				else{
-					sheepPlayer1.setView(blueSheep);
+					sheepPlayer1.getGfx().setView(Constants.greenSheep);
+					}
+			}
+		else if(event.getX()>Constants.WINDOW_WIDTH/2+45 && event.getX()<Constants.WINDOW_WIDTH/2+Constants.blueBox.getWidth()+45
+				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/6+Constants.blueBox.getHeight()){
+				if(player1Ready){
+					sheepPlayer2.getGfx().setView(Constants.blueSheep);
+					}
+				else{
+					sheepPlayer1.getGfx().setView(Constants.blueSheep);
 					}
 			}
 		if(savePlayer1.onTouchDown(event)){
 			player1Ready = true;
 			savePlayer1.setLabel("Player ready!");
 		}
-		if(savePlayer2.onTouchDown(event)){
+		if(savePlayer2.onTouchDown(event) && player1Ready){
+			player2Ready = true;
 			savePlayer2.setLabel("Player ready!");
 		}
 		for (int i = 0; i < letters.size(); i++) {
@@ -203,7 +183,7 @@ public class InitGameView extends State{
 	}
 	
 	public void update(float dt){
-		sheepPlayer1.update(dt);
-		sheepPlayer2.update(dt);
+		sheepPlayer1.getGfx().update(dt);
+		sheepPlayer2.getGfx().update(dt);
 	}
 }
