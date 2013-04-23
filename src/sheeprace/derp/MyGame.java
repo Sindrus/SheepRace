@@ -2,27 +2,30 @@ package sheeprace.derp;
 
 import java.util.ArrayList;
 
-import sheep.game.State;
+import sheep.game.Game;
+
 
 /**
  * 
  * This class holds important data about the current game
  * Including players currently in the game and the level object of the current 
  * level so that GameBoardView knows what level to draw.
+ * Rename because of namecrash
  * @see Level
  * @see GameBoardView
  */
 
-public class Game extends State implements GameInterface{
+public class MyGame implements GameInterface{
 	
-	private static Game game;
+	private static MyGame game;
+	private Game androidGame;
 	private ArrayList<Player> players = new ArrayList<Player>();
 	private int levelNum;
 	private Level level;
 
-	public static synchronized Game getGameObject(){
+	public static synchronized MyGame getGameObject(){
 		if(game == null){
-			game = new Game();
+			game = new MyGame();
 		}
 		return game;
 	}
@@ -31,8 +34,20 @@ public class Game extends State implements GameInterface{
 	 * Constructor
 	 * Private constructor, because singleton
 	 */
-	private Game(){
+	private MyGame(){
 		levelNum=1;
+	}
+	
+	/**
+	 * 
+	 * @return the sheepgameobject
+	 */
+	public Game getAndroidGame(){
+		return androidGame;
+	}
+	
+	public void setAndroidGame(Game game){
+		this.androidGame=game;
 	}
 	
 	/**

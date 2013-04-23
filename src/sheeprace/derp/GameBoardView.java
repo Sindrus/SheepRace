@@ -29,11 +29,11 @@ public class GameBoardView extends State {
 	private TextButton backButton, testStatus, finalStatus;
 	
 	public GameBoardView(MainActivity main, int index1, int index2, Level level){
-		this.player1 = Game.getGameObject().getPlayers().get(index1);
+		this.player1 = MyGame.getGameObject().getPlayers().get(index1);
 		this.gfx1 = player1.getGfx();
-		this.player2 = Game.getGameObject().getPlayers().get(index2);
+		this.player2 = MyGame.getGameObject().getPlayers().get(index2);
 		this.gfx2 = player2.getGfx();
-		this.level = Game.getGameObject().getNextLevel(main);
+		this.level = MyGame.getGameObject().getNextLevel(main);
 		
 		backButton = new TextButton(50, 50, "Back");
 		testStatus = new TextButton(50,150,"testme");
