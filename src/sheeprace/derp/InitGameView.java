@@ -123,8 +123,9 @@ public class InitGameView extends State implements KeyboardListener{
 	@Override
 	public boolean onTouchDown(MotionEvent event) {
 		if(backButton.onTouchDown(event)){
-			
-			imm.showSoftInput(MyGame.getGameObject().getAndroidGame(), InputMethodManager.RESULT_HIDDEN);
+
+			imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,0);
+//			imm.showSoftInput(MyGame.getGameObject().getAndroidGame(), InputMethodManager.RESULT_HIDDEN);
 			
 //			imm.hideSoftInputFromWindow(main.getCurrentFocus().getWindowToken(), 0);
 			getGame().popState();
@@ -141,7 +142,9 @@ public class InitGameView extends State implements KeyboardListener{
 					MyGame.getGameObject().getPlayers().add(sheepPlayer1);
 					MyGame.getGameObject().getPlayers().add(sheepPlayer2);
 					}
-				imm.showSoftInput(MyGame.getGameObject().getAndroidGame(), InputMethodManager.RESULT_HIDDEN);
+
+				imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,0);
+//				imm.showSoftInput(MyGame.getGameObject().getAndroidGame(), InputMethodManager.RESULT_HIDDEN);
 				getGame().pushState(new GameBoardView(main,index1,index2, l));
 				}
 			}
