@@ -3,6 +3,7 @@ package sheeprace.derp;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;
@@ -35,6 +36,7 @@ public class MainActivity extends Activity {
 		
 		
 		game.pushState(new MainMenuView(this));
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		setContentView(game);
 		
 
