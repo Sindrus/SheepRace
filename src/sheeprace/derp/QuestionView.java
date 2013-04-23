@@ -21,11 +21,11 @@ public class QuestionView extends State{
 	private String question;
 	private MainActivity main;
 	private Font font;
-	Question q;
-	List<TextButton> jo;
+	private Question q;
+	private List<TextButton> jo;
 	
 	public QuestionView(MainActivity main){
-		q = QuestionMaker.createQuestion(main,2, "test1");
+		q = QuestionMaker.createQuestion(main,2, "film");
 		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
 		this.main = main;
@@ -55,22 +55,22 @@ public class QuestionView extends State{
 	
 	public void viewQuestion(){
 		System.out.println(question);
-		//System.out.println(addOption("True", true));
 	}
 	
 	public boolean onTouchDown(MotionEvent evt){
 		for (int i = 0; i < jo.size(); i++) {
 			if(jo.get(i).onTouchDown(evt) && q.getCorrectA().get(i)){
-			//	getGame().pushState(new MainMenuView(main));
-				getGame().popState();
-				i = jo.size();
-			}
-			else{
-			//	getGame().pushState(new MainMenuView(main));
-				getGame().popState();
-				i = jo.size();
+				
+				if(MyGame.getGameObject().isPlayer1sTurn())
+					MyGame.getGameObject().p1IsCorrect();
+				else
+					MyGame.getGameObject().p2sCorrect();
+				
 			}
 		}
+		System.out.println("Player 1 score: "+MyGame.getGameObject().getp1sCorrect());
+		System.out.println("Player 2 scpre: "+MyGame.getGameObject().getp2sCorrect());
+		getGame().popState();
 		return true;
 	}
 }
