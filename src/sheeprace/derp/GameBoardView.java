@@ -23,7 +23,7 @@ public class GameBoardView extends State {
 //	private PlayerGfx duden = dude.getGfx();
 	private Level level;
 	
-	private TextButton backButton, testStatus, finalStatus;
+	private TextButton backButton, testStatus, finalStatus, questionView;
 	
 	public GameBoardView(MainActivity main, int index1, int index2, Level level){
 		this.player1 = MyGame.getGameObject().getPlayers().get(index1);
@@ -31,7 +31,7 @@ public class GameBoardView extends State {
 		this.player2 = MyGame.getGameObject().getPlayers().get(index2);
 		this.gfx2 = player2.getGfx();
 		this.level = MyGame.getGameObject().getNextLevel(main);
-		
+		questionView = new TextButton(Constants.WINDOW_WIDTH/2, 100, "Questions");
 		backButton = new TextButton(50, 50, "Back");
 		testStatus = new TextButton(50,150,"testme");
 		finalStatus = new TextButton(50,200,"final testview");
@@ -57,11 +57,16 @@ public class GameBoardView extends State {
 		gfx1.draw(canvas);
 		//gfx2.draw(canvas);
 //		duden.draw(canvas);
+		
+		questionView.draw(canvas);
 	}
 	
 	public boolean onTouchDown(MotionEvent event){
 		if(backButton.onTouchDown(event)){
 			getGame().popState();
+		}
+		else if(questionView.onTouchDown(event)){
+			getGame().pushState(new QuestionView(main));
 		}
 		else if(testStatus.onTouchDown(event)){
 			getGame().pushState(new GameStatusView(main,player1));
