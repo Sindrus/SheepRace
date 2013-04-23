@@ -36,7 +36,7 @@ public class HighScoreView extends State {
 //		sheep = new Image(R.drawable.frontsheep);
 //		generatePlayers(); //Polutes the players created in the game itself
 		bestFivePlayers = new ArrayList<Player>();
-		getBestFivePlayers(Game.getGameObject().getPlayers());
+		getBestFivePlayers(MyGame.getGameObject().getPlayers());
 		}
 	
 	public void draw(Canvas canvas){
@@ -88,13 +88,13 @@ public class HighScoreView extends State {
 		Player p5 = new Player("p5", 230);
 		Player p6 = new Player("p6", 123);
 		Player p7 = new Player("p7", 211);
-		Game.getGameObject().getPlayers().add(p1);
-		Game.getGameObject().getPlayers().add(p2);
-		Game.getGameObject().getPlayers().add(p3);
-		Game.getGameObject().getPlayers().add(p4);
-		Game.getGameObject().getPlayers().add(p5);
-		Game.getGameObject().getPlayers().add(p6);
-		Game.getGameObject().getPlayers().add(p7);
+		MyGame.getGameObject().getPlayers().add(p1);
+		MyGame.getGameObject().getPlayers().add(p2);
+		MyGame.getGameObject().getPlayers().add(p3);
+		MyGame.getGameObject().getPlayers().add(p4);
+		MyGame.getGameObject().getPlayers().add(p5);
+		MyGame.getGameObject().getPlayers().add(p6);
+		MyGame.getGameObject().getPlayers().add(p7);
 	}
 	
 	@Override
