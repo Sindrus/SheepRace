@@ -42,16 +42,27 @@ public class InitGameView extends State implements KeyboardListener{
 	private EditText et;
 	
 	
+	
+	
 	@SuppressLint("NewApi")
 	public InitGameView(MainActivity main){
 		
 		imm = (InputMethodManager) main.getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+		imm.showSoftInput(MyGame.getGameObject().getAndroidGame(), InputMethodManager.RESULT_SHOWN);
 		
-		et = new EditText(main);
+		
+		
+/*		et = new EditText(main);
 		et.setHeight(30);
+		et.setText("lol");
 		et.setX(0);
-		et.setY(0);
+		et.setY(0);*/
+		
+//		et = (EditText)MyGame.getGameObject().getAndroidGame().findViewById(R.id.editText1);
+		
+		
+		
 		
 		backButton = new TextButton(50, 50, "Back");
 		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Start Game");
@@ -88,7 +99,7 @@ public class InitGameView extends State implements KeyboardListener{
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.BLACK);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
-		et.draw(canvas);
+//		et.draw(canvas);
 		backButton.draw(canvas);
 		startGame.draw(canvas);
 		sheepPlayer1.getGfx().draw(canvas);
@@ -113,22 +124,24 @@ public class InitGameView extends State implements KeyboardListener{
 	public boolean onTouchDown(MotionEvent event) {
 		if(backButton.onTouchDown(event)){
 			
-			imm.hideSoftInputFromWindow(main.getCurrentFocus().getWindowToken(), 0);
+			imm.showSoftInput(MyGame.getGameObject().getAndroidGame(), InputMethodManager.RESULT_HIDDEN);
+			
+//			imm.hideSoftInputFromWindow(main.getCurrentFocus().getWindowToken(), 0);
 			getGame().popState();
 			}
 		else if(startGame.onTouchDown(event) && player1Ready && player2Ready ){
 			if(player1Ready && player2Ready){
 				if(!player1Name.isEmpty() || !player2Name.isEmpty()){
-					Game.getGameObject().getPlayers().add(sheepPlayer1);
-					Game.getGameObject().getPlayers().add(sheepPlayer2);
+					MyGame.getGameObject().getPlayers().add(sheepPlayer1);
+					MyGame.getGameObject().getPlayers().add(sheepPlayer2);
 					}
 				else{
 					player1Name = "P1";
 					player2Name = "P2";
-					Game.getGameObject().getPlayers().add(sheepPlayer1);
-					Game.getGameObject().getPlayers().add(sheepPlayer2);
+					MyGame.getGameObject().getPlayers().add(sheepPlayer1);
+					MyGame.getGameObject().getPlayers().add(sheepPlayer2);
 					}
-				imm.hideSoftInputFromWindow(main.getCurrentFocus().getWindowToken(), 0);
+				imm.showSoftInput(MyGame.getGameObject().getAndroidGame(), InputMethodManager.RESULT_HIDDEN);
 				getGame().pushState(new GameBoardView(main,index1,index2, l));
 				}
 			}
