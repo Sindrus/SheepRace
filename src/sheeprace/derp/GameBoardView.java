@@ -41,10 +41,10 @@ public class GameBoardView extends State {
 		finalStatus = new TextButton(50,200,"final testview");
 		this.main = main;
 		
-		gfx1.setPosition(Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT*3/4);
+		gfx1.setPosition(Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT*3/4 - Constants.blueSheep.getHeight()/2);
 		gfx1.update(0);
-		gfx2.setPosition(100,100);
-		gfx2.update(0);
+		//gfx2.setPosition(100,100);
+		//gfx2.update(0);
 //		duden.setPosition(100, 100);
 //		duden.update(0);
 		ground = new Sprite();
@@ -95,12 +95,15 @@ public class GameBoardView extends State {
 	}
 	
 	public void update(float dt) {
+		
 		if (gfx1.collides(ground)) {
-			System.out.println("hva faen");
+			
 			gfx1.setSpeed(0, 0);
 			gfx1.setAcceleration(0, 0);
+			gfx1.setPosition(gfx1.getX(), Constants.WINDOW_HEIGHT*3/4 - Constants.blueSheep.getHeight()/2);
+			gfx1.update(dt);
 		}
-		
+
 		gfx1.update(dt);
 		ground.update(dt);
 		super.update(dt);

@@ -12,19 +12,30 @@ import sheep.graphics.Image;
  */
 
 public class PlayerGfx extends Sprite{
+	
 	public PlayerGfx(Image imageName){
 		super(imageName);
 		this.setShape(new Rectangle(60, 60));
 	}
 	
 	public void jump() {
+		// getSpeed().getY() == 0 && getAcceleration().getY() == 0)
+		System.out.println("Before: -----------");
+		System.out.println("Pos Y: "+ this.getY());
+		System.out.println("Pos X:" + this.getX());
 		
-		if (getSpeed().getY() == 0 && getAcceleration().getY() == 0) {
+		System.out.println("Speed Y: "+ this.getSpeed().getY());
+		System.out.println("Speed X:" + this.getSpeed().getX());
+		
+		System.out.println("Acc Y: "+ this.getAcceleration().getY());
+		System.out.println("Acc X:" + this.getAcceleration().getX());
+		
+		if (canJump()) {
 			this.setSpeed(0, -Constants.SPEED);
 			this.setAcceleration(0, Constants.ACCELERATION);
 		}
 		
-		
+		System.out.println("After: -----------");
 		System.out.println("Pos Y: "+ this.getY());
 		System.out.println("Pos X:" + this.getX());
 		
@@ -41,5 +52,11 @@ public class PlayerGfx extends Sprite{
 			this.setSpeed(0, Constants.SPEED);
 		
 		super.update(dt);
+	}
+	
+	public boolean canJump() {
+		if (getSpeed().getY() == 0 && getAcceleration().getY() == 0)
+			return true;
+		return false;
 	}
 }
