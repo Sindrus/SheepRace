@@ -3,6 +3,7 @@ package sheeprace.derp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import android.graphics.Bitmap;
 import sheep.graphics.Image;
@@ -52,5 +53,8 @@ public class Constants {
     /*
      * All available categories
      */
-    public static List<Category> categories = new ArrayList<Category>();
+    /**
+     * String is the name of the category and Integer is the number of questions in the category
+     */
+    public static Map<String, Integer> categories;
 }

@@ -1,6 +1,7 @@
 package sheeprace.derp;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.xmlpull.v1.XmlPullParserException;
 import android.content.res.XmlResourceParser;
@@ -100,6 +101,7 @@ public class QuestionMaker{
 	 * @param main Need the mainactivity to access the xml-sheet.
 	 */
 	public static void getCategories(MainActivity main){
+		Constants.categories = new HashMap<String, Integer>();
 		try {
 			XmlResourceParser xrp = main.getResources().getXml(R.xml.question);
 			System.out.println("Getting categories");
@@ -116,9 +118,8 @@ public class QuestionMaker{
 						s="";
 					// Have we found a questiontag?
 					if(s.equals("q")){
-						// Creating a category-object and adding it to the 
-						Category c = new Category(xrp.getAttributeValue(0), xrp.getAttributeIntValue(1, -1));
-						Constants.categories.add(c);
+						// Adding the category to the hashmap in Constants.
+						Constants.categories.put(xrp.getAttributeValue(0), xrp.getAttributeIntValue(1, -1));
 					}
 				}
 				xrp.next();

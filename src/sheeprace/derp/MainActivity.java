@@ -31,15 +31,10 @@ public class MainActivity extends Activity {
 	// Need to get the q-categories	
 		QuestionMaker.getCategories(this);
 		
-		for(Category s : Constants.categories)
-			System.out.println(s.toString());
-		
-		
 		game.pushState(new MainMenuView(this));
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		setContentView(game);
 		
-
 		DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
