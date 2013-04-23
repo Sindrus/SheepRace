@@ -1,7 +1,8 @@
 <?xml version="1.0" ?>
+<!-- Each category is 0-indexed -->
 <qs>
 	<q category="test" qs="2">
-	    <question id="1">
+	    <question id="0">
 	        <title>What is 1+1</title>
 	        <option>
 	            <answer>2</answer>
@@ -12,7 +13,7 @@
 	            <correct>false</correct>
 	        </option>
 	    </question>
-	    <question id="2">
+	    <question id="1">
 	        <title>What is 2+2</title>
 	        <option>
 	            <answer>5</answer>
@@ -36,7 +37,7 @@
 	            <correct>false</correct>
 	        </option>
 	    </question>
-	    <question id="2">
+	    <question id="0">
 	        <title>What is best</title>
 	        <option>
 	            <answer>Hamburger</answer>
@@ -167,7 +168,7 @@
 	            <correct>false</correct>
 	        </option>
 	    </question>
-	    <question id="7">
+	    <question id="0">
 	         <title>Hvilken norsk film har ikke vært nominert til Oscar?</title>
 	        <option>
 	            <answer>Elling</answer>
@@ -302,7 +303,7 @@
 	            <correct>false</correct>
 	        </option>
 	    </question>
-	    <question id="7">
+	    <question id="0">
 	         <title>Hvilken av disse har ikke en spin-off serie?</title>
 	        <option>
 	            <answer>NCIS</answer>
@@ -437,7 +438,7 @@
 	            <correct>false</correct>
 	        </option>
 	    </question>
-	    <question id="7">
+	    <question id="0">
 	         <title>Hvem har ikke vunnet Eurovision Song Contest?</title>
 	        <option>
 	            <answer>Jahn Teigen</answer>
@@ -572,7 +573,7 @@
 	            <correct>false</correct>
 	        </option>
 	    </question>
-	    <question id="7">
+	    <question id="0">
 	         <title>I hvilken sport er det ikke lov med skjegg?</title>
 	        <option>
 	            <answer>Løping</answer>
@@ -707,7 +708,7 @@
 	            <correct>true</correct>
 	        </option>
 	    </question>
-	    <question id="7">
+	    <question id="0">
 	         <title>Hvem er ikke fra Trondheim?</title>
 	        <option>
 	            <answer>Åge Aleksandersen</answer>
