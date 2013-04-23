@@ -30,13 +30,14 @@ public class AboutView extends State implements TouchListener{
 	
 	public AboutView(MainActivity main){
 		backButton = new TextButton(50, 50, "Back");
-		font = new Font(88, 88, 88, 16, Typeface.SERIF, Typeface.BOLD);
+		font = new Font(18, 62, 110, 16, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
 	}
 
 	public void draw(Canvas canvas){
 		
 		canvas.drawColor(Color.BLACK);
+		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		backButton.draw(canvas);
 		canvas.drawText("SheepRace", canvas.getWidth()/2, 100, font);
 		canvas.drawText("The player that gets from start to finish the fastest win.", canvas.getWidth()/2, 120, font);
