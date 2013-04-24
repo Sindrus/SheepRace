@@ -32,6 +32,15 @@ public class MyGame implements GameInterface{
 	private boolean player1sTurn;
 	
 	private List<String> chosenCategory;
+	
+	public List<String> getChosenCategory() {
+		return chosenCategory;
+	}
+
+	public void addChosenCategory(String chosen){
+		chosenCategory.add(chosen);
+	}
+
 	private Map<String, List<Integer>> availableQuestions;
 	
 	
@@ -117,8 +126,7 @@ public class MyGame implements GameInterface{
 
 	@Override
 	public void addPlayers(Player p) {
-		players.add(p);
-		
+		players.add(p);	
 	}
 	/**
 	 * Keep track of which players turn it is
