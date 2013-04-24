@@ -53,8 +53,6 @@ public class InitGameView extends State implements KeyboardListener{
 		
 	// Create the first level
 		MyGame.getGameObject().createNextLevel(main);
->>>>>>> 51b5b06e2ef1a3b3e11cb9bb46d89eaa15a855e8
-	
 		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
 		
