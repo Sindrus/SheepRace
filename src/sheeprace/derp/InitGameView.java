@@ -34,10 +34,11 @@ public class InitGameView extends State implements KeyboardListener{
 	private InputMethodManager imm;
 	
 	public InitGameView(MainActivity main){
-		// Show the keyboard
+		MyGame.getGameObject().resetGame();
+	// Show the keyboard
 		imm = (InputMethodManager) main.getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
-		
+	// Instantiate 	buttons
 		backButton = new TextButton(50, 50, "Back");
 		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Start Game");
 		savePlayer = new TextButton(Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/2, "Save Player");
@@ -45,6 +46,14 @@ public class InitGameView extends State implements KeyboardListener{
 		player2ReadyButton = new TextButton(Constants.WINDOW_WIDTH/2 - 45, 3*Constants.WINDOW_HEIGHT/6, " ");
 		player1Ready = false;
 		player2Ready = false;
+		player1ReadyButton = new TextButton(Constants.WINDOW_WIDTH/2, 2*Constants.WINDOW_HEIGHT/6, " ");
+	// Set flag what player is ready
+		player1Ready = false;
+		player2Ready = false;
+		
+	// Create the first level
+		MyGame.getGameObject().createNextLevel(main);
+>>>>>>> 51b5b06e2ef1a3b3e11cb9bb46d89eaa15a855e8
 	
 		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);

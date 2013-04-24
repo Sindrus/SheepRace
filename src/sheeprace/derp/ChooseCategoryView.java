@@ -62,7 +62,7 @@ public class ChooseCategoryView extends State{
 			getGame().popState();
 		}
 		else if(startGame.onTouchDown(event)){
-			getGame().pushState(new GameBoardView(main, index1, index2, l));
+			getGame().pushState(new GameBoardView(main));
 		}
 		for (int i = 0; i < choices.size(); i++) {
 			if(choices.get(i).onTouchDown(event)){

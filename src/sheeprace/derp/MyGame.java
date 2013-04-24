@@ -97,24 +97,22 @@ public class MyGame implements GameInterface{
 		this.p2CorrQuest=0;
 		
 	// FIXME: Remove when categorychoice is implemented
-		chosenCategory.add("film");
-		chosenCategory.add("tv");
+/*		chosenCategory.add("film");
+		chosenCategory.add("tv");*/
 		
 	}
 	
 	/**
-	 * Call this method to get the next level
+	 * Call this method to create the next level
 	 */
-	public void nextLevel(MainActivity main){
+	public void createNextLevel(MainActivity main){
 		this.level = LevelMaker.createLevel(main,"normal", this.levelNum);
 		this.levelNum++;
 	}
-	
-	public Level getNextLevel(MainActivity main){
-		nextLevel(main);
-		return getLevel();
-	}
-	
+	/**
+	 * Method that returns the level
+	 * @return the level
+	 */
 	public Level getLevel(){
 		return this.level;
 	}
@@ -132,7 +130,7 @@ public class MyGame implements GameInterface{
 	 * Keep track of which players turn it is
 	 * Now it's next playres turn.
 	 */
-	public void getNextPlayer(){
+	public void setNextPlayer(){
 		player1sTurn=!player1sTurn;
 	}
 	
@@ -143,6 +141,17 @@ public class MyGame implements GameInterface{
 	public boolean isPlayer1sTurn(){
 		return player1sTurn;
 	}
+	/**
+	 * This method returns the player that has the current turn
+	 * @return
+	 */
+	public Player getPlayer(){
+		if(player1sTurn)
+			return players.get(0);
+		else
+			return players.get(1);
+	}
+	
 	
 	/**
 	 * records correct answer to player 1

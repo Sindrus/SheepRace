@@ -55,10 +55,14 @@ public class GameStatusView extends State{
 		this.finalScreen= false; 
 	}
 	
-	public GameStatusView(MainActivity main, Player player1, Player player2){
+	/**
+	 * This is the method to use, it does not need to take the player
+	 * @param main MainActivity
+	 */
+	public GameStatusView(MainActivity main){//, Player player1, Player player2){
 		this.main = main;
-		this.player1 = player1;
-		this.player2 = player2;
+		this.player1 = MyGame.getGameObject().getPlayers().get(0);
+		this.player2 = MyGame.getGameObject().getPlayers().get(1);
 		
 		font = new Font(88, 88, 88, 20, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
