@@ -18,35 +18,31 @@ import sheep.gui.TextButton;
 
 public class GameBoardView extends State {
 	private MainActivity main;
-	private Player player1,player2;
-	private PlayerGfx gfx1,gfx2;
-//	private Player dude = Game.getGameObject().getPlayers().get(0); //TODO, fix for the correct player based on whos turn it is
-//	private PlayerGfx duden = dude.getGfx();
+	private Player player;
+	private PlayerGfx playerGfx;
 	private Level level;
 	
 	private Sprite ground;
 	
 	private TextButton backButton, testStatus, finalStatus, questionView, gameStatusView;
 	
-	public GameBoardView(MainActivity main, int index1, int index2, Level level){
-		this.player1 = MyGame.getGameObject().getPlayers().get(index1);
-		this.gfx1 = player1.getGfx();
-		this.player2 = MyGame.getGameObject().getPlayers().get(index2);
-		this.gfx2 = player2.getGfx();
-		this.level = MyGame.getGameObject().getNextLevel(main);
+	public GameBoardView(MainActivity main){//, int index1, int index2, Level level){
+		
+		this.player = MyGame.getGameObject().getPlayer();
+		this.playerGfx = player.getGfx();
+		
+		this.level = MyGame.getGameObject().getLevel();
+	// TODO: Remove most of these buttons	
 		questionView = new TextButton(Constants.WINDOW_WIDTH/2, 100, "Questions");
 		gameStatusView = new TextButton(Constants.WINDOW_WIDTH/2, 150, "Status");
 		backButton = new TextButton(50, 50, "Back");
 		testStatus = new TextButton(50,150,"testme");
 		finalStatus = new TextButton(50,200,"final testview");
+		
 		this.main = main;
 		
-		gfx1.setPosition(Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT*3/4 - Constants.blueSheep.getHeight()/2);
-		gfx1.update(0);
-		//gfx2.setPosition(100,100);
-		//gfx2.update(0);
-//		duden.setPosition(100, 100);
-//		duden.update(0);
+		playerGfx.setPosition(Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT*3/4 - Constants.blueSheep.getHeight()/2);
+		
 		ground = new Sprite();
 		ground.setShape(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT/4);
 		ground.setPosition(0, Constants.WINDOW_HEIGHT*3/4);
@@ -61,11 +57,9 @@ public class GameBoardView extends State {
 		finalStatus.draw(canvas);
 		backButton.draw(canvas);
 		ArrayList<BlockBox> bb = level.getBoxes();
-//		for (BlockBox b : bb)
-//			b.draw(canvas);
-		gfx1.draw(canvas);
-		//gfx2.draw(canvas);
-//		duden.draw(canvas);
+		for (BlockBox b : bb)
+			b.draw(canvas);
+		playerGfx.draw(canvas);
 		
 		questionView.draw(canvas);
 		gameStatusView.draw(canvas);
@@ -76,19 +70,13 @@ public class GameBoardView extends State {
 			getGame().popState();
 		}
 		else if(gameStatusView.onTouchDown(event)){
-			getGame().pushState(new GameStatusView(main, player1, player2));
+			getGame().pushState(new GameStatusView(main)); //, player1, player2));
 		}
 		else if(questionView.onTouchDown(event)){
 			getGame().pushState(new QuestionView(main));
 		}
-		else if(testStatus.onTouchDown(event)){
-			getGame().pushState(new GameStatusView(main,player1));
-		}
-		else if(finalStatus.onTouchDown(event)){
-			getGame().pushState(new GameStatusView(main,player1,player2));
-		}
 		else {
-			gfx1.jump();
+			playerGfx.jump();
 		}
 		
 		return true;
@@ -96,15 +84,15 @@ public class GameBoardView extends State {
 	
 	public void update(float dt) {
 		
-		if (gfx1.collides(ground)) {
+		if (playerGfx.collides(ground)) {
 			
-			gfx1.setSpeed(0, 0);
-			gfx1.setAcceleration(0, 0);
-			gfx1.setPosition(gfx1.getX(), Constants.WINDOW_HEIGHT*3/4 - Constants.blueSheep.getHeight()/2);
-			gfx1.update(dt);
+			playerGfx.setSpeed(0, 0);
+			playerGfx.setAcceleration(0, 0);
+			playerGfx.setPosition(playerGfx.getX(), Constants.WINDOW_HEIGHT*3/4 - Constants.blueSheep.getHeight()/2);
+			playerGfx.update(dt);
 		}
 
-		gfx1.update(dt);
+		playerGfx.update(dt);
 		ground.update(dt);
 		super.update(dt);
 	}
