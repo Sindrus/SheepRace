@@ -115,8 +115,8 @@ public class GameStatusView extends State{
 		}
 		else if(finalScreen){
 			canvas.drawText("Your scores", canvas.getWidth()/2, 100, headLine);
-			System.out.println(player1.toString());
-			System.out.println(player2.toString());
+//			System.out.println(player1.toString());
+//			System.out.println(player2.toString());
 			canvas.drawText(player1.getName() + "  " +player1.getScore(), canvas.getWidth()/2, 150, font);
 			canvas.drawText(player2.getName() + "  " +player2.getScore(), canvas.getWidth()/2, 200, font);
 			if(player1.getScore()>player2.getScore())

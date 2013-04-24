@@ -41,9 +41,9 @@ public class InitGameView extends State implements KeyboardListener{
 	// Instantiate 	buttons
 		backButton = new TextButton(50, 50, "Back");
 		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Start Game");
-		savePlayer = new TextButton(Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/2, "Save Player");
-		player1ReadyButton = new TextButton(Constants.WINDOW_WIDTH/2 - 45, 2*Constants.WINDOW_HEIGHT/6, " ");
-		player2ReadyButton = new TextButton(Constants.WINDOW_WIDTH/2 - 45, 3*Constants.WINDOW_HEIGHT/6, " ");
+		savePlayer = new TextButton(Constants.WINDOW_WIDTH/2-45, 2*Constants.WINDOW_HEIGHT/7, "Save Player");
+		player1ReadyButton = new TextButton(4*Constants.WINDOW_WIDTH/5, 2*Constants.WINDOW_HEIGHT/6, " ");
+		player2ReadyButton = new TextButton(4*Constants.WINDOW_WIDTH/5, 3*Constants.WINDOW_HEIGHT/7, " ");
 	// Set flag what player is ready
 		player1Ready = false;
 		player2Ready = false;
@@ -54,7 +54,7 @@ public class InitGameView extends State implements KeyboardListener{
 		font.setTextAlign(Align.CENTER);
 		
 		sheepPlayer1 = new Player(new PlayerGfx(Constants.sheep1), playerName, 0);
-		sheepPlayer1.getGfx().setPosition(Constants.WINDOW_WIDTH/8, 4*Constants.WINDOW_HEIGHT/10);
+		sheepPlayer1.getGfx().setPosition(Constants.WINDOW_WIDTH/8, Constants.WINDOW_HEIGHT/4);
 		this.main = main;
 	}
 	
@@ -124,6 +124,7 @@ public class InitGameView extends State implements KeyboardListener{
 				player2Ready = true;
 				player2ReadyButton.setLabel("Player 2 ready!");
 				savePlayer.setLabel(" ");
+				sheepPlayer1.setName(playerName);
 				savePlayer(sheepPlayer1);
 			}
 			else{
@@ -132,10 +133,11 @@ public class InitGameView extends State implements KeyboardListener{
 				}
 				player1Ready = true;
 				player1ReadyButton.setLabel("Player 1 ready!");
+				sheepPlayer1.setName(playerName);
 				savePlayer(sheepPlayer1);
 				playerName = "";
 				sheepPlayer1 = new Player(new PlayerGfx(Constants.sheep1), playerName, 0);
-				sheepPlayer1.getGfx().setPosition(Constants.WINDOW_WIDTH/8, 4*Constants.WINDOW_HEIGHT/10);
+				sheepPlayer1.getGfx().setPosition(Constants.WINDOW_WIDTH/8, Constants.WINDOW_HEIGHT/4);
 			}
 		}
 		return true;

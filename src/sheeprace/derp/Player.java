@@ -54,11 +54,12 @@ public class Player extends Sprite implements PlayerInterface{
 	@Override
 	public void setName(String name) {
 		// TODO Auto-generated method stub
+		this.name = name;
 	}
 
 	@Override
 	public void setScore(int score) {
-		this.score+=score;
+		this.score=score;
 	}
 	@Override
 	public String toString(){

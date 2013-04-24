@@ -62,7 +62,7 @@ public class QuestionView extends State{
 	public boolean onTouchDown(MotionEvent evt){
 		for (int i = 0; i < jo.size(); i++) {
 			if(jo.get(i).onTouchDown(evt) && q.getCorrectA().get(i)){
-				
+//				System.out.println("rett?"+q.getCorrectA().get(i));
 				if(MyGame.getGameObject().isPlayer1sTurn())
 					MyGame.getGameObject().p1IsCorrect();
 				else

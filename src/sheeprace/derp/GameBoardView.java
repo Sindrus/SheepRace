@@ -36,8 +36,8 @@ public class GameBoardView extends State {
 		questionView = new TextButton(Constants.WINDOW_WIDTH/2, 100, "Questions");
 		gameStatusView = new TextButton(Constants.WINDOW_WIDTH/2, 150, "Status");
 		backButton = new TextButton(50, 50, "Back");
-		testStatus = new TextButton(50,150,"testme");
-		finalStatus = new TextButton(50,200,"final testview");
+//		testStatus = new TextButton(50,150,"testme");
+//		finalStatus = new TextButton(50,200,"final testview");
 		
 		this.main = main;
 		
@@ -53,8 +53,8 @@ public class GameBoardView extends State {
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.YELLOW);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
-		testStatus.draw(canvas);
-		finalStatus.draw(canvas);
+//		testStatus.draw(canvas);
+//		finalStatus.draw(canvas);
 		backButton.draw(canvas);
 		ArrayList<BlockBox> bb = level.getBoxes();
 		for (BlockBox b : bb)
