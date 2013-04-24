@@ -22,6 +22,8 @@ public class ChooseCategoryView extends State{
 	private MainActivity main;
 	private Font font;
 	private ArrayList<TextButton> choices;
+	private int index1, index2;
+	private Level l;
 	
 	public ChooseCategoryView(MainActivity main){
 		backButton = new TextButton(50, 50, "Back");
@@ -65,6 +67,9 @@ public class ChooseCategoryView extends State{
 	public boolean onTouchDown(MotionEvent event) {
 		if(backButton.onTouchDown(event)){
 			getGame().popState();
+		}
+		else if(startGame.onTouchDown(event)){
+			getGame().pushState(new GameBoardView(main, index1, index2, l));
 		}
 		for (int i = 0; i < choices.size(); i++) {
 			if(choices.get(i).onTouchDown(event)){
