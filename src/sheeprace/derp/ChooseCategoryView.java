@@ -34,28 +34,21 @@ public class ChooseCategoryView extends State{
 		font.setTextAlign(Align.CENTER);
 		
 		choices = new ArrayList<TextButton>();
-		int leftCounter = 2;
-		int rightCounter = 2;
+		int counter = 2;
 		Set<Entry<String, Integer>> set = Constants.categories.entrySet();
 		Iterator<Entry<String, Integer>> it = set.iterator();
 	    while (it.hasNext()) {
 	      Map.Entry entry = (Map.Entry) it.next();
-	      if(leftCounter >= Constants.categories.size()/3){
-	    	  TextButton bn = new TextButton(3*Constants.WINDOW_WIDTH/5, rightCounter * Constants.WINDOW_HEIGHT/(Constants.categories.size()+2), "" +  entry.getKey());
-	 	      choices.add(bn);
-	 	      rightCounter++;
-	      }
-	      else{
-		      TextButton bn = new TextButton(2*Constants.WINDOW_WIDTH/5, leftCounter * Constants.WINDOW_HEIGHT/(Constants.categories.size()+2), "" +  entry.getKey());
-		      choices.add(bn);
-		      leftCounter++;
-	      }
+	      TextButton bn = new TextButton(Constants.WINDOW_WIDTH/2, counter * Constants.WINDOW_HEIGHT/(Constants.categories.size()+2), "" +  entry.getKey());
+		  choices.add(bn);
+		  counter++;
 	    }
 	}
 	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.BLACK);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
+		Constants.frontSheep.draw(canvas, 0, Constants.WINDOW_HEIGHT/7);
 		backButton.draw(canvas);
 		startGame.draw(canvas);
 		canvas.drawText("Choose Categories:", Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT/6, font);
