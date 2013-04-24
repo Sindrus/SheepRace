@@ -22,6 +22,8 @@ public class LevelMaker{
 					// check for starttag for levels with themes
 					if(xrp.getName().equals("levels"))
 					if(xrp.getAttributeValue(0).equals(theme)){
+						Constants.maxLevels=xrp.getAttributeIntValue(1, -1);
+						System.out.println("Max antall levler: "+Constants.maxLevels);
 						// Must not run out of the document
 						while(xrp.getEventType() != xrp.END_DOCUMENT){
 							// Check to see if we found the level we are looking for

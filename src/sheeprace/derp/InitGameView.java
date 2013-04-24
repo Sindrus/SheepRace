@@ -37,6 +37,8 @@ public class InitGameView extends State implements KeyboardListener{
 	
 	public InitGameView(MainActivity main){
 		
+		MyGame.getGameObject().resetGame();
+		
 		// Show the keyboard
 		imm = (InputMethodManager) main.getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);

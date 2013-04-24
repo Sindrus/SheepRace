@@ -50,11 +50,13 @@ public class Constants {
     public static Image whiteBox = new Image(R.drawable.white);
     //TODO, add a working list, and populate from the mainActivity or something
     
-    /*
-     * All available categories
-     */
     /**
      * String is the name of the category and Integer is the number of questions in the category
      */
     public static Map<String, Integer> categories;
+    
+    /**
+     * Integer that represent the number of levels available
+     */
+    public static int maxLevels;
 }
