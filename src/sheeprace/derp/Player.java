@@ -32,7 +32,7 @@ public class Player extends Sprite implements PlayerInterface{
 	
 	@Override
 	public void updateScore(int time, int powerBar) {
-		
+		//TODO, DO THIS! need some calculation based on the powerbar
 	}
 	
 	//Pseudocode atm

@@ -80,6 +80,7 @@ public class QuestionView extends State{
 		return true;
 	}
 	
+	//Making a seperate class for the splash upon answering a question
 	class Splash extends State{
 		MainActivity main2;
 		boolean correct;

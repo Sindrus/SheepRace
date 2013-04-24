@@ -208,6 +208,8 @@ public class MyGame implements GameInterface{
 		String randomCategory = keyList.get(r.nextInt(keyList.size()));
 		List<Integer> idList = availableQuestions.get(randomCategory);
 		int i = idList.remove(r.nextInt(idList.size()));
+		if(idList.isEmpty())
+			availableQuestions.remove(randomCategory);
 		return QuestionMaker.createQuestion(main, i, randomCategory);
 	}
 
