@@ -25,7 +25,6 @@ public class QuestionView extends State{
 	private Question q;
 	private List<TextButton> jo;
 	private boolean correct;
-//	private Canvas canvas;
 	
 	public QuestionView(MainActivity main){
 	//	q = QuestionMaker.createQuestion(main,2, "film");
@@ -42,21 +41,17 @@ public class QuestionView extends State{
 			fontInt += 50;
 		}
 		this.correct = false;
-//		this.wrong = false;
+
 	}
 	
 	public void draw(Canvas canvas){
-//		this.canvas = canvas;
+
 		canvas.drawColor(Color.RED);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		canvas.drawText("" + q.getQuestion() , Constants.WINDOW_WIDTH/2, 100, font);
 		for (int i = 0; i < jo.size(); i++) {
 			jo.get(i).draw(canvas);
 		}
-//		if(correct)
-//			canvas.drawColor(Color.GREEN);
-//		else if(wrong)
-//			canvas.drawColor(Color.RED);
 	}
 	
 	public String getQuestion(){
@@ -76,13 +71,11 @@ public class QuestionView extends State{
 					MyGame.getGameObject().p2sCorrect();
 				correct = true;
 			}
-//			else
-//				wrong = true;
+
 		}
-//		draw(canvas);
-//		update(0);
+
 		System.out.println("Player 1 score: "+MyGame.getGameObject().getp1sCorrect());
-		System.out.println("Player 2 scpre: "+MyGame.getGameObject().getp2sCorrect());
+		System.out.println("Player 2 score: "+MyGame.getGameObject().getp2sCorrect());
 		getGame().pushState(new Splash(main,correct));
 		return true;
 	}
@@ -104,7 +97,7 @@ public class QuestionView extends State{
 			long time = System.nanoTime();
 			long longtime = System.nanoTime();
 			while(longtime-time<1500000000){
-				System.out.println(longtime-time);
+//				System.out.println(longtime-time);
 				longtime = System.nanoTime();
 			}
 			getGame().popState();
