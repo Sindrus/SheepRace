@@ -63,7 +63,7 @@ public class InitGameView extends State implements KeyboardListener{
 	
 	@Override
 	public boolean onKeyDown(KeyEvent e){
-		if(!player1Ready && !player2Ready){
+		if(!player1Ready || !player2Ready){
 			System.out.println("knapp trykket "+(char)e.getUnicodeChar());
 			playerName+=Character.toString((char)e.getUnicodeChar());
 		}
