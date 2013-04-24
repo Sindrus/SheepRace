@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.Paint.Align;
 import android.view.MotionEvent;
@@ -23,6 +24,8 @@ public class QuestionView extends State{
 	private Font font;
 	private Question q;
 	private List<TextButton> jo;
+	private boolean correct;
+//	private Canvas canvas;
 	
 	public QuestionView(MainActivity main){
 	//	q = QuestionMaker.createQuestion(main,2, "film");
@@ -38,17 +41,22 @@ public class QuestionView extends State{
 			jo.add(t);
 			fontInt += 50;
 		}
-		
+		this.correct = false;
+//		this.wrong = false;
 	}
 	
 	public void draw(Canvas canvas){
+//		this.canvas = canvas;
 		canvas.drawColor(Color.RED);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		canvas.drawText("" + q.getQuestion() , Constants.WINDOW_WIDTH/2, 100, font);
 		for (int i = 0; i < jo.size(); i++) {
 			jo.get(i).draw(canvas);
 		}
-		
+//		if(correct)
+//			canvas.drawColor(Color.GREEN);
+//		else if(wrong)
+//			canvas.drawColor(Color.RED);
 	}
 	
 	public String getQuestion(){
@@ -59,20 +67,48 @@ public class QuestionView extends State{
 		System.out.println(question);
 	}
 	
-	public boolean onTouchDown(MotionEvent evt){
+	public boolean onTouchDown(MotionEvent evt){		
 		for (int i = 0; i < jo.size(); i++) {
 			if(jo.get(i).onTouchDown(evt) && q.getCorrectA().get(i)){
-//				System.out.println("rett?"+q.getCorrectA().get(i));
 				if(MyGame.getGameObject().isPlayer1sTurn())
 					MyGame.getGameObject().p1IsCorrect();
 				else
 					MyGame.getGameObject().p2sCorrect();
-				
+				correct = true;
 			}
+//			else
+//				wrong = true;
 		}
+//		draw(canvas);
+//		update(0);
 		System.out.println("Player 1 score: "+MyGame.getGameObject().getp1sCorrect());
 		System.out.println("Player 2 scpre: "+MyGame.getGameObject().getp2sCorrect());
-		getGame().popState();
+		getGame().pushState(new Splash(main,correct));
 		return true;
+	}
+	
+	class Splash extends State{
+		MainActivity main2;
+		boolean correct;
+		public Splash(MainActivity main, boolean correct){
+			this.main2 = main;
+			this.correct = correct; 
+		}
+		
+		public void draw(Canvas canvas){
+			if(correct)
+				canvas.drawColor(Color.GREEN);
+			else
+				canvas.drawColor(Color.RED);
+			
+			long time = System.nanoTime();
+			long longtime = System.nanoTime();
+			while(longtime-time<1500000000){
+				System.out.println(longtime-time);
+				longtime = System.nanoTime();
+			}
+			getGame().popState();
+			getGame().popState();
+		}
 	}
 }

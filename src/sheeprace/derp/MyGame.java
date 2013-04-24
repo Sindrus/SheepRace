@@ -143,6 +143,7 @@ public class MyGame implements GameInterface{
 	}
 	/**
 	 * This method returns the player that has the current turn
+	 * TODO, fix for adjusted list, aka so we can have highscores etc, or change addPLayers to insert(0,p) and insert(1,p)
 	 * @return
 	 */
 	public Player getPlayer(){
