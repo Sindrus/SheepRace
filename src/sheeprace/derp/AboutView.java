@@ -30,6 +30,7 @@ public class AboutView extends State implements TouchListener{
 	
 	public AboutView(MainActivity main){
 		backButton = new TextButton(50, 50, "Back");
+		
 		font = new Font(18, 62, 110, 16, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
 	}
