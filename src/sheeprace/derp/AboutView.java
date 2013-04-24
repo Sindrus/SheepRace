@@ -21,7 +21,6 @@ import sheep.input.TouchListener;
  *
  */
 
-
 public class AboutView extends State implements TouchListener{
 
 

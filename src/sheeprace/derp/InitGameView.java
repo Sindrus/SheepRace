@@ -40,7 +40,8 @@ public class InitGameView extends State implements KeyboardListener{
 		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
 	// Instantiate 	buttons
 		backButton = new TextButton(50, 50, "Back");
-		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Start Game");
+		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Chose categories");
+		startGame.setLabel(" ");
 		savePlayer = new TextButton(Constants.WINDOW_WIDTH/2-45, 2*Constants.WINDOW_HEIGHT/7, "Save Player");
 		player1ReadyButton = new TextButton(4*Constants.WINDOW_WIDTH/5, 2*Constants.WINDOW_HEIGHT/6, " ");
 		player2ReadyButton = new TextButton(4*Constants.WINDOW_WIDTH/5, 3*Constants.WINDOW_HEIGHT/7, " ");
@@ -122,8 +123,9 @@ public class InitGameView extends State implements KeyboardListener{
 					playerName = "P2";
 				}
 				player2Ready = true;
-				player2ReadyButton.setLabel("Player 2 ready!");
+				player2ReadyButton.setLabel("Player "+playerName+" ready!");
 				savePlayer.setLabel(" ");
+				startGame.setLabel("Chose categories");
 				sheepPlayer1.setName(playerName);
 				savePlayer(sheepPlayer1);
 			}
@@ -132,7 +134,7 @@ public class InitGameView extends State implements KeyboardListener{
 					playerName = "P1";
 				}
 				player1Ready = true;
-				player1ReadyButton.setLabel("Player 1 ready!");
+				player1ReadyButton.setLabel("Player "+playerName+" ready!");
 				sheepPlayer1.setName(playerName);
 				savePlayer(sheepPlayer1);
 				playerName = "";
