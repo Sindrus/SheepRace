@@ -99,7 +99,8 @@ public class InitGameView extends State implements KeyboardListener{
 		else if(startGame.onTouchDown(event) && player1Ready && player2Ready ){
 				// Hide the keyboard when going to another state
 				imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,0);
-				getGame().pushState(new GameBoardView(main,index1,index2, l));
+				getGame().pushState(new ChooseCategoryView(main));
+				//getGame().pushState(new GameBoardView(main,index1,index2, l));
 				}
 		else if(event.getX()>Constants.WINDOW_WIDTH/2-15 && event.getX()<Constants.WINDOW_WIDTH/2+Constants.redBox.getWidth()-15 
 				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/5+Constants.redBox.getHeight()){
