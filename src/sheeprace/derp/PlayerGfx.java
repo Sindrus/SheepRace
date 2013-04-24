@@ -20,7 +20,7 @@ public class PlayerGfx extends Sprite{
 	
 	public void jump() {
 		// getSpeed().getY() == 0 && getAcceleration().getY() == 0)
-		System.out.println("Before: -----------");
+	/*	System.out.println("Before: -----------");
 		System.out.println("Pos Y: "+ this.getY());
 		System.out.println("Pos X:" + this.getX());
 		
@@ -29,12 +29,12 @@ public class PlayerGfx extends Sprite{
 		
 		System.out.println("Acc Y: "+ this.getAcceleration().getY());
 		System.out.println("Acc X:" + this.getAcceleration().getX());
-		
+	*/	
 		if (canJump()) {
 			this.setSpeed(0, -Constants.SPEED);
 			this.setAcceleration(0, Constants.ACCELERATION);
 		}
-		
+	/*	
 		System.out.println("After: -----------");
 		System.out.println("Pos Y: "+ this.getY());
 		System.out.println("Pos X:" + this.getX());
@@ -44,6 +44,7 @@ public class PlayerGfx extends Sprite{
 		
 		System.out.println("Acc Y: "+ this.getAcceleration().getY());
 		System.out.println("Acc X:" + this.getAcceleration().getX());
+	*/
 	}
 	
 	public void update(float dt) {

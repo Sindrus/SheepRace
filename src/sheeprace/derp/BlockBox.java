@@ -8,7 +8,9 @@ package sheeprace.derp;
 
 public class BlockBox extends Box{
 	public BlockBox(float x, float y){
-		setPosition(x, y);
+		setConvertedCoordinates(x, y);
+		setView(Constants.blockBox);
+		update(0);
 	}
 	
 	@Override

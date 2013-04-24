@@ -1,6 +1,7 @@
 package sheeprace.derp;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -22,6 +23,9 @@ public class GameBoardView extends State {
 	private PlayerGfx playerGfx;
 	private Level level;
 	
+	private List<QuestionBox> qb;
+	private List<BlockBox> bb;
+	
 	private Sprite ground;
 	
 	private TextButton backButton, testStatus, finalStatus, questionView, gameStatusView;
@@ -32,6 +36,15 @@ public class GameBoardView extends State {
 		this.playerGfx = player.getGfx();
 		
 		this.level = MyGame.getGameObject().getLevel();
+
+		this.bb = level.getBlockBoxes();
+		this.qb = level.getQuestionBoxes();
+		
+		System.out.println("Block "+bb.get(0).getPosition());
+		System.out.println("Quest "+qb.get(0).getPosition());
+		
+	//	System.out.println(level.getBlockBoxes());
+		
 	// TODO: Remove most of these buttons	
 		questionView = new TextButton(Constants.WINDOW_WIDTH/2, 100, "Questions");
 		gameStatusView = new TextButton(Constants.WINDOW_WIDTH/2, 150, "Status");
@@ -56,9 +69,15 @@ public class GameBoardView extends State {
 //		testStatus.draw(canvas);
 //		finalStatus.draw(canvas);
 		backButton.draw(canvas);
-		ArrayList<BlockBox> bb = level.getBoxes();
-		for (BlockBox b : bb)
-			b.draw(canvas);
+		
+		
+		for (BlockBox b : bb) b.draw(canvas);
+		//bb.get(0).draw(canvas);
+		for (QuestionBox q : qb) q.draw(canvas);
+		//qb.get(0).draw(canvas);
+			
+			
+			
 		playerGfx.draw(canvas);
 		
 		questionView.draw(canvas);

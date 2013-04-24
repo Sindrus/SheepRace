@@ -9,8 +9,12 @@ package sheeprace.derp;
  *
  */
 public class QuestionBox extends Box{
+	
 	public QuestionBox(float x, float y){
-		setPosition(x, y);
+		
+		setConvertedCoordinates(x, y);
+		setView(Constants.questionsBox);
+		update(0);
 	}
 	
 	@Override

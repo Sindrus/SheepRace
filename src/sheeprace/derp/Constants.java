@@ -48,6 +48,8 @@ public class Constants {
     public static Image blueBox = new Image(R.drawable.blue);
     public static Image greenBox = new Image(R.drawable.green);
     public static Image whiteBox = new Image(R.drawable.white);
+    public static Image questionsBox = new Image(R.drawable.question_box);
+    public static Image blockBox = new Image(R.drawable.empty_box);
     //TODO, add a working list, and populate from the mainActivity or something
     
     /**

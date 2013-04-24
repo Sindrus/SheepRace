@@ -38,7 +38,11 @@ public class Level {
 		return s;
 	}
 	
-	public ArrayList<BlockBox> getBoxes(){
+	public ArrayList<BlockBox> getBlockBoxes(){
 		return (ArrayList<BlockBox>) this.bBox;
+	}
+	
+	public ArrayList<QuestionBox> getQuestionBoxes(){
+		return (ArrayList<QuestionBox>)this.qBox;
 	}
 }

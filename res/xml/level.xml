@@ -2,13 +2,13 @@
 <l>
     <levels theme="normal" levelnum="1">
         <level id="0">
-	        <qbox cox="0" coy="0" />
-	        <bbox cox="0" coy="50" />
-	        <qbox cox="40" coy="40"/>
-	        <qbox cox="25" coy="60"/>
-	        <qbox cox="80" coy="50" />
-	        <bbox cox="10" coy="40" />
-	        <bbox cox="40" coy="40" />
+	        <qbox cox="2" coy="2" />
+	        <bbox cox="2" coy="3" />
+	        <qbox cox="3" coy="1"/>
+	        <qbox cox="3" coy="5"/>
+	        <qbox cox="4" coy="3" />
+	        <bbox cox="7" coy="4" />
+	        <bbox cox="8" coy="2" />
 	        <end />
         </level>
     </levels>
