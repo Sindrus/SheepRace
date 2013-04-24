@@ -44,9 +44,6 @@ public class InitGameView extends State implements KeyboardListener{
 		savePlayer = new TextButton(Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/2, "Save Player");
 		player1ReadyButton = new TextButton(Constants.WINDOW_WIDTH/2 - 45, 2*Constants.WINDOW_HEIGHT/6, " ");
 		player2ReadyButton = new TextButton(Constants.WINDOW_WIDTH/2 - 45, 3*Constants.WINDOW_HEIGHT/6, " ");
-		player1Ready = false;
-		player2Ready = false;
-		player1ReadyButton = new TextButton(Constants.WINDOW_WIDTH/2, 2*Constants.WINDOW_HEIGHT/6, " ");
 	// Set flag what player is ready
 		player1Ready = false;
 		player2Ready = false;
