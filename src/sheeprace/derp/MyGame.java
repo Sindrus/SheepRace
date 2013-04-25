@@ -253,6 +253,7 @@ public class MyGame implements GameInterface{
 		keyList.addAll(availableQuestions.keySet());
 		String randomCategory = keyList.get(r.nextInt(keyList.size()));
 		List<Integer> idList = availableQuestions.get(randomCategory);
+		System.out.println("For kategori: "+randomCategory+" med spørsmålsid: "+idList);
 		int i = idList.remove(r.nextInt(idList.size()));
 		if(idList.isEmpty())
 			availableQuestions.remove(randomCategory);
