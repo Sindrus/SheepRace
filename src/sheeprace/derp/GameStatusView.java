@@ -118,6 +118,7 @@ public class GameStatusView extends State{
 			getGame().popState(4);
 		}
 		else if(continueButton.onTouchDown(event)){
+			System.out.println("test: " + equalsNumsOfGames);
 			if(equalsNumsOfGames)
 				MyGame.getGameObject().createNextLevel();
 			System.out.println("Pushed continue");

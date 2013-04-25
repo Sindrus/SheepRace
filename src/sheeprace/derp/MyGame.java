@@ -129,6 +129,7 @@ public class MyGame implements GameInterface{
 	
 	@Override
 	public ArrayList<Player> getPlayers() {
+		System.out.println("spiller lengde: " + players.size());
 		return players;
 	}
 	

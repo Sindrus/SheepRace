@@ -44,7 +44,7 @@ public class ChooseCategoryView extends State{
 		Iterator<Entry<String, Integer>> it = set.iterator();
 	    while (it.hasNext()) {
 	      Map.Entry entry = (Map.Entry) it.next();
-	      TextButton bn = new TextButton(Constants.WINDOW_WIDTH/2, 
+	      TextButton bn = new TextButton(3*Constants.WINDOW_WIDTH/7, 
 	    		  counter * Constants.WINDOW_HEIGHT/(Constants.categories.size()+2),
 	    		  "" +  entry.getKey(),Constants.l);
 		  choices.add(bn);

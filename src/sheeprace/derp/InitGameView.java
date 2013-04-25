@@ -121,7 +121,7 @@ public class InitGameView extends State implements KeyboardListener{
 				&& event.getY()>Constants.WINDOW_HEIGHT/6 && event.getY()<Constants.WINDOW_HEIGHT/6+Constants.blueBox.getHeight()){
 				sheepPlayer1.getGfx().setView(Constants.blueSheep);
 			}
-		if(savePlayer.onTouchDown(event)){
+		if(savePlayer.onTouchDown(event)&&!player2Ready){
 			if(player1Ready){
 				if(playerName.isEmpty()){
 					playerName = "P2";
