@@ -50,16 +50,13 @@ public class GameStatusView extends State{
 		
 		finishedButton = new TextButton((3*Constants.WINDOW_WIDTH)/4, Constants.WINDOW_HEIGHT/4, "To highscore");
 		
+	//	Calculating the score for this run	
 		long timeUsed = MyGame.getGameObject().getTimeDelta(System.currentTimeMillis());
 		int powerbarpower = MyGame.getGameObject().getPlayer().getPowerbarPower();
 		
 		int score = powerbarpower + (int)(long)(50000/timeUsed);
 		
 		MyGame.getGameObject().getPlayer().addScore(score);
-		
-		
-//		player1.addScore(MyGame.getGameObject().getp1sCorrect());
-//		player2.addScore(MyGame.getGameObject().getp2sCorrect());
 		
 		moreLevels=!(MyGame.getGameObject().numberOfLevelsLeft()==0);
 		equalsNumsOfGames = MyGame.getGameObject().evenGames();

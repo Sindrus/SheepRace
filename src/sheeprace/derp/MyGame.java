@@ -26,7 +26,7 @@ public class MyGame implements GameInterface{
 	private static MyGame game;
 	private MainActivity main;
 	private Game androidGame;
-	private ArrayList<Player> players = new ArrayList<Player>();
+	private ArrayList<Player> players;
 	private int levelNum, p1CorrQuest, p2CorrQuest, roundsPlayed;
 	private long timeUsed;
 	private Level level;
@@ -63,8 +63,12 @@ public class MyGame implements GameInterface{
 		this.timeUsed=0;
 		this.levelNum=0;
 		this.roundsPlayed=0;
+		this.availableQuestions = null;
 		this.availableQuestions = new HashMap<String, List<Integer>>();
+		this.chosenCategory = null;
 		this.chosenCategory = new ArrayList<String>();
+		this.players = null;
+		this.players = new ArrayList<Player>();
 		this.player1sTurn=true;
 		this.p1CorrQuest=0;
 		this.p2CorrQuest=0;
@@ -127,6 +131,20 @@ public class MyGame implements GameInterface{
 	public ArrayList<Player> getPlayers() {
 		return players;
 	}
+	
+	/**
+	 * This method returns the player that has the current turn
+	 * TODO, fix for adjusted list, aka so we can have highscores etc, or change addPLayers to insert(0,p) and insert(1,p)
+	 * @return
+	 */
+	public Player getPlayer(){
+		if(player1sTurn){
+			return players.get(0);
+		}
+		else{
+			return players.get(1);
+		}
+	}
 
 	@Override
 	public void addPlayers(Player p) {
@@ -146,19 +164,6 @@ public class MyGame implements GameInterface{
 	 */
 	public boolean isPlayer1sTurn(){
 		return player1sTurn;
-	}
-	/**
-	 * This method returns the player that has the current turn
-	 * TODO, fix for adjusted list, aka so we can have highscores etc, or change addPLayers to insert(0,p) and insert(1,p)
-	 * @return
-	 */
-	public Player getPlayer(){
-		if(player1sTurn){
-			return players.get(0);
-		}
-		else{
-			return players.get(1);
-		}
 	}
 	
 	/**
