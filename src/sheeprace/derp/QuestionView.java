@@ -23,7 +23,7 @@ public class QuestionView extends State{
 	private MainActivity main;
 	private Font font;
 	private Question q;
-	private List<TextButton> jo;
+	private List<TextButton> possibleAnswers;
 	private boolean correct;
 	
 	public QuestionView(MainActivity main){
@@ -33,10 +33,10 @@ public class QuestionView extends State{
 		font.setTextAlign(Align.CENTER);
 		this.main = main;
 		int fontInt = 150;
-		jo = new ArrayList<TextButton>();
+		possibleAnswers = new ArrayList<TextButton>();
 		for (int i = 0; i < q.getOptions().size(); i++) {
 			TextButton t = new TextButton(Constants.WINDOW_WIDTH/2, fontInt, q.getOptions().get(i));
-			jo.add(t);
+			possibleAnswers.add(t);
 			fontInt += 50;
 		}
 		this.correct = false;
@@ -48,8 +48,8 @@ public class QuestionView extends State{
 		canvas.drawColor(Color.RED);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		canvas.drawText("" + q.getQuestion() , Constants.WINDOW_WIDTH/2, 100, font);
-		for (int i = 0; i < jo.size(); i++) {
-			jo.get(i).draw(canvas);
+		for (int i = 0; i < possibleAnswers.size(); i++) {
+			possibleAnswers.get(i).draw(canvas);
 		}
 
 	//	System.out.println("During question" +MyGame.getGameObject().getPlayer().getGfx().getPosition() );
@@ -64,8 +64,8 @@ public class QuestionView extends State{
 	}
 	
 	public boolean onTouchDown(MotionEvent evt){		
-		for (int i = 0; i < jo.size(); i++) {
-			if(jo.get(i).onTouchDown(evt) && q.getCorrectA().get(i)){
+		for (int i = 0; i < possibleAnswers.size(); i++) {
+			if(possibleAnswers.get(i).onTouchDown(evt) && q.getCorrectA().get(i)){
 				if(MyGame.getGameObject().isPlayer1sTurn())
 					MyGame.getGameObject().p1IsCorrect();
 				else
