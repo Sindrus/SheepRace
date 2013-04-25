@@ -53,9 +53,6 @@ public class QuestionView extends State {
 		for (int i = 0; i < possibleAnswers.size(); i++) {
 			possibleAnswers.get(i).draw(canvas);
 		}
-
-		// System.out.println("During question"
-		// +MyGame.getGameObject().getPlayer().getGfx().getPosition() );
 	}
 
 	public String getQuestion() {
@@ -99,8 +96,10 @@ public class QuestionView extends State {
 	class Splash extends State {
 		MainActivity main2;
 		boolean correct;
+		private long entryTime;
 
 		public Splash(MainActivity main, boolean correct) {
+			entryTime=System.currentTimeMillis();
 			this.main2 = main;
 			this.correct = correct;
 		}
@@ -108,23 +107,17 @@ public class QuestionView extends State {
 		public void draw(Canvas canvas) {
 			if (correct){
 				canvas.drawColor(Color.GREEN);
-//				canvas.drawText("T", Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT/2, new Font(255, 255, 255, 100, Typeface.SERIF, Typeface.BOLD));
+				canvas.drawText("T", Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT/2, new Font(255, 255, 255, 100, Typeface.SERIF, Typeface.BOLD));
 			}
 			else{
 				canvas.drawColor(Color.RED);
-//				canvas.drawText("F", Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT/2, new Font(255, 255, 255, 100, Typeface.SERIF, Typeface.BOLD));
+				canvas.drawText("F", Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT/2, new Font(255, 255, 255, 100, Typeface.SERIF, Typeface.BOLD));
 			}
-			long time = System.nanoTime();
-			long longtime = System.nanoTime();
-			while (longtime - time < 50000000) {
-				// System.out.println(longtime-time);
-				longtime = System.nanoTime();
-			}
-			getGame().popState(2);
-			System.out
-					.println("After question: "
-							+ MyGame.getGameObject().getPlayer().getGfx()
-									.getPosition());
+		}
+		@Override
+		public void update(float dt){
+			if((System.currentTimeMillis()-entryTime)>500)
+				getGame().popState(2);
 		}
 	}
 }

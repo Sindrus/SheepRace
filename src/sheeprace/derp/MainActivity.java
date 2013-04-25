@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
@@ -13,6 +15,8 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import sheep.game.Game;
+import sheep.graphics.Font;
+//import sheep.graphics.Font;
 // Linje 2500 for min del, \o/
 public class MainActivity extends Activity {
 	
@@ -27,6 +31,11 @@ public class MainActivity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
 		Game game = new Game(this, null);
+		
+	// Initializing font
+		Constants.p = new Paint[]{ new Font(255, 255, 255, 40.0f, 
+				Typeface.SANS_SERIF, Typeface.NORMAL),  new Font(255, 255, 255, 40.0f, 
+						Typeface.SANS_SERIF, Typeface.NORMAL)};
 		
 	// Need to get the q-categories	
 		QuestionMaker.getCategories(this);

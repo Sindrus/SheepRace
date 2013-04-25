@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import android.graphics.Bitmap;
+import android.graphics.Paint;
 import sheep.graphics.Image;
 
 /**
@@ -67,4 +68,15 @@ public class Constants {
      * Highscorelist
      */
     public static List<HighscorePlayer> highscore;
+    
+    /**
+     * For setting the size of the textbuttons
+     */
+    public static float fontsize = 60;
+    public static Paint[] p;
+    
 }
+
+
+
+

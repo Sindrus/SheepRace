@@ -41,12 +41,12 @@ public class InitGameView extends State implements KeyboardListener{
 		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
 		
 	// Instantiate 	buttons
-		backButton = new TextButton(50, 50, "Back");
-		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Choose categories");
+		backButton = new TextButton(50, 50, "Back",Constants.p);
+		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/5), 50, "Choose categories",Constants.p);
 		startGame.setLabel(" ");
-		savePlayer = new TextButton(Constants.WINDOW_WIDTH/2-45, 2*Constants.WINDOW_HEIGHT/7, "Save Player");
-		player1ReadyButton = new TextButton(4*Constants.WINDOW_WIDTH/5, 2*Constants.WINDOW_HEIGHT/6, " ");
-		player2ReadyButton = new TextButton(4*Constants.WINDOW_WIDTH/5, 3*Constants.WINDOW_HEIGHT/7, " ");
+		savePlayer = new TextButton(3*(Constants.WINDOW_WIDTH/5), 50, "Save Player",Constants.p);
+		player1ReadyButton = new TextButton(3*Constants.WINDOW_WIDTH/5, 2*Constants.WINDOW_HEIGHT/6, " ",Constants.p);
+		player2ReadyButton = new TextButton(3*Constants.WINDOW_WIDTH/5, 3*Constants.WINDOW_HEIGHT/7, " ",Constants.p);
 		
 	// Set flag what player is ready
 		player1Ready = false;
