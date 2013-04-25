@@ -77,7 +77,6 @@ public class QuestionView extends State{
 
 		System.out.println("Player 1 score: "+MyGame.getGameObject().getp1sCorrect());
 		System.out.println("Player 2 score: "+MyGame.getGameObject().getp2sCorrect());
-	//	getGame().popState();
 		getGame().pushState(new Splash(main,correct));
 		return true;
 	}

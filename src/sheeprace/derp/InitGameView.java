@@ -57,7 +57,7 @@ public class InitGameView extends State implements KeyboardListener{
 		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
 		
-		sheepPlayer1 = new Player(new PlayerGfx(Constants.sheep1), playerName, 0);
+		sheepPlayer1 = new Player(new PlayerGfx(Constants.sheep1), playerName);
 		sheepPlayer1.getGfx().setPosition(Constants.WINDOW_WIDTH/8, Constants.WINDOW_HEIGHT/4);
 		this.main = main;
 	}
@@ -142,7 +142,7 @@ public class InitGameView extends State implements KeyboardListener{
 				sheepPlayer1.setName(playerName);
 				savePlayer(sheepPlayer1);
 				playerName = "";
-				sheepPlayer1 = new Player(new PlayerGfx(Constants.sheep1), playerName, 0);
+				sheepPlayer1 = new Player(new PlayerGfx(Constants.sheep1), playerName);
 				sheepPlayer1.getGfx().setPosition(Constants.WINDOW_WIDTH/8, Constants.WINDOW_HEIGHT/4);
 			}
 		}
@@ -150,7 +150,7 @@ public class InitGameView extends State implements KeyboardListener{
 	}
 	
 	public void savePlayer(Player sheep){
-		Player player = new Player(sheep.getGfx(), sheep.getName(), sheep.getScore());
+		Player player = new Player(sheep.getGfx(), sheep.getName());
 		MyGame.getGameObject().getPlayers().add(player);
 		
 	}

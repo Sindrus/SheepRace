@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.MotionEvent;
 import sheep.game.Sprite;
 import sheep.game.State;
@@ -35,14 +36,14 @@ public class GameBoardView extends State {
 	
 	private boolean isBlocked;
 	
-	
 	public GameBoardView(MainActivity main){
 		this.main = main;
 		
 		this.player = MyGame.getGameObject().getPlayer();
+		this.player.resetPowerbarPower();
 		this.playerGfx = player.getGfx();
 		
-		this.mapSpeed = -60;
+		this.mapSpeed = -0;
 		
 		this.isBlocked = false;
 		
@@ -79,6 +80,23 @@ public class GameBoardView extends State {
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		backButton.draw(canvas);
 		
+		int powerbarvalue = (player.getPowerbarPower()/10);
+		
+		Paint p = new Paint();
+	// FIXME: At some point the color cuts into some other color, this is a !feature.	
+		if(powerbarvalue>100)
+			p.setColor(Color.GREEN);
+		else if(powerbarvalue>50)
+			p.setColor(Color.rgb((255-(powerbarvalue*5)), 255, 0));
+		else if(powerbarvalue>0)
+			p.setColor(Color.rgb(255, (5+(powerbarvalue*5)), 0));
+		else
+			p.setColor(Color.BLACK);
+		if(powerbarvalue>0)
+			canvas.drawRect(50, 50, powerbarvalue*5+50, 60, p);
+		else
+			canvas.drawRect(50, 50, 55, 60, p);
+		
 		eb.draw(canvas);
 		for (BlockBox b : bb) b.draw(canvas);
 		for (QuestionBox q : qb) q.draw(canvas);
@@ -100,6 +118,8 @@ public class GameBoardView extends State {
 	}
 	
 	public void update(float dt) {
+		
+		player.decreasePowerbarPower();
 		
 		if(playerGfx.collides(eb))
 			getGame().pushState(new GameStatusView(main));
@@ -149,7 +169,8 @@ public class GameBoardView extends State {
 			eb.setSpeed(0, 0);
 		else
 			eb.setSpeed(mapSpeed, 0);
-
+		
+		player.update(dt);
 		eb.update(dt);
 		playerGfx.update(dt);
 		ground.update(dt);

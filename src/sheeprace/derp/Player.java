@@ -12,17 +12,12 @@ public class Player extends Sprite implements PlayerInterface{
 	private PlayerGfx gfx;
 	private int score;
 	private String name;
+	private int powerbarpower;
 	
-	public Player(String name, int score){
-		this.name = name;
-		this.score = score;
-		
-	}
-	
-	public Player(PlayerGfx gfx,String name, int score){
+	public Player(PlayerGfx gfx,String name){
 		setPlayerGfx(gfx); //obviously not final
 		this.name = name;
-		this.score = score;
+		this.score = 0;
 	}
 	
 	@Override
@@ -47,13 +42,11 @@ public class Player extends Sprite implements PlayerInterface{
 	
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 	
 	@Override
 	public void setName(String name) {
-		// TODO Auto-generated method stub
 		this.name = name;
 	}
 
@@ -66,4 +59,33 @@ public class Player extends Sprite implements PlayerInterface{
 		return ("Spillernavn: "+this.name+" with score: "+this.score);
 	}
 	
+	/**
+	 * decrease the power of the powerbarpower
+	 */
+	public void decreasePowerbarPower(){
+		this.powerbarpower--;
+	}
+	
+	/**
+	 * return the power of the powerbar
+	 * @return the powerbar
+	 */
+	public int getPowerbarPower(){
+		return this.powerbarpower;
+	}
+	
+	/**
+	 * Increase the power of the powerbarpower by power
+	 * @param power
+	 */
+	public void increasePowerbarPower(int power){
+		this.powerbarpower++;
+	}
+	
+	/**
+	 * reset the powerbarpower to some defaultvalue, between games.
+	 */
+	public void resetPowerbarPower(){
+		this.powerbarpower=1000;
+	}
 }
