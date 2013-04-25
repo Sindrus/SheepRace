@@ -13,7 +13,7 @@ import sheep.game.Game;
 /**
  * 
  * This class holds important data about the current game. 
- * This is a singletonobject.
+ * This is a singleton object.
  * Including players currently in the game and the level object of the current 
  * level so that GameBoardView knows what level to draw.
  * Rename because of namecrash

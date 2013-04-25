@@ -64,7 +64,7 @@ public class GameBoardView extends State {
 		eb.update(0);
 		
 	// TODO: Remove most of these buttons
-		backButton = new TextButton(50, 50, "Back");
+//		backButton = new TextButton(50, 50, "Back");
 		
 		playerGfx.setPosition(Constants.WINDOW_WIDTH/2-20, Constants.WINDOW_HEIGHT*3/4 - Constants.blueSheep.getHeight()/2);
 		
@@ -80,7 +80,7 @@ public class GameBoardView extends State {
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.YELLOW);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
-		backButton.draw(canvas);
+//		backButton.draw(canvas);
 		
 		int powerbarvalue = (player.getPowerbarPower()/10);
 		
@@ -109,10 +109,10 @@ public class GameBoardView extends State {
 	}
 	
 	public boolean onTouchDown(MotionEvent event){
-		if(backButton.onTouchDown(event)){
-			getGame().popState();
-		}
-		else {
+//		if(backButton.onTouchDown(event)){
+//			getGame().popState();
+//		}
+		{
 			playerGfx.jump();
 		}
 		

@@ -10,7 +10,7 @@ import android.graphics.Paint.Align;
 import android.view.MotionEvent;
 
 /**
- * This class must show the status of each player between each game. 
+ * This class shows the status of each player between each game. 
  * The status includes the score of each player and how many correct questions
  * the player has answered correct and wrong.
  * Also list the player that is in the lead.
@@ -21,7 +21,7 @@ public class GameStatusView extends State{
 	
 	private MainActivity main;
 	private Player player1,player2;
-	private TextButton continueButton, finishedButton;
+	private TextButton continueButton, finishedButton, quitButton;
 	
 	private Font font, headLine, winFont; 
 	
@@ -49,6 +49,8 @@ public class GameStatusView extends State{
 		continueButton = new TextButton(Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/4, "Next Game");
 		
 		finishedButton = new TextButton((3*Constants.WINDOW_WIDTH)/4, Constants.WINDOW_HEIGHT/4, "To highscore");
+		
+		quitButton = new TextButton(Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/4, "Back to menu");
 		
 	//	Calculating the score for this run	
 		long timeUsed = MyGame.getGameObject().getTimeDelta(System.currentTimeMillis());
@@ -98,17 +100,24 @@ public class GameStatusView extends State{
 			continueButton.draw(canvas);
 		else if(!equalsNumsOfGames)
 			continueButton.draw(canvas);
-		if(equalsNumsOfGames)
+		if(equalsNumsOfGames){
 			finishedButton.draw(canvas);
+			quitButton.draw(canvas);
+		}
 	}
 	
 	@Override
 	public boolean onTouchDown(MotionEvent event) {
-		if(finishedButton.onTouchDown(event)){
+		if(finishedButton.onTouchDown(event) && equalsNumsOfGames){
 			System.out.println("Pushed finished");
 			getGame().popState(4);
 			getGame().pushState(new HighScoreView(main, true));
-		}else if(continueButton.onTouchDown(event)){
+		}
+		else if(quitButton.onTouchDown(event) && equalsNumsOfGames){
+			System.out.println("Pushed quit finished");
+			getGame().popState(4);
+		}
+		else if(continueButton.onTouchDown(event)){
 			if(equalsNumsOfGames)
 				MyGame.getGameObject().createNextLevel();
 			System.out.println("Pushed continue");

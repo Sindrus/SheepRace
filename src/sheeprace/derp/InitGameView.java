@@ -129,7 +129,7 @@ public class InitGameView extends State implements KeyboardListener{
 				player2Ready = true;
 				player2ReadyButton.setLabel("Player "+playerName+" ready!");
 				savePlayer.setLabel(" ");
-				startGame.setLabel("Chose categories");
+				startGame.setLabel("Choose categories");
 				sheepPlayer1.setName(playerName);
 				savePlayer(sheepPlayer1);
 			}

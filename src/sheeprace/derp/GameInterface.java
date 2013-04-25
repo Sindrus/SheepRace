@@ -3,7 +3,7 @@ package sheeprace.derp;
 import java.util.ArrayList;
 
 /**
- * Interface for the (whops forgot why I made this interface)
+ * Interface for use in the singleton class
  *
  */
 

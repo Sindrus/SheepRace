@@ -15,6 +15,11 @@ import sheep.graphics.Font;
 import sheep.gui.TextButton;
 import sheep.game.State;
 
+/**
+ * The View to select question categories
+ * 
+ *
+ */
 
 
 public class ChooseCategoryView extends State{
@@ -26,7 +31,7 @@ public class ChooseCategoryView extends State{
 	private Level l;
 	
 	public ChooseCategoryView(MainActivity main){
-		backButton = new TextButton(50, 50, "Back");
+//		backButton = new TextButton(50, 50, "Back");
 		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Start Game");
 		this.main = main;
 		
@@ -51,7 +56,7 @@ public class ChooseCategoryView extends State{
 		canvas.drawColor(Color.BLACK);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		Constants.frontSheep.draw(canvas, 0, Constants.WINDOW_HEIGHT/7);
-		backButton.draw(canvas);
+//		backButton.draw(canvas);
 		startGame.draw(canvas);
 		canvas.drawText("Choose Categories:", Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT/6, font);
 		for (int i = 0; i < choices.size(); i++) {
@@ -60,10 +65,10 @@ public class ChooseCategoryView extends State{
 	}
 	
 	public boolean onTouchDown(MotionEvent event) {
-		if(backButton.onTouchDown(event)){
-			getGame().popState();
-		}
-		else if(startGame.onTouchDown(event)){
+//		if(backButton.onTouchDown(event)){
+//			getGame().popState();
+//		}
+		if(startGame.onTouchDown(event)){
 			getGame().pushState(new GameBoardView(main));
 		}
 		for (int i = 0; i < choices.size(); i++) {

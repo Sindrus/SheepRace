@@ -1,5 +1,10 @@
 package sheeprace.derp;
 
+/**
+ * Contains names and scores of the players on the highscore list and contains an comparator to sort the list
+ *
+ */
+
 public class HighscorePlayer implements Comparable<HighscorePlayer>{
 	
 	private String name;

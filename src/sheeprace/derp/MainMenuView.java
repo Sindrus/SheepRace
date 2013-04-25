@@ -13,7 +13,7 @@ import sheep.input.TouchListener;
 
 /**
  * This is the main menu view. This view must hold the buttons to navigate to
- * the aboutview, initgameview and highscoreview (if it is implemented)
+ * the AboutView, InitGameView and HighScoreView
  *
  */
 
