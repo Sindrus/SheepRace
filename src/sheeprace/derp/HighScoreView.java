@@ -26,17 +26,12 @@ public class HighScoreView extends State {
 	private ArrayList<Player> bestFivePlayers;
 	
 	public HighScoreView(MainActivity main, boolean fromGame){
-		backButton = new TextButton(50, 50, "Back");
+		backButton = new TextButton(50, 50, "Back",Constants.p);
 		font = new Font(88, 88, 88, 16, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
 		headLine = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		headLine.setTextAlign(Align.CENTER);
-//		background = new Image(R.drawable.background);
-//		sheep = new Image(R.drawable.frontsheep);
-//		generatePlayers(); //Polutes the players created in the game itself
 		bestFivePlayers = new ArrayList<Player>();
-//		getBestFivePlayers(MyGame.getGameObject().getPlayers());
-		
 		
 		
 	// New code	
@@ -74,10 +69,6 @@ public class HighScoreView extends State {
 	}
 	
 	
-	
-	
-	
-	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.BLACK);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
@@ -91,33 +82,7 @@ public class HighScoreView extends State {
 		}
 	}
 	
-/*	public void getBestFivePlayers(ArrayList<Player> players){
-		ArrayList<Player> stuff = new ArrayList<Player>();
-		for (int i = 0; i < players.size(); i++) {
-			stuff.add(players.get(i));
-		}
-		int score = 0;
-		int player = -1;
-		int size = 0;
-		if(players.size()>5){
-			size = 5;
-		}
-		else{
-			size = players.size();
-		}
-		for(int j = 0; j < size; j++){
-			score = 0;
-			for (int i = 0; i < stuff.size(); i++) {
-				if(stuff.get(i).getScore() >= score){
-					score = stuff.get(i).getScore();
-					player = i;
-				}
-			}
-			bestFivePlayers.add(stuff.get(player));
-			stuff.remove(player);
-		}
-	}*/
-	
+
 	@Override
 	public boolean onTouchDown(MotionEvent event) {
 		if(backButton.onTouchDown(event)){
