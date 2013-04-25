@@ -4,24 +4,24 @@
         <level id="0">
             <!-- cox is length, coy is height -->
             <!-- coy should be between 1 and 5, 1 is high and 5 is low -->
-	 <!--        <qbox cox="2" coy="2" />
+	        <qbox cox="2" coy="2" />
 	        <bbox cox="2" coy="3" />
 	        <qbox cox="3" coy="1" />
-	        <qbox cox="5" coy="3" />-->
-	 <!--        <qbox cox="16" coy="1" /> -->
+	        <qbox cox="5" coy="3" />
+	        <qbox cox="16" coy="1" />
 	        <qbox cox="10" coy="5" />
-	 <!--        <qbox cox="11" coy="5" />
+	        <qbox cox="11" coy="5" />
 	        <bbox cox="12" coy="3" />
 	        <bbox cox="12" coy="2" />
 	        <bbox cox="14" coy="5" />
-	        <bbox cox="15" coy="5" />-->
+	        <bbox cox="15" coy="5" />
 	        <end cox="14" />
         </level>
         <level id="1">
             <bbox cox="3" coy="3" />
             <bbox cox="5" coy="2" />
             <bbox cox="4" coy="4" />
-            <bbox cox="6" coy="5" />
+            <bbox cox="13" coy="5" />
             <qbox cox="8" coy="3" />
             <qbox cox="10" coy="2" />
             <qbox cox="13" coy="3" />
