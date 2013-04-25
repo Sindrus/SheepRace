@@ -14,6 +14,12 @@ import android.view.WindowManager;
 
 import sheep.game.Game;
 // Linje 2500 for min del, \o/
+/**
+ * This is the class which initializes everything
+ * 
+ *
+ */
+
 public class MainActivity extends Activity {
 	
 	@Override

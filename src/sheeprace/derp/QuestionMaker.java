@@ -10,7 +10,7 @@ import android.util.Log;
 
 /**
  * Creates a question and returns it to whomever asked for it.
- * Must implement QuestionMakerInterface.
+ * 
  */
 
 public class QuestionMaker{

@@ -4,6 +4,10 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+/**
+ * 	Parses the Question xml and returns a question
+ */
+
 public class QuestionParser extends DefaultHandler{
 	private boolean in_outertag = false;
 	private boolean in_innertag = false;

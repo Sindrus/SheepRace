@@ -15,6 +15,11 @@ import sheep.graphics.Font;
 import sheep.gui.TextButton;
 import sheep.game.State;
 
+/**
+ * The View to select question categories
+ * 
+ *
+ */
 
 
 public class ChooseCategoryView extends State{

@@ -2,6 +2,13 @@ package sheeprace.derp;
 
 import sheep.graphics.Image;
 
+/**
+ * 	The purpose of this class is to create a box at the end of the game world which ends the current play session when the player  
+ * 
+ * 	Contains information about the endbox
+ * 
+ */
+
 public class EndBox extends Box{
 
 	public EndBox(float x, float y, Image image) {
