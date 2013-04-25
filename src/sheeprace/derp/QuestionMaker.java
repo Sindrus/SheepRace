@@ -25,7 +25,6 @@ public class QuestionMaker{
 	 */
 	public static Question createQuestion(MainActivity main, int qid, String category) {
 		try {
-			
 			XmlResourceParser xrp = main.getResources().getXml(R.xml.question);
 			
 			// Running through the xml-sheet until it reaches the end
@@ -33,7 +32,10 @@ public class QuestionMaker{
 				if(xrp.getEventType() == XmlResourceParser.START_TAG){
 					
 					// Check if the next questions are in the correct category
+					if(xrp.getAttributeCount()>0)
 					if(xrp.getName().equals("q") && xrp.getAttributeValue(0).equals(category)){
+						
+						System.out.println("Funnet kategori");
 						
 						// Get the number of questions in the category
 						int qs = xrp.getAttributeIntValue(1, -1);
