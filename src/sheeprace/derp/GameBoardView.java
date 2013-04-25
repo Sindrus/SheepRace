@@ -129,7 +129,8 @@ public class GameBoardView extends State {
 		
 		if (playerGfx.collides(ground))
 			playerGfx.stop();
-	// Updating blockbox	
+	// Updating blockbox
+	// Collisiondetection need a lot more work!
 		for(BlockBox bBox : bb){
 			if(bBox.collides(playerGfx)){
 				if(playerGfx.getY()<bBox.getY()){
@@ -148,7 +149,7 @@ public class GameBoardView extends State {
 				bBox.setSpeed(0, 0);
 			else
 				bBox.setSpeed(-mapSpeed, 0);
-			
+			isBlocked=false;
 			bBox.update(dt);
 		}
 	// Updating Questionbox	
