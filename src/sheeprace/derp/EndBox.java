@@ -5,15 +5,18 @@ import sheep.graphics.Image;
 public class EndBox extends Box{
 
 	public EndBox(float x, float y, Image image) {
-		super(image);
-		setConvertedCoordinates(x, y);
-		setPosition(getX(), Constants.WINDOW_HEIGHT/2);
-		update(0);
+		super(x,y,image);
 	}
 	
 	@Override
 	public String toString(){
 		return ("End: X: "+getX()+" Y: "+getY());
+	}
+
+	@Override
+	public void setConvertedCoordinates(float x, float y) {
+		x=x*((float)Constants.WINDOW_HEIGHT/(float)(7.5));
+		setPosition(x, Constants.WINDOW_HEIGHT/2);
 	}
 
 }
