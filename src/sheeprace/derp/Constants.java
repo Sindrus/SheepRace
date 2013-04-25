@@ -74,6 +74,7 @@ public class Constants {
      */
     public static float fontsize = 60;
     public static Paint[] p;
+    public static Paint[] l;
     
 }
 

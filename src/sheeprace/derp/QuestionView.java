@@ -36,7 +36,7 @@ public class QuestionView extends State {
 		possibleAnswers = new ArrayList<TextButton>();
 		for (int i = 0; i < q.getOptions().size(); i++) {
 			TextButton t = new TextButton(Constants.WINDOW_WIDTH / 2, fontInt,
-					q.getOptions().get(i));
+					q.getOptions().get(i),Constants.p);
 			possibleAnswers.add(t);
 			fontInt += 50;
 		}
