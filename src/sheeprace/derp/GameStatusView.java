@@ -50,7 +50,7 @@ public class GameStatusView extends State{
 		
 		finishedButton = new TextButton((3*Constants.WINDOW_WIDTH)/4, Constants.WINDOW_HEIGHT/4, "To highscore");
 		
-		quitButton = new TextButton(Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/4, "Back to menu");
+		quitButton = new TextButton(3*Constants.WINDOW_WIDTH/4, 2*Constants.WINDOW_HEIGHT/5, "Back to menu");
 		
 	//	Calculating the score for this run	
 		long timeUsed = MyGame.getGameObject().getTimeDelta(System.currentTimeMillis());
@@ -65,7 +65,7 @@ public class GameStatusView extends State{
 		
 		MatrixOps();
 	}
-	
+	//Rotate some sheeps for the status view
 	public void MatrixOps(){
 		matrix = new Matrix();
 		matrix.reset();
