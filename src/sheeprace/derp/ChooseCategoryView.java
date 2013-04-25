@@ -32,7 +32,7 @@ public class ChooseCategoryView extends State{
 	
 	public ChooseCategoryView(MainActivity main){
 //		backButton = new TextButton(50, 50, "Back");
-		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Start Game");
+		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Start Game",Constants.p);
 		this.main = main;
 		
 		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
@@ -46,7 +46,7 @@ public class ChooseCategoryView extends State{
 	      Map.Entry entry = (Map.Entry) it.next();
 	      TextButton bn = new TextButton(Constants.WINDOW_WIDTH/2, 
 	    		  counter * Constants.WINDOW_HEIGHT/(Constants.categories.size()+2),
-	    		  "" +  entry.getKey());
+	    		  "" +  entry.getKey(),Constants.l);
 		  choices.add(bn);
 		  counter++;
 	    }

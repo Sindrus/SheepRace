@@ -43,6 +43,11 @@ public class MainActivity extends Activity {
 				Typeface.SANS_SERIF, Typeface.NORMAL),  new Font(255, 255, 255, 40.0f, 
 						Typeface.SANS_SERIF, Typeface.NORMAL)};
 		
+		Constants.l = new Paint[]{ new Font(255, 255, 255, 40.0f, 
+				Typeface.SANS_SERIF, Typeface.NORMAL),  new Font(10, 90, 200, 40.0f, 
+						Typeface.SANS_SERIF, Typeface.NORMAL)};
+
+		
 	// Need to get the q-categories	
 		QuestionMaker.getCategories(this);
 		

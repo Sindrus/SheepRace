@@ -46,11 +46,11 @@ public class GameStatusView extends State{
 		winFont = new Font(20,190,30,40,Typeface.SERIF, Typeface.BOLD);
 		winFont.setTextAlign(Align.CENTER);
 		
-		continueButton = new TextButton(Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/4, "Next Game");
+		continueButton = new TextButton(Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/4, "Next Game",Constants.p);
 		
-		finishedButton = new TextButton((3*Constants.WINDOW_WIDTH)/4, Constants.WINDOW_HEIGHT/4, "To highscore");
+		finishedButton = new TextButton((3*Constants.WINDOW_WIDTH)/4, Constants.WINDOW_HEIGHT/4, "To highscore",Constants.p);
 		
-		quitButton = new TextButton(Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/4, "Back to menu");
+		quitButton = new TextButton(3*Constants.WINDOW_WIDTH/4, 2*Constants.WINDOW_HEIGHT/5, "Back to menu", Constants.p);
 		
 	//	Calculating the score for this run	
 		long timeUsed = MyGame.getGameObject().getTimeDelta(System.currentTimeMillis());
@@ -65,7 +65,7 @@ public class GameStatusView extends State{
 		
 		MatrixOps();
 	}
-	
+	//Rotate some sheeps for the status view
 	public void MatrixOps(){
 		matrix = new Matrix();
 		matrix.reset();
