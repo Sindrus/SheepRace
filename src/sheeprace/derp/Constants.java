@@ -40,7 +40,7 @@ public class Constants {
     public static Bitmap background_new = null;
     public static Bitmap frontSheep_bitmap = null;
     public static Image frontSheep = new Image(R.drawable.frontsheep); 
-    public static Image sheep1 = new Image(R.drawable.sau_big_1); 
+    public static Image sheep1 = new Image(R.drawable.sau_white); 
     public static Image redSheep = new Image(R.drawable.sau_red);
     public static Image blueSheep = new Image(R.drawable.sau_blue);
     public static Image greenSheep = new Image(R.drawable.sau_green);
