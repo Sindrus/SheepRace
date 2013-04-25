@@ -29,7 +29,7 @@ public class GameBoardView extends State {
 	
 	private Sprite ground;
 	
-	private TextButton backButton;//, questionView;
+	private TextButton backButton;
 	
 	private float mapSpeed;
 	
@@ -37,7 +37,6 @@ public class GameBoardView extends State {
 	
 	
 	public GameBoardView(MainActivity main){
-		System.out.println("In the constructor");
 		this.main = main;
 		
 		this.player = MyGame.getGameObject().getPlayer();
@@ -64,7 +63,6 @@ public class GameBoardView extends State {
 		eb.update(0);
 		
 	// TODO: Remove most of these buttons
-	//	questionView = new TextButton(Constants.WINDOW_WIDTH/2, 100, "Questions");
 		backButton = new TextButton(50, 50, "Back");
 		
 		playerGfx.setPosition(Constants.WINDOW_WIDTH/2-20, Constants.WINDOW_HEIGHT*3/4 - Constants.blueSheep.getHeight()/2);
@@ -77,7 +75,6 @@ public class GameBoardView extends State {
 	}
 	
 	public void draw(Canvas canvas){
-		System.out.println("In the draw");
 		canvas.drawColor(Color.YELLOW);
 		canvas.drawBitmap(Constants.background_new, 0, 0, null);
 		backButton.draw(canvas);
@@ -85,7 +82,7 @@ public class GameBoardView extends State {
 		eb.draw(canvas);
 		for (BlockBox b : bb) b.draw(canvas);
 		for (QuestionBox q : qb) q.draw(canvas);
-			
+		
 		playerGfx.draw(canvas);
 		
 	//	questionView.draw(canvas);
@@ -95,9 +92,6 @@ public class GameBoardView extends State {
 		if(backButton.onTouchDown(event)){
 			getGame().popState();
 		}
-	/*	else if(questionView.onTouchDown(event)){
-			getGame().pushState(new QuestionView(main));
-		}*/
 		else {
 			playerGfx.jump();
 		}
@@ -106,7 +100,6 @@ public class GameBoardView extends State {
 	}
 	
 	public void update(float dt) {
-		System.out.println("In update");
 		
 		if(playerGfx.collides(eb))
 			getGame().pushState(new GameStatusView(main));
@@ -139,6 +132,7 @@ public class GameBoardView extends State {
 		for(QuestionBox qBox : qb){
 			if(qBox.collides(playerGfx)){
 				qBox.setPosition(-200, -200);
+				qBox.update(dt);
 				System.out.println("before question" +playerGfx.getPosition() );
 				getGame().pushState(new QuestionView(main));
 				break;
