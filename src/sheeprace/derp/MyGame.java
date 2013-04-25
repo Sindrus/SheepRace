@@ -28,6 +28,7 @@ public class MyGame implements GameInterface{
 	private Game androidGame;
 	private ArrayList<Player> players = new ArrayList<Player>();
 	private int levelNum, p1CorrQuest, p2CorrQuest, roundsPlayed;
+	private long timeUsed;
 	private Level level;
 	private boolean player1sTurn;
 	
@@ -59,6 +60,7 @@ public class MyGame implements GameInterface{
 	 * that is kept in this class every time we reset the game.
 	 */
 	public void resetGame(){
+		this.timeUsed=0;
 		this.levelNum=0;
 		this.roundsPlayed=0;
 		this.availableQuestions = new HashMap<String, List<Integer>>();
@@ -191,6 +193,30 @@ public class MyGame implements GameInterface{
 	 */
 	public int getp2sCorrect(){
 		return this.p2CorrQuest;
+	}
+	
+	/**
+	 * reset the time used to prepare for the next player
+	 */
+	public void resetTimeUsed(){
+		this.timeUsed=0;
+	}
+	
+	/**
+	 * Keep the starttime
+	 * @param initialTime the starttime of the player
+	 */
+	public void setStartTime(long initialTime){
+		this.timeUsed=initialTime;
+	}
+	
+	/**
+	 * Calculate the time used by the player
+	 * @param finalTime the time the player finished the race
+	 * @return the timedelta from beginning to the end.
+	 */
+	public long getTimeDelta(long finalTime){
+		return (finalTime-this.timeUsed);
 	}
 	
 	/**

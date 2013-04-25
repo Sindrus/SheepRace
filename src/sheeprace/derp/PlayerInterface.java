@@ -11,7 +11,7 @@ public interface PlayerInterface {
 	 */
 	public int getScore();
 	
-	public void setScore(int score);
+	public void addScore(int score);
 	/**
 	 * Calculate the score the player got for the game using the time and 
 	 * powerBar parameter and update the current playerscore.

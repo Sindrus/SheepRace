@@ -70,6 +70,7 @@ public class QuestionView extends State{
 					MyGame.getGameObject().p1IsCorrect();
 				else
 					MyGame.getGameObject().p2sCorrect();
+				MyGame.getGameObject().getPlayer().increasePowerbarPower(200);
 				correct = true;
 			}
 

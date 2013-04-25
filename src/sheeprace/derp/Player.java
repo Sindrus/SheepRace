@@ -50,9 +50,13 @@ public class Player extends Sprite implements PlayerInterface{
 		this.name = name;
 	}
 
+	/**
+	 * Accumulates the score
+	 * @param score to be added to the current score
+	 */
 	@Override
-	public void setScore(int score) {
-		this.score=score;
+	public void addScore(int score) {
+		this.score+=score;
 	}
 	@Override
 	public String toString(){
@@ -63,6 +67,7 @@ public class Player extends Sprite implements PlayerInterface{
 	 * decrease the power of the powerbarpower
 	 */
 	public void decreasePowerbarPower(){
+		if(powerbarpower>=0)
 		this.powerbarpower--;
 	}
 	
@@ -79,13 +84,13 @@ public class Player extends Sprite implements PlayerInterface{
 	 * @param power
 	 */
 	public void increasePowerbarPower(int power){
-		this.powerbarpower++;
+		this.powerbarpower+=power;
 	}
 	
 	/**
 	 * reset the powerbarpower to some defaultvalue, between games.
 	 */
 	public void resetPowerbarPower(){
-		this.powerbarpower=1000;
+		this.powerbarpower=500;
 	}
 }

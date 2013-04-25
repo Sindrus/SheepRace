@@ -43,7 +43,7 @@ public class GameBoardView extends State {
 		this.player.resetPowerbarPower();
 		this.playerGfx = player.getGfx();
 		
-		this.mapSpeed = -0;
+		this.mapSpeed = 60;
 		
 		this.isBlocked = false;
 		
@@ -53,14 +53,14 @@ public class GameBoardView extends State {
 		this.eb = level.getEndBox();
 		
 		for (BlockBox b : bb){
-			b.setSpeed(mapSpeed, 0);
+			b.setSpeed(-mapSpeed, 0);
 			b.update(0);
 		}
 		for (QuestionBox q : qb){
-			q.setSpeed(mapSpeed, 0);
+			q.setSpeed(-mapSpeed, 0);
 			q.update(0);
 		}
-		eb.setSpeed(mapSpeed, 0);
+		eb.setSpeed(-mapSpeed, 0);
 		eb.update(0);
 		
 	// TODO: Remove most of these buttons
@@ -73,6 +73,8 @@ public class GameBoardView extends State {
 		ground.setPosition(0, Constants.WINDOW_HEIGHT*3/4);
 		
 		ground.update(0);
+		
+		MyGame.getGameObject().setStartTime(System.currentTimeMillis());
 	}
 	
 	public void draw(Canvas canvas){
@@ -120,6 +122,7 @@ public class GameBoardView extends State {
 	public void update(float dt) {
 		
 		player.decreasePowerbarPower();
+		mapSpeed=40+(player.getPowerbarPower()/10);
 		
 		if(playerGfx.collides(eb))
 			getGame().pushState(new GameStatusView(main));
@@ -144,7 +147,7 @@ public class GameBoardView extends State {
 			if(isBlocked)
 				bBox.setSpeed(0, 0);
 			else
-				bBox.setSpeed(mapSpeed, 0);
+				bBox.setSpeed(-mapSpeed, 0);
 			
 			bBox.update(dt);
 		}
@@ -155,12 +158,11 @@ public class GameBoardView extends State {
 				qBox.update(dt);
 				System.out.println("before question" +playerGfx.getPosition() );
 				getGame().pushState(new QuestionView(main));
-				break;
 			}
 			if(isBlocked)
 				qBox.setSpeed(0, 0);
 			else
-				qBox.setSpeed(mapSpeed, 0);
+				qBox.setSpeed(-mapSpeed, 0);
 			
 			qBox.update(dt);
 		}
@@ -168,7 +170,7 @@ public class GameBoardView extends State {
 		if(isBlocked)
 			eb.setSpeed(0, 0);
 		else
-			eb.setSpeed(mapSpeed, 0);
+			eb.setSpeed(-mapSpeed, 0);
 		
 		player.update(dt);
 		eb.update(dt);
