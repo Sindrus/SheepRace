@@ -27,5 +27,9 @@ public class HighscorePlayer implements Comparable<HighscorePlayer>{
 		else
 			return -1;
 	}
+	@Override
+	public String toString(){
+		return ("Highscorespiller "+name+" med score "+score);
+	}
 
 }
