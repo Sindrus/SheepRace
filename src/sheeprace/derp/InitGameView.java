@@ -35,9 +35,11 @@ public class InitGameView extends State implements KeyboardListener{
 	
 	public InitGameView(MainActivity main){
 		MyGame.getGameObject().resetGame();
+		
 	// Show the keyboard
 		imm = (InputMethodManager) main.getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+		
 	// Instantiate 	buttons
 		backButton = new TextButton(50, 50, "Back");
 		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Chose categories");
@@ -45,12 +47,13 @@ public class InitGameView extends State implements KeyboardListener{
 		savePlayer = new TextButton(Constants.WINDOW_WIDTH/2-45, 2*Constants.WINDOW_HEIGHT/7, "Save Player");
 		player1ReadyButton = new TextButton(4*Constants.WINDOW_WIDTH/5, 2*Constants.WINDOW_HEIGHT/6, " ");
 		player2ReadyButton = new TextButton(4*Constants.WINDOW_WIDTH/5, 3*Constants.WINDOW_HEIGHT/7, " ");
+		
 	// Set flag what player is ready
 		player1Ready = false;
 		player2Ready = false;
 		
 	// Create the first level
-		MyGame.getGameObject().createNextLevel(main);
+		MyGame.getGameObject().setMain(main);
 		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
 		
@@ -61,6 +64,7 @@ public class InitGameView extends State implements KeyboardListener{
 	
 	@Override
 	public boolean onKeyDown(KeyEvent e){
+		System.out.println("Keyevent!");
 		if(!player1Ready || !player2Ready){
 			System.out.println("knapp trykket "+(char)e.getUnicodeChar());
 			playerName+=Character.toString((char)e.getUnicodeChar());

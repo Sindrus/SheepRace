@@ -1,5 +1,7 @@
 package sheeprace.derp;
 
+import sheep.graphics.Image;
+
 /**
  * Object that blocks the players path in the gameworld.
  * Holds the information about a single blockbox
@@ -7,9 +9,11 @@ package sheeprace.derp;
  */
 
 public class BlockBox extends Box{
-	public BlockBox(float x, float y){
+	
+	public BlockBox(float x, float y, Image image){
+		super(image);
+		
 		setConvertedCoordinates(x, y);
-		setView(Constants.blockBox);
 		update(0);
 	}
 	

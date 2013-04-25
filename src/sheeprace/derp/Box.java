@@ -13,16 +13,19 @@ import sheep.graphics.Image;
  */
 public class Box extends Sprite{
 	
+	public Box(Image image){
+		super(image);
+	}
+	
 	public void setConvertedCoordinates(float x,float y){
 		
-	//	System.out.println("Height: "+Constants.WINDOW_HEIGHT + " Width: "+Constants.WINDOW_WIDTH);
+		// How far away from the start the box is
+		// divide by more to decrease distance between them
+		x=(x*((float)Constants.WINDOW_HEIGHT/(float)(7.5)));
+		// How high in the air the box is
+		// divide by more to increase the hight
+		y=(y*((float)Constants.WINDOW_WIDTH/(float)(13.5)));
 		
-		float a, b;
-		a=(x*(Constants.WINDOW_HEIGHT/5));
-	//	System.out.println("X= "+a);
-		b=(y*(Constants.WINDOW_WIDTH/14));
-	//	System.out.println("Y= "+b);
-		
-		setPosition(a,b);
+		setPosition(x,y);
 	}
 }

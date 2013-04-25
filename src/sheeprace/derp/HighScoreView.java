@@ -2,6 +2,7 @@ package sheeprace.derp;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -26,7 +27,7 @@ public class HighScoreView extends State {
 	private Font font, headLine;
 	private ArrayList<Player> bestFivePlayers;
 	
-	public HighScoreView(MainActivity main){
+	public HighScoreView(MainActivity main, boolean fromGame){
 		backButton = new TextButton(50, 50, "Back");
 		font = new Font(88, 88, 88, 16, Typeface.SERIF, Typeface.BOLD);
 		font.setTextAlign(Align.CENTER);
@@ -37,7 +38,39 @@ public class HighScoreView extends State {
 //		generatePlayers(); //Polutes the players created in the game itself
 		bestFivePlayers = new ArrayList<Player>();
 		getBestFivePlayers(MyGame.getGameObject().getPlayers());
+		
+		
+		
+	// New code	
+		
+		if(Constants.highscore==null)
+			Constants.highscore = new ArrayList<HighscorePlayer>();
+		
+		if(fromGame)
+			populateHighscore();
+		
+		Collections.sort(Constants.highscore);
+		System.out.println(Constants.highscore);
+	}
+	
+	private void populateHighscore(){
+		ArrayList<Player> players = MyGame.getGameObject().getPlayers();
+		for(Player p : players){
+			HighscorePlayer hp = new HighscorePlayer(p.getName(), p.getScore());
+			for(int i=0;i<Constants.highscore.size();i++){
+				if(hp.getScore() >= Constants.highscore.get(i).getScore()){
+					Constants.highscore.add(i,hp);
+					if(Constants.highscore.size()>5)
+						Constants.highscore.remove(Constants.highscore.size()-1);
+				}	
+			}
 		}
+	}
+	
+	
+	
+	
+	
 	
 	public void draw(Canvas canvas){
 		canvas.drawColor(Color.BLACK);
@@ -50,7 +83,6 @@ public class HighScoreView extends State {
 			canvas.drawText(bestFivePlayers.get(i).getName() + "  " + bestFivePlayers.get(i).getScore(), Constants.WINDOW_WIDTH/2, screenCord, font);
 			screenCord += 50;
 		}
-		
 	}
 	
 	public void getBestFivePlayers(ArrayList<Player> players){
@@ -78,23 +110,6 @@ public class HighScoreView extends State {
 			bestFivePlayers.add(stuff.get(player));
 			stuff.remove(player);
 		}
-	}
-	
-	public void generatePlayers(){
-		Player p1 = new Player("p1", 200);
-		Player p2 = new Player("p2", 150);
-		Player p3 = new Player("p3", 170);
-		Player p4 = new Player("p4", 345);
-		Player p5 = new Player("p5", 230);
-		Player p6 = new Player("p6", 123);
-		Player p7 = new Player("p7", 211);
-		MyGame.getGameObject().getPlayers().add(p1);
-		MyGame.getGameObject().getPlayers().add(p2);
-		MyGame.getGameObject().getPlayers().add(p3);
-		MyGame.getGameObject().getPlayers().add(p4);
-		MyGame.getGameObject().getPlayers().add(p5);
-		MyGame.getGameObject().getPlayers().add(p6);
-		MyGame.getGameObject().getPlayers().add(p7);
 	}
 	
 	@Override

@@ -50,6 +50,7 @@ public class Constants {
     public static Image whiteBox = new Image(R.drawable.white);
     public static Image questionsBox = new Image(R.drawable.question_box);
     public static Image blockBox = new Image(R.drawable.empty_box);
+    public static Image endBox = new Image(R.drawable.finished);
     //TODO, add a working list, and populate from the mainActivity or something
     
     /**
@@ -61,4 +62,9 @@ public class Constants {
      * Integer that represent the number of levels available
      */
     public static int maxLevels;
+    
+    /**
+     * Highscorelist
+     */
+    public static List<HighscorePlayer> highscore;
 }

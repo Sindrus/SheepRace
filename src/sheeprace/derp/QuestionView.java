@@ -27,7 +27,6 @@ public class QuestionView extends State{
 	private boolean correct;
 	
 	public QuestionView(MainActivity main){
-	//	q = QuestionMaker.createQuestion(main,2, "film");
 		q = MyGame.getGameObject().getNextQuestion();
 		
 		font = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
@@ -52,6 +51,8 @@ public class QuestionView extends State{
 		for (int i = 0; i < jo.size(); i++) {
 			jo.get(i).draw(canvas);
 		}
+
+	//	System.out.println("During question" +MyGame.getGameObject().getPlayer().getGfx().getPosition() );
 	}
 	
 	public String getQuestion(){
@@ -101,8 +102,8 @@ public class QuestionView extends State{
 //				System.out.println(longtime-time);
 				longtime = System.nanoTime();
 			}
-			getGame().popState();
-			getGame().popState();
+			getGame().popState(2);
+			System.out.println("After question: "+MyGame.getGameObject().getPlayer().getGfx().getPosition());
 		}
 	}
 }

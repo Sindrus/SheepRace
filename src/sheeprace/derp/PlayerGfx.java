@@ -1,6 +1,5 @@
 package sheeprace.derp;
 
-import sheep.collision.CollisionListener;
 import sheep.collision.Rectangle;
 import sheep.game.Sprite;
 import sheep.graphics.Image;
@@ -15,36 +14,13 @@ public class PlayerGfx extends Sprite{
 	
 	public PlayerGfx(Image imageName){
 		super(imageName);
-		this.setShape(new Rectangle(60, 60));
 	}
 	
 	public void jump() {
-		// getSpeed().getY() == 0 && getAcceleration().getY() == 0)
-	/*	System.out.println("Before: -----------");
-		System.out.println("Pos Y: "+ this.getY());
-		System.out.println("Pos X:" + this.getX());
-		
-		System.out.println("Speed Y: "+ this.getSpeed().getY());
-		System.out.println("Speed X:" + this.getSpeed().getX());
-		
-		System.out.println("Acc Y: "+ this.getAcceleration().getY());
-		System.out.println("Acc X:" + this.getAcceleration().getX());
-	*/	
 		if (canJump()) {
 			this.setSpeed(0, -Constants.SPEED);
 			this.setAcceleration(0, Constants.ACCELERATION);
 		}
-	/*	
-		System.out.println("After: -----------");
-		System.out.println("Pos Y: "+ this.getY());
-		System.out.println("Pos X:" + this.getX());
-		
-		System.out.println("Speed Y: "+ this.getSpeed().getY());
-		System.out.println("Speed X:" + this.getSpeed().getX());
-		
-		System.out.println("Acc Y: "+ this.getAcceleration().getY());
-		System.out.println("Acc X:" + this.getAcceleration().getX());
-	*/
 	}
 	
 	public void update(float dt) {
@@ -60,4 +36,36 @@ public class PlayerGfx extends Sprite{
 			return true;
 		return false;
 	}
+	
+	/**
+	 * Stops the player from moving
+	 */
+	public void stop(){
+		setSpeed(0, 0);
+		setAcceleration(0, 0);
+		setPosition(getX(), getY()-3);
+		//setPosition(getX(), Constants.WINDOW_HEIGHT*3/4 - Constants.sheep1.getHeight()/2);
+	}
+	
+	/**
+	 * Reverses the speed of the playerGfx
+	 */
+	public void reverseSpeed(){
+		setSpeed(-getSpeed().getX(), -getSpeed().getY());
+	}
+	
+	/**
+	 * If the abovearea of the sheep is blocked, set the speed to 0
+	 * and make gravity take care of the rest.
+	 */
+	public void topBlocked(){
+		setSpeed(0,0);
+	}
+	
+/*	/**
+	 * Reset the startposition of the player. 
+	 *
+	public void resetStartPosition(){
+		
+	}*/
 }

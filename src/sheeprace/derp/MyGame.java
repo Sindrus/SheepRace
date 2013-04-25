@@ -27,20 +27,11 @@ public class MyGame implements GameInterface{
 	private MainActivity main;
 	private Game androidGame;
 	private ArrayList<Player> players = new ArrayList<Player>();
-	private int levelNum, p1CorrQuest, p2CorrQuest;
+	private int levelNum, p1CorrQuest, p2CorrQuest, roundsPlayed;
 	private Level level;
 	private boolean player1sTurn;
 	
 	private List<String> chosenCategory;
-	
-	public List<String> getChosenCategory() {
-		return chosenCategory;
-	}
-
-	public void addChosenCategory(String chosen){
-		chosenCategory.add(chosen);
-	}
-
 	private Map<String, List<Integer>> availableQuestions;
 	
 	
@@ -64,11 +55,17 @@ public class MyGame implements GameInterface{
 	}
 	
 	/**
-	 * need to have the mainactivity
-	 * @param main The mainactivity for the game
+	 * Because this is a singletonobject we need some way to reset the data
+	 * that is kept in this class every time we reset the game.
 	 */
-	public void setMain(MainActivity main){
-		this.main = main;
+	public void resetGame(){
+		this.levelNum=0;
+		this.roundsPlayed=0;
+		this.availableQuestions = new HashMap<String, List<Integer>>();
+		this.chosenCategory = new ArrayList<String>();
+		this.player1sTurn=true;
+		this.p1CorrQuest=0;
+		this.p2CorrQuest=0;
 	}
 	
 	/**
@@ -78,35 +75,31 @@ public class MyGame implements GameInterface{
 	public Game getAndroidGame(){
 		return androidGame;
 	}
+	
 	public void setAndroidGame(Game game){
 		this.androidGame=game;
 	}
 	
 	/**
-	 * Because this is a singletonobject we need some way to reset the data
-	 * that is kept in this class every time we reset the game.
+	 * need to have the mainactivity
+	 * @param main The mainactivity for the game
 	 */
-	public void resetGame(){
-	// TODO: also reset playerlist
+	public void setMain(MainActivity main){
+		this.main = main;
+	}
+	
+	public List<String> getChosenCategory() {
+		return chosenCategory;
+	}
 
-		levelNum=0;
-		this.availableQuestions = new HashMap<String, List<Integer>>();
-		this.chosenCategory = new ArrayList<String>();
-		this.player1sTurn=true;
-		this.p1CorrQuest=0;
-		this.p2CorrQuest=0;
-		
-	// FIXME: Remove when categorychoice is implemented
-/*		chosenCategory.add("film");
-		chosenCategory.add("tv");*/
-		
+	public void addChosenCategory(String chosen){
+		chosenCategory.add(chosen);
 	}
 	
 	/**
 	 * Call this method to create the next level
 	 */
-	public void createNextLevel(MainActivity main){
-		this.level = LevelMaker.createLevel(main,"normal", this.levelNum);
+	public void createNextLevel(){
 		this.levelNum++;
 	}
 	/**
@@ -114,7 +107,18 @@ public class MyGame implements GameInterface{
 	 * @return the level
 	 */
 	public Level getLevel(){
+		roundsPlayed++;
+		this.level = LevelMaker.createLevel(main, "normal", this.levelNum);
 		return this.level;
+	}
+	
+	/**
+	 * Calculates how many more levels are available
+	 * @return the number of levels not yet played
+	 */
+	public int numberOfLevelsLeft(){
+		System.out.println("Number of levels left: "+(Constants.maxLevels-levelNum-1));
+		return (Constants.maxLevels-levelNum-1);
 	}
 	
 	@Override
@@ -147,12 +151,22 @@ public class MyGame implements GameInterface{
 	 * @return
 	 */
 	public Player getPlayer(){
-		if(player1sTurn)
+		if(player1sTurn){
 			return players.get(0);
-		else
+		}
+		else{
 			return players.get(1);
+		}
 	}
 	
+	/**
+	 * Calculates if all players had the same number of games
+	 * @return if the games played are evenly distributed among the players
+	 */
+	public boolean evenGames(){
+		return ((roundsPlayed % players.size())==0);
+		
+	}
 	
 	/**
 	 * records correct answer to player 1

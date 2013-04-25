@@ -52,7 +52,7 @@ public class MainMenuView extends State implements TouchListener{
 			getGame().pushState(new AboutView(main));
 		}
 		else if(highScore.onTouchDown(evt)){
-			getGame().pushState(new HighScoreView(main));
+			getGame().pushState(new HighScoreView(main, false));
 		}
 //		else if(questionView.onTouchDown(evt)){
 //			getGame().pushState(new QuestionView(main));

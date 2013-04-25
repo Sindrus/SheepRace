@@ -2,14 +2,9 @@ package sheeprace.derp;
 
 import sheep.game.State;
 import sheep.graphics.Font;
-import sheep.graphics.Image;
 import sheep.gui.TextButton;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
-import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.Paint.Align;
 import android.view.MotionEvent;
@@ -25,41 +20,20 @@ import android.view.MotionEvent;
 public class GameStatusView extends State{
 	
 	private MainActivity main;
-	private Player player,player1,player2;
-	private TextButton backButton;
+	private Player player1,player2;
+	private TextButton continueButton, finishedButton;
 	
 	private Font font, headLine, winFont; 
 	
-	private boolean finalScreen;
+	private boolean moreLevels, equalsNumsOfGames;
 	
 	private Matrix matrix, matrix2;
-	
-	/** 
-	 * I think this should be deprecated since we don't have singleplayer mode
-	 * -Sindre
-	 * @deprecated
-	 */
-	public GameStatusView(MainActivity main, Player player){
-		this.main = main;
-		this.player = player; //Don't know if this is the right way to do it just now
-		
-		font = new Font(88, 88, 88, 20, Typeface.SERIF, Typeface.BOLD);
-		font.setTextAlign(Align.CENTER);
-		headLine = new Font(18, 62, 110, 30, Typeface.SERIF, Typeface.BOLD);
-		headLine.setTextAlign(Align.CENTER);
-		
-		backButton = new TextButton(50, 50, "Back");
-		
-		MatrixOps();
-		
-		this.finalScreen= false; 
-	}
 	
 	/**
 	 * This is the method to use, it does not need to take the player
 	 * @param main MainActivity
 	 */
-	public GameStatusView(MainActivity main){//, Player player1, Player player2){
+	public GameStatusView(MainActivity main){
 		this.main = main;
 		this.player1 = MyGame.getGameObject().getPlayers().get(0);
 		this.player2 = MyGame.getGameObject().getPlayers().get(1);
@@ -72,15 +46,17 @@ public class GameStatusView extends State{
 		winFont = new Font(20,190,30,40,Typeface.SERIF, Typeface.BOLD);
 		winFont.setTextAlign(Align.CENTER);
 		
-		backButton = new TextButton(50, 50, "Back");
+		continueButton = new TextButton(Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGHT/4, "Next Game");
+		
+		finishedButton = new TextButton((3*Constants.WINDOW_WIDTH)/4, Constants.WINDOW_HEIGHT/4, "To highscore");
 
 		player1.setScore(MyGame.getGameObject().getp1sCorrect());
 		player2.setScore(MyGame.getGameObject().getp2sCorrect());
 		
+		moreLevels=!(MyGame.getGameObject().numberOfLevelsLeft()==0);
+		equalsNumsOfGames = MyGame.getGameObject().evenGames();
 		
 		MatrixOps();
-		
-		this.finalScreen= true;
 	}
 	
 	public void MatrixOps(){
@@ -107,38 +83,34 @@ public class GameStatusView extends State{
 		
 		canvas.drawBitmap(Constants.frontSheep_bitmap, matrix ,null);
 		canvas.drawBitmap(Constants.frontSheep_bitmap, matrix2 ,null);
+
+
+		canvas.drawText("Your score", canvas.getWidth()/2, 100, headLine);
+		canvas.drawText(player1.getName() + "  " +player1.getScore(), canvas.getWidth()/2, 150, font);
+		canvas.drawText(player2.getName() + "  " +player2.getScore(), canvas.getWidth()/2, 200, font);
 		
-		if(!finalScreen){
-			canvas.drawText("Your score", canvas.getWidth()/2, 100, headLine);
-			canvas.drawText(player.getName() + "  " +player.getScore(), canvas.getWidth()/2, 150, font);
-			backButton.draw(canvas); // TODO for now, change to "continue" later on
-		}
-		else if(finalScreen){
-			canvas.drawText("Your scores", canvas.getWidth()/2, 100, headLine);
-//			System.out.println(player1.toString());
-//			System.out.println(player2.toString());
-			canvas.drawText(player1.getName() + "  " +player1.getScore(), canvas.getWidth()/2, 150, font);
-			canvas.drawText(player2.getName() + "  " +player2.getScore(), canvas.getWidth()/2, 200, font);
-			if(player1.getScore()>player2.getScore())
-				canvas.drawText(player1.getName() + " wins!",canvas.getWidth()/2,canvas.getHeight()/2,winFont);
-			else if(player1.getScore()<player2.getScore())
-				canvas.drawText(player2.getName() + " wins!",canvas.getWidth()/2,canvas.getHeight()/2,winFont);
-			else
-				canvas.drawText("Draw! Looks like you need to play again!",canvas.getWidth()/2,canvas.getHeight()/2,winFont);
-			backButton.draw(canvas);
-		}
+		if(moreLevels)
+			continueButton.draw(canvas);
+		else if(!equalsNumsOfGames)
+			continueButton.draw(canvas);
+		if(equalsNumsOfGames)
+			finishedButton.draw(canvas);
 	}
 	
 	@Override
 	public boolean onTouchDown(MotionEvent event) {
-		if(backButton.onTouchDown(event)){
-			getGame().popState();
+		if(finishedButton.onTouchDown(event)){
+			System.out.println("Pushed finished");
+			getGame().popState(4);
+			getGame().pushState(new HighScoreView(main, true));
+		}else if(continueButton.onTouchDown(event)){
+			if(equalsNumsOfGames)
+				MyGame.getGameObject().createNextLevel();
+			System.out.println("Pushed continue");
+			MyGame.getGameObject().setNextPlayer();
+			getGame().popState(2);
+			getGame().pushState(new GameBoardView(main));
 		}
-//		else if(startGame.onTouchDown(event)){
-//
-//			getGame().pushState(new GameBoardView(main,index1,index2));
-//			
-//		}
 		return true;
 	}
 }

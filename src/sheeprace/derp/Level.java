@@ -14,6 +14,7 @@ public class Level {
 	
 	private List<QuestionBox> qBox;
 	private List<BlockBox> bBox;
+	private EndBox eBox;
 	
 	
 	public Level(){
@@ -24,8 +25,20 @@ public class Level {
 	public void addQBox(QuestionBox qb){
 		qBox.add(qb);
 	}
+	public ArrayList<QuestionBox> getQuestionBoxes(){
+		return (ArrayList<QuestionBox>)this.qBox;
+	}
 	public void addBBox(BlockBox bb){
 		bBox.add(bb);
+	}
+	public ArrayList<BlockBox> getBlockBoxes(){
+		return (ArrayList<BlockBox>) this.bBox;
+	}
+	public void addEBox(EndBox eb){
+		this.eBox = eb;
+	}
+	public EndBox getEndBox(){
+		return eBox;
 	}
 	
 	@Override
@@ -36,13 +49,5 @@ public class Level {
 		for(BlockBox b : bBox)
 			s+=b.toString()+'\n';
 		return s;
-	}
-	
-	public ArrayList<BlockBox> getBlockBoxes(){
-		return (ArrayList<BlockBox>) this.bBox;
-	}
-	
-	public ArrayList<QuestionBox> getQuestionBoxes(){
-		return (ArrayList<QuestionBox>)this.qBox;
 	}
 }
