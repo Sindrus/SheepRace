@@ -13,7 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import sheep.game.Game;
-
+// Linje 2500 for min del, \o/
 public class MainActivity extends Activity {
 	
 	@Override
