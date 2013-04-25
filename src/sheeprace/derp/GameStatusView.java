@@ -54,7 +54,7 @@ public class GameStatusView extends State{
 		long timeUsed = MyGame.getGameObject().getTimeDelta(System.currentTimeMillis());
 		int powerbarpower = MyGame.getGameObject().getPlayer().getPowerbarPower();
 		
-		int score = powerbarpower + (int)(long)(50000/timeUsed);
+		int score = powerbarpower + (int)(long)(30000/timeUsed);
 		
 		MyGame.getGameObject().getPlayer().addScore(score);
 		
