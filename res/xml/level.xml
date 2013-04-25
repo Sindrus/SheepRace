@@ -17,5 +17,18 @@
 	        <bbox cox="15" coy="5" />-->
 	        <end cox="14" />
         </level>
+        <level id="1">
+            <bbox cox="3" coy="3" />
+            <bbox cox="5" coy="2" />
+            <bbox cox="4" coy="4" />
+            <bbox cox="6" coy="5" />
+            <qbox cox="8" coy="3" />
+            <qbox cox="10" coy="2" />
+            <qbox cox="13" coy="3" />
+            <qbox cox="16" coy="3" />
+            <qbox cox="17" coy="4" />
+            <qbox cox="18" coy="1" />
+            <end cox="20"/>
+        </level>
     </levels>
 </l>
