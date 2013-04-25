@@ -106,14 +106,17 @@ public class QuestionView extends State {
 		}
 
 		public void draw(Canvas canvas) {
-			if (correct)
+			if (correct){
 				canvas.drawColor(Color.GREEN);
-			else
+//				canvas.drawText("T", Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT/2, new Font(255, 255, 255, 100, Typeface.SERIF, Typeface.BOLD));
+			}
+			else{
 				canvas.drawColor(Color.RED);
-
+//				canvas.drawText("F", Constants.WINDOW_WIDTH/2, Constants.WINDOW_HEIGHT/2, new Font(255, 255, 255, 100, Typeface.SERIF, Typeface.BOLD));
+			}
 			long time = System.nanoTime();
 			long longtime = System.nanoTime();
-			while (longtime - time < 1500000000) {
+			while (longtime - time < 50000000) {
 				// System.out.println(longtime-time);
 				longtime = System.nanoTime();
 			}

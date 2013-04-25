@@ -42,7 +42,7 @@ public class InitGameView extends State implements KeyboardListener{
 		
 	// Instantiate 	buttons
 		backButton = new TextButton(50, 50, "Back");
-		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Chose categories");
+		startGame = new TextButton(3*(Constants.WINDOW_WIDTH/4), 50, "Choose categories");
 		startGame.setLabel(" ");
 		savePlayer = new TextButton(Constants.WINDOW_WIDTH/2-45, 2*Constants.WINDOW_HEIGHT/7, "Save Player");
 		player1ReadyButton = new TextButton(4*Constants.WINDOW_WIDTH/5, 2*Constants.WINDOW_HEIGHT/6, " ");

@@ -22,7 +22,7 @@ public class HighscorePlayer implements Comparable<HighscorePlayer>{
 	public int compareTo(HighscorePlayer hsp) {
 		if(hsp.getScore() == this.score)
 			return 0;
-		else if(hsp.getScore()< this.score)
+		else if(hsp.getScore()> this.score)
 			return 1;
 		else
 			return -1;
