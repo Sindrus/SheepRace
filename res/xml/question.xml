@@ -638,7 +638,7 @@
 	        </option>
 	    </question>
 	    <question id="6">
-	         <title>Hva hører ikke til i midtbyen?</title>
+	         <title>Hva hører ikke til i Trondheim by?</title>
 	        <option>
 	            <answer>Tyholt</answer>
 	            <correct>false</correct>
@@ -652,7 +652,7 @@
 	            <correct>false</correct>
 	        </option>
 	         <option>
-	            <answer>Møllenberg</answer>
+	            <answer>Værnes</answer>
 	            <correct>true</correct>
 	        </option>
 	    </question>
